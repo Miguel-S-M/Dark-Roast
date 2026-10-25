@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cultivo · Dark Roast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cultivo.css">
+<script src="cultivo.js" defer></script>
+</head>
+<body class="pagina-cultivo">
+  <main class="origem" aria-labelledby="cultivo-titulo">
+    <div class="cultivo-topo">
+      <a class="cultivo-voltar" href="index.html#origem">Voltar para a origem</a>
+    </div>
+
+    <div class="origem-miolo">
+      <span class="cultivo-kanji" lang="ja" aria-hidden="true">栽培</span>
+      <h1 class="cultivo-titulo" id="cultivo-titulo">Cultivo</h1>
+      <p class="origem-intro">Seis cafés, seis lugares. Clique em um ponto para ver como cada um é cultivado.</p>
+
+      <!-- Os pontos são criados pelo cultivo.js -->
+      <div class="origem-rolagem">
+        <div class="origem-mapa" id="mapa">
+          <svg viewBox="0 0 920 344" aria-hidden="true"><path id="mapa-terra" d=""/></svg>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
