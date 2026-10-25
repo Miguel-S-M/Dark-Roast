@@ -1,0 +1,109 @@
+/* ===== Página do mapa (cultivo.html) ===== */
+/* Usa as cores e fontes da classe .origem, definidas no index.css */
+.pagina-cultivo { padding: 0; }
+.cultivo-topo { max-width: 1000px; margin: 0 auto; }
+.cultivo-voltar {
+  color: var(--suave);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--linha);
+}
+.cultivo-voltar:hover, .cultivo-voltar:focus-visible { color: var(--shu); border-color: var(--shu); }
+.cultivo-kanji {
+  display: block;
+  text-align: center;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1;
+  margin: clamp(16px, 4vw, 40px) 0 12px;
+}
+.cultivo-titulo {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+/* ----- Mapa ----- */
+.origem-rolagem { overflow-x: auto; }
+.origem-mapa {
+  position: relative;
+  min-width: 640px;
+  aspect-ratio: 920 / 344;
+}
+.origem-mapa svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.origem-mapa svg path {
+  fill: none;
+  stroke: var(--linha);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.ponto {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: var(--tinta);
+  text-decoration: none;
+  border-radius: 50%;
+}
+.ponto::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--shu);
+}
+.ponto::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px solid var(--shu);
+  opacity: 0;
+  animation: pulso 3.2s ease-out infinite;
+}
+@keyframes pulso {
+  0%   { transform: scale(0.6); opacity: 0.8; }
+  70%  { transform: scale(1.9); opacity: 0; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.ponto:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; }
+.ponto:hover, .ponto:focus-visible { z-index: 2; }
+
+.ponto-rotulo {
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  padding: 2px 6px;
+  background: color-mix(in srgb, var(--papel) 88%, transparent);
+  font-family: "Shippori Mincho", serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+.ponto-lugar {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: var(--suave);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.72rem;
+  transition: max-height 0.2s, opacity 0.2s;
+}
+.ponto:hover .ponto-lugar,
+.ponto:focus-visible .ponto-lugar { max-height: 1.6em; opacity: 1; }
+@media (hover: none) {
+  .ponto-lugar { max-height: 1.6em; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ponto::after { animation: none; }
+}
