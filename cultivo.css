@@ -1,47 +1,116 @@
-/* ===== Página do mapa (cultivo.html) ===== */
-/* Usa as cores e fontes da classe .origem, definidas no index.css */
-.pagina-cultivo { padding: 0; }
-.cultivo-topo { max-width: 1000px; margin: 0 auto; }
-.cultivo-voltar {
-  color: var(--suave);
-  text-decoration: none;
-  font-size: 0.9rem;
-  border-bottom: 1px solid var(--linha);
-}
-.cultivo-voltar:hover, .cultivo-voltar:focus-visible { color: var(--shu); border-color: var(--shu); }
-.cultivo-kanji {
-  display: block;
-  text-align: center;
-  font-family: "Shippori Mincho", serif;
-  font-weight: 400;
-  font-size: clamp(3rem, 8vw, 5rem);
-  line-height: 1;
-  margin: clamp(16px, 4vw, 40px) 0 12px;
-}
-.cultivo-titulo {
-  font-family: "Shippori Mincho", serif;
-  font-weight: 400;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  letter-spacing: 0.08em;
-  text-align: center;
-  margin: 0 0 12px;
+/* ===== Página do mapa (cultivo.html): mapa em tela cheia ===== */
+/* As cores e fontes vêm da classe .origem, definida no index.css */
+.pagina-cultivo {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 /* ----- Mapa ----- */
-.origem-rolagem { overflow-x: auto; }
-.origem-mapa {
-  position: relative;
-  min-width: 640px;
-  aspect-ratio: 920 / 344;
-}
-.origem-mapa svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.origem-mapa svg path {
-  fill: none;
-  stroke: var(--linha);
-  stroke-width: 3;
-  stroke-linecap: round;
+.mapa-tela { position: absolute; inset: 0; overflow: hidden; cursor: grab; }
+.mapa-tela:active { cursor: grabbing; }
+#mapa-svg { display: block; width: 100%; height: 100%; touch-action: none; }
+.mapa-pontos { position: absolute; inset: 0; pointer-events: none; }
+
+.m-mar { fill: color-mix(in srgb, var(--tinta) 5%, var(--papel)); stroke: var(--linha); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+.m-graticula { fill: none; stroke: var(--linha); stroke-width: 0.5px; opacity: 0.6; vector-effect: non-scaling-stroke; }
+.m-terra { fill: color-mix(in srgb, var(--tinta) 16%, var(--papel)); stroke: var(--tinta); stroke-opacity: 0.6; stroke-width: 0.8px; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.m-fronteiras { fill: none; stroke: var(--suave); stroke-opacity: 0.45; stroke-width: 0.5px; vector-effect: non-scaling-stroke; }
+.m-cinturao { fill: var(--shu); opacity: 0.08; pointer-events: none; }
+.m-tropicos { fill: none; stroke: var(--shu); stroke-opacity: 0.5; stroke-width: 0.8px; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+.m-oceano {
+  fill: var(--suave);
+  font-family: "Shippori Mincho", serif;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  text-anchor: middle;
+  opacity: 0.85;
+  pointer-events: none;
 }
 
+/* ----- Cartão do título (canto superior esquerdo) ----- */
+.cultivo-card {
+  position: absolute;
+  z-index: 4;
+  top: 16px;
+  left: 16px;
+  max-width: min(320px, calc(100vw - 32px));
+  padding: 14px 18px 16px;
+  background: color-mix(in srgb, var(--papel) 90%, transparent);
+  border: 1px solid var(--linha);
+  backdrop-filter: blur(4px);
+}
+.cultivo-voltar {
+  color: var(--suave);
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--linha);
+}
+.cultivo-voltar:hover, .cultivo-voltar:focus-visible { color: var(--shu); border-color: var(--shu); }
+.cultivo-cabeca { display: flex; align-items: baseline; gap: 14px; margin: 14px 0 6px; }
+.cultivo-kanji {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 1;
+}
+.cultivo-titulo {
+  margin: 0;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+.cultivo-dica { margin: 0; color: var(--suave); font-size: 0.82rem; line-height: 1.6; }
+
+/* ----- Controles e legenda ----- */
+.mapa-controles { z-index: 4; position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.mapa-controles button {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  background: color-mix(in srgb, var(--papel) 90%, transparent);
+  color: var(--tinta);
+  border: 1px solid var(--linha);
+  border-radius: 0;
+  font: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.mapa-controles #zoom-inicio { font-size: 0.8rem; }
+.mapa-controles button:hover { border-color: var(--shu); color: var(--shu); }
+.mapa-controles button:focus-visible { outline: 2px solid var(--shu); outline-offset: 2px; }
+.mapa-legenda {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  max-width: min(260px, calc(100vw - 100px));
+  margin: 0;
+  padding: 4px 8px;
+  background: color-mix(in srgb, var(--papel) 90%, transparent);
+  color: var(--suave);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  z-index: 4;
+}
+.mapa-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 24px;
+  text-align: center;
+  color: var(--suave);
+  pointer-events: none;
+}
+.mapa-status:empty { display: none; }
+
+/* ----- Pontos dos cafés ----- */
 .ponto {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -51,14 +120,9 @@
   color: var(--tinta);
   text-decoration: none;
   border-radius: 50%;
+  pointer-events: auto;
 }
-.ponto::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  background: var(--shu);
-}
+.ponto::before { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--shu); box-shadow: 0 0 0 2px var(--papel); }
 .ponto::after {
   content: "";
   position: absolute;
@@ -74,8 +138,7 @@
   100% { transform: scale(1.9); opacity: 0; }
 }
 .ponto:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; }
-.ponto:hover, .ponto:focus-visible { z-index: 2; }
-
+.ponto:hover, .ponto:focus-visible { z-index: 5; }
 .ponto-rotulo {
   position: absolute;
   left: 22px;
@@ -89,21 +152,102 @@
   letter-spacing: 0.04em;
 }
 .ponto-lugar {
-  display: block;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 2px;
+  padding: 2px 6px;
+  background: color-mix(in srgb, var(--papel) 92%, transparent);
   color: var(--suave);
   font-family: "Zen Kaku Gothic New", sans-serif;
   font-size: 0.72rem;
-  transition: max-height 0.2s, opacity 0.2s;
+  letter-spacing: 0;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
 }
-.ponto:hover .ponto-lugar,
-.ponto:focus-visible .ponto-lugar { max-height: 1.6em; opacity: 1; }
-@media (hover: none) {
-  .ponto-lugar { max-height: 1.6em; opacity: 1; }
-}
+.ponto:hover .ponto-lugar, .ponto:focus-visible .ponto-lugar { opacity: 1; }
+/* Rótulo para a esquerda (perto da borda direita da tela) */
+.ponto.esq .ponto-rotulo { left: auto; right: 22px; }
+.ponto.esq .ponto-lugar { left: auto; right: 0; }
 
-@media (prefers-reduced-motion: reduce) {
-  .ponto::after { animation: none; }
+/* ----- Desenho, linha e texto ao redor de cada ponto ----- */
+.ponto { --med: 64px; }
+.ponto-fio, .ponto-cena { display: none; }
+.com-cenas .ponto-fio, .com-cenas .ponto-cena,
+.ponto:hover .ponto-fio, .ponto:hover .ponto-cena,
+.ponto:focus-visible .ponto-fio, .ponto:focus-visible .ponto-cena { display: block; }
+.ponto-fio {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 1px;
+  height: 1px;
+  overflow: visible;
+  pointer-events: none;
 }
+.ponto-fio line { stroke: var(--tinta); stroke-opacity: 0.5; stroke-width: 1px; stroke-dasharray: 2 3; }
+.ponto-cena {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy)));
+  z-index: 1;
+}
+.cena-desenho {
+  display: block;
+  width: var(--med);
+  height: var(--med);
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  border-radius: 50%;
+  stroke: var(--tinta);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ponto:hover .cena-desenho, .ponto:focus-visible .cena-desenho { border-color: var(--shu); }
+.ponto-nota {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 8px);
+  width: 210px;
+  padding: 8px 10px 9px;
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  color: var(--tinta);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-align: left;
+  white-space: normal;
+}
+.ponto-nota b {
+  display: block;
+  margin-top: 5px;
+  color: var(--shu);
+  font-family: "Shippori Mincho", serif;
+  font-weight: 500;
+  font-size: 0.74rem;
+}
+.ponto-nota b:first-child { margin-top: 0; }
+/* A caixa abre ao lado do desenho, longe do ponto e sem sair da tela (o cultivo.js escolhe o lado) */
+.ponto.nota-esq .ponto-nota { left: auto; right: calc(100% + 8px); }
+.ponto.nota-cima .ponto-nota { top: auto; bottom: 0; }
+.ponto.fora .ponto-cena, .ponto.fora .ponto-fio { display: none !important; }
+.com-texto .ponto-nota, .ponto:hover .ponto-nota, .ponto:focus-visible .ponto-nota { display: block; }
+
+@media (max-width: 600px) {
+  .cultivo-card { top: 10px; left: 10px; padding: 10px 14px 12px; }
+  .cultivo-dica { display: none; }
+  .mapa-controles { right: 10px; bottom: 10px; }
+  .mapa-legenda { left: 10px; bottom: 10px; }
+  .ponto-rotulo { font-size: 0.72rem; padding: 1px 5px; }
+  .ponto { --med: 52px; }
+  .ponto-nota { width: 180px; }
+}
+@media (prefers-reduced-motion: reduce) { .ponto::after { animation: none; } }
