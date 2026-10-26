@@ -149,3 +149,38 @@ h2{
 @media (max-width: 700px) {
   .origem-portoes { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
 }
+.linha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 15px;
+}
+
+.bloco {
+  padding: 28px 22px 32px;
+  background: #fbf6ee;
+  border: 1px solid #d9c3a5;
+  border-top: 4px solid #8b5a2b;
+  border-radius: 8px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.bloco:hover {
+  transform: translateY(-6px);
+  border-color: #8b5a2b;
+}
+
+.bloco h3 {
+  margin: 0 0 12px;
+  color: #8b5a2b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.bloco p {
+  margin: 0;
+  color: #6b5444;
+  font-size: 0.92rem;
+}
+
