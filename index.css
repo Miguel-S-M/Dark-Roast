@@ -32,3 +32,120 @@ h2{
 .bloco p {
   margin: 0;
 }
+
+/* ==================== PARTE: ORIGEM ==================== */
+/* ===== Seção Origem · tema kissaten ===== */
+.origem {
+  --papel: #f3e9dc; /* mesma cor do fundo do site */
+  --tinta: #2a2622;
+  --suave: #6f665b;
+  --linha: #b9ad9a;
+  --shu: #b2312a; /* vermelho-tinta: a única cor de destaque */
+  background: var(--papel);
+  color: var(--tinta);
+  padding: clamp(48px, 8vw, 96px) 20px;
+  font-family: "Zen Kaku Gothic New", "Inter", sans-serif;
+  font-weight: 300;
+}
+/* Para usar o fundo carvão: <section class="origem" data-tema="carvao"> */
+.origem[data-tema="carvao"] {
+  --papel: #1d1b19;
+  --tinta: #e6dfd1;
+  --suave: #a0968a;
+  --linha: #4d463f;
+  --shu: #d9493f;
+}
+
+.origem-miolo { max-width: 1000px; margin: 0 auto; }
+
+.origem h2 {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin: 0 0 12px;
+}
+.origem-intro {
+  text-align: center;
+  color: var(--suave);
+  max-width: 42ch;
+  margin: 0 auto clamp(32px, 5vw, 56px);
+  line-height: 1.7;
+}
+
+/* ----- Os quatro portões ----- */
+.origem-portoes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 2vw, 28px);
+}
+.portao {
+  --fio: var(--tinta);
+  --viga-op: 0.5;
+  container-type: inline-size;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.portao:hover { --viga-op: 1; }
+.portao[aria-pressed="true"] { --viga-op: 1; --fio: var(--shu); }
+.portao:focus-visible { outline: 2px solid var(--shu); outline-offset: 4px; }
+.portao svg { display: block; width: 100%; height: auto; }
+
+.portao-texto {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  top: 37.5%;
+  bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  text-align: center;
+}
+.portao-kanji {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-size: max(1.4rem, 17cqw);
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+.portao-nome {
+  font-size: max(0.72rem, 6.2cqw);
+  letter-spacing: 0.06em;
+  color: var(--suave);
+}
+.portao[aria-pressed="true"] .portao-nome { color: var(--shu); }
+.portao[aria-pressed="true"] .portao-nome::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  margin: 0.5em auto 0;
+  background: var(--shu);
+}
+
+/* ----- Painéis ----- */
+.origem-painel {
+  margin-top: clamp(32px, 5vw, 56px);
+  padding-top: 24px;
+  border-top: 1px solid var(--linha);
+}
+.origem-painel[hidden] { display: none; }
+
+.origem-em-breve { text-align: center; color: var(--suave); margin: 0; }
+
+/* ----- Telas pequenas e movimento reduzido ----- */
+@media (max-width: 700px) {
+  .origem-portoes { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+}
