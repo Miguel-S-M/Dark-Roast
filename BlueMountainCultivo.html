@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Mountain · Cultivo · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/blue-mountain-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="cultivo.html">Voltar ao mapa</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">栽培</span> Cultivo</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/blue-mountain-cultivo.jpg" alt="Ilustração do café Blue Mountain: Montanhas Azuis, Jamaica">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Blue Mountain</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-montanha"/></svg>
+          <span>Montanhas Azuis, Jamaica</span>
+        </p>
+        <p class="cafe-lead">Chuva, névoa e altitude nas montanhas da Jamaica, e um barril de madeira que virou a assinatura do café.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Montanhas Azuis, Jamaica</dd></div>
+      <div><dt>Altitude</dt><dd>Cerca de 900 a 1.700 m</dd></div>
+      <div><dt>Embalagem</dt><dd>Barris de madeira</dd></div>
+      <div><dt>No copo</dt><dd>Equilibrado e suave, com toque de nozes e flores</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é feito</h2>
+        <ol class="cafe-passos">
+        <li>Os pés crescem nas encostas das Montanhas Azuis, com chuva frequente e névoa.</li>
+        <li>A colheita é feita à mão.</li>
+        <li>Os grãos são lavados e secos.</li>
+        <li>O café é embalado em barris de madeira, marca registrada desse café.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Montanhas Azuis da Jamaica, com chuva frequente, névoa e altitudes elevadas.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="SantaHelenaCultivo.html" rel="prev"><small>Café anterior</small><span>Santa Helena</span></a>
+    <a href="KopiLuwakCultivo.html" rel="next"><small>Próximo café</small><span>Kopi Luwak</span></a>
+  </nav>
+</body>
+</html>

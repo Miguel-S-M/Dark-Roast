@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacu Bird · Cultivo · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/jacu-bird-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="cultivo.html">Voltar ao mapa</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">栽培</span> Cultivo</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/jacu-bird-cultivo.jpg" alt="Ilustração do café Jacu Bird: Espírito Santo, Brasil">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Jacu Bird</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-jacu"/></svg>
+          <span>Espírito Santo, Brasil</span>
+        </p>
+        <p class="cafe-lead">No meio da Mata Atlântica, uma ave nativa faz a colheita primeiro e escolhe só o que está no ponto.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Espírito Santo, Brasil</dd></div>
+      <div><dt>Quem faz o trabalho</dt><dd>Ave jacu</dd></div>
+      <div><dt>Cultivo</dt><dd>Orgânico, entre as árvores</dd></div>
+      <div><dt>No copo</dt><dd>Macio e doce</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é feito</h2>
+        <ol class="cafe-passos">
+        <li>O café é cultivado de forma orgânica, entre as árvores da Mata Atlântica.</li>
+        <li>A ave jacu escolhe e come as cerejas mais maduras.</li>
+        <li>Os grãos que ela elimina são recolhidos na mata, lavados e secos.</li>
+        <li>Depois de selecionados, os grãos vão para a torra.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Mata Atlântica nas montanhas do Espírito Santo. O café cresce à sombra da floresta, e a própria mata fornece o alimento e o abrigo da ave.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="BlackIvoryCultivo.html" rel="prev"><small>Café anterior</small><span>Black Ivory</span></a>
+    <a href="GeishaCultivo.html" rel="next"><small>Próximo café</small><span>Geisha</span></a>
+  </nav>
+</body>
+</html>

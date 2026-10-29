@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Black Ivory · Cultivo · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/black-ivory-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="cultivo.html">Voltar ao mapa</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">栽培</span> Cultivo</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/black-ivory-cultivo.jpg" alt="Ilustração do café Black Ivory: Chiang Rai, Tailândia">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Black Ivory</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-elefante"/></svg>
+          <span>Chiang Rai, Tailândia</span>
+        </p>
+        <p class="cafe-lead">Elefantes, arroz e muita paciência: um dos cafés mais raros do mundo nasce em um santuário no norte da Tailândia.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Chiang Rai, Tailândia</dd></div>
+      <div><dt>Quem faz o trabalho</dt><dd>Elefantes</dd></div>
+      <div><dt>Rendimento</dt><dd>Muito baixo</dd></div>
+      <div><dt>No copo</dt><dd>Quase sem amargor, com notas de chocolate</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é feito</h2>
+        <ol class="cafe-passos">
+        <li>Cerejas de café são misturadas com arroz e frutas e oferecidas aos elefantes.</li>
+        <li>A digestão longa do elefante transforma os grãos. Segundo o criador, é isso que tira quase todo o amargor.</li>
+        <li>Os tratadores recolhem os grãos, que são lavados e secos.</li>
+        <li>Os lotes são pequenos, selecionados à mão e torrados. Muitas cerejas se perdem pelo caminho, por isso o rendimento é muito baixo.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Montanhas do norte da Tailândia, perto do Triângulo Dourado, onde o café é cultivado junto a um santuário de elefantes.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="KopiLuwakCultivo.html" rel="prev"><small>Café anterior</small><span>Kopi Luwak</span></a>
+    <a href="JacuBirdCultivo.html" rel="next"><small>Próximo café</small><span>Jacu Bird</span></a>
+  </nav>
+</body>
+</html>

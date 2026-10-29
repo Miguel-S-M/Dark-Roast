@@ -241,6 +241,27 @@
 .ponto.fora .ponto-cena, .ponto.fora .ponto-fio { display: none !important; }
 .com-texto .ponto-nota, .ponto:hover .ponto-nota, .ponto:focus-visible .ponto-nota { display: block; }
 
+/* ----- Transição para a página de um café ----- */
+.transicao {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: var(--papel);
+  clip-path: circle(0 at var(--x) var(--y));
+  transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.transicao.aberta { clip-path: circle(150vmax at var(--x) var(--y)); }
+.transicao img {
+  width: min(78vmin, 560px);
+  height: auto;
+  border: 1px solid var(--linha);
+  opacity: 0;
+  transition: opacity 0.4s ease 0.5s;
+}
+.transicao.aberta img { opacity: 1; }
+
 @media (max-width: 600px) {
   .cultivo-card { top: 10px; left: 10px; padding: 10px 14px 12px; }
   .cultivo-dica { display: none; }
