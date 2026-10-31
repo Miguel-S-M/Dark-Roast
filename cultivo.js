@@ -1,36 +1,28 @@
-// ===== Página do mapa (cultivo.html): mapa-múndi real em tela cheia =====
-// Os contornos vêm do Natural Earth (via world-atlas) e o mapa usa a
-// projeção "Natural Earth", a mesma dos mapas-múndi de atlas.
+
 (function () {
   const DADOS = "https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json";
-
-  // Para adicionar um café: copie uma linha, troque os dados e pronto.
-  // lon/lat = coordenadas do lugar. "pagina" = página que abre ao clicar.
-  // "lado: \"esq\"" (opcional) coloca o nome do café à esquerda do ponto.
-  // "cena" = desenho ao redor do ponto (dx/dy = distância do ponto, em pixels).
-  // "producao" e "ambiente" = os dois textos que aparecem junto do desenho.
   const CAFES = [
-    { nome: "Kopi Luwak", lugar: "Sumatra, Indonésia", lon: 97.5, lat: 3.5, pagina: "KopiLuwak.html",
+    { nome: "Kopi Luwak", lugar: "Sumatra, Indonésia", lon: 97.5, lat: 3.5, pagina: "KopiLuwakCultivo.html", imagem: "ilustracoes/kopi-luwak-cultivo.jpg",
       cena: { desenho: "civeta", dx: 10, dy: 64 },
       producao: "A civeta-de-palmeira (luwak) come as cerejas mais maduras. Os grãos saem inteiros, são lavados, secos e torrados.",
       ambiente: "Terras altas tropicais de Sumatra, com café plantado à sombra de árvores e floresta úmida." },
-    { nome: "Black Ivory", lugar: "Chiang Rai, Tailândia", lon: 99.8, lat: 19.9, pagina: "BlackIvory.html",
+    { nome: "Black Ivory", lugar: "Chiang Rai, Tailândia", lon: 99.8, lat: 19.9, pagina: "BlackIvoryCultivo.html", imagem: "ilustracoes/black-ivory-cultivo.jpg",
       cena: { desenho: "elefante", dx: 0, dy: -66 },
       producao: "Elefantes comem cerejas de café misturadas com arroz e frutas. Os grãos são recolhidos, lavados, secos e torrados.",
       ambiente: "Montanhas do norte da Tailândia, perto do Triângulo Dourado, com santuário de elefantes." },
-    { nome: "Jacu Bird", lugar: "Espírito Santo, Brasil", lon: -41, lat: -20.5, pagina: "JacuBird.html", lado: "esq",
+    { nome: "Jacu Bird", lugar: "Espírito Santo, Brasil", lon: -41, lat: -20.5, pagina: "JacuBirdCultivo.html", imagem: "ilustracoes/jacu-bird-cultivo.jpg", lado: "esq",
       cena: { desenho: "jacu", dx: 0, dy: 64 },
       producao: "A ave jacu escolhe as cerejas mais maduras. Os grãos que ela elimina são recolhidos, lavados e secos.",
       ambiente: "Mata Atlântica nas montanhas do Espírito Santo, com café orgânico cultivado entre as árvores." },
-    { nome: "Geisha", lugar: "Boquete, Panamá", lon: -82.4, lat: 8.8, pagina: "Geisha.html",
+    { nome: "Geisha", lugar: "Boquete, Panamá", lon: -82.4, lat: 8.8, pagina: "GeishaCultivo.html", imagem: "ilustracoes/geisha-cultivo.jpg",
       cena: { desenho: "vulcao", dx: -62, dy: 48 },
       producao: "Variedade de origem etíope, colhida à mão só no ponto certo e processada em pequenos lotes.",
       ambiente: "Encostas do vulcão Barú, em altitude, com neblina constante e floresta de montanha." },
-    { nome: "Santa Helena", lugar: "Ilha de Santa Helena", lon: -5.7, lat: -15.95, pagina: "SantaHelena.html",
+    { nome: "Santa Helena", lugar: "Ilha de Santa Helena", lon: -5.7, lat: -15.95, pagina: "SantaHelenaCultivo.html", imagem: "ilustracoes/santa-helena-cultivo.jpg",
       cena: { desenho: "ilha", dx: 0, dy: -66 },
       producao: "Variedade Bourbon, plantada na ilha desde o século XVIII e colhida à mão em pequenas fazendas.",
       ambiente: "Ilha vulcânica no meio do Atlântico Sul, com penhascos, ventos constantes e clima ameno." },
-    { nome: "Blue Mountain", lugar: "Montanhas Azuis, Jamaica", lon: -77.4, lat: 18.1, pagina: "BlueMountain.html",
+    { nome: "Blue Mountain", lugar: "Montanhas Azuis, Jamaica", lon: -77.4, lat: 18.1, pagina: "BlueMountainCultivo.html", imagem: "ilustracoes/blue-mountain-cultivo.jpg",
       cena: { desenho: "montanha", dx: 62, dy: -52 },
       producao: "Colhido à mão nas encostas, lavado e seco. É embalado em barris de madeira, marca registrada desse café.",
       ambiente: "Montanhas Azuis da Jamaica, com chuva frequente, névoa e altitudes elevadas." },
@@ -148,6 +140,40 @@
     inicial = zoom.constrain()(t, [[0, 0], [larg, alt]], limites);
     svg.call(zoom.transform, inicial);
   }
+
+  // ---------- Transição: o mapa se aproxima do ponto e a imagem do café abre a página ----------
+  let saindo = false;
+  function abrir(p) {
+    if (saindo) return;
+    saindo = true;
+    try { sessionStorage.setItem("transicao", String(Date.now())); } catch (e) {}
+    if (reduzMovimento) { location.href = p.cafe.pagina; return; }
+    const r = p.el.getBoundingClientRect();
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const veu = document.createElement("div");
+    veu.className = "transicao";
+    veu.setAttribute("aria-hidden", "true");
+    veu.style.setProperty("--x", x + "px");
+    veu.style.setProperty("--y", y + "px");
+    veu.innerHTML = `<img src="${p.cafe.imagem}" alt="">`;
+    document.body.appendChild(veu);
+    svg.transition().duration(900).call(zoom.scaleBy, 3, [x, y]);
+    requestAnimationFrame(() => requestAnimationFrame(() => veu.classList.add("aberta")));
+    setTimeout(() => { location.href = p.cafe.pagina; }, 1100);
+  }
+  caixaPontos.addEventListener("click", (ev) => {
+    const a = ev.target.closest("a.ponto");
+    if (!a || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+    ev.preventDefault();
+    abrir(pontos.find((p) => p.el === a));
+  });
+  // Ao voltar para o mapa pelo botão "voltar" do navegador, desfaz a transição
+  window.addEventListener("pageshow", (ev) => {
+    if (!ev.persisted) return;
+    document.querySelectorAll(".transicao").forEach((v) => v.remove());
+    saindo = false;
+    if (inicial) svg.transition().duration(dur(700)).call(zoom.transform, inicial);
+  });
 
   // ---------- Botões ----------
   document.getElementById("zoom-mais").addEventListener("click", () =>

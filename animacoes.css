@@ -1,0 +1,60 @@
+
+.palco { position: fixed; inset: 0; z-index: 1000; overflow: hidden; cursor: pointer; --tinta: #2a2622; --shu: #b2312a; }
+.veu { position: fixed; inset: 0; z-index: 1003; background: #f3e9dc; pointer-events: none; }
+.trancado { overflow: hidden; }
+.portao.portao-ativo {
+  z-index: 1001; --viga-op: 1; --fio: var(--shu);
+  background: rgba(243, 233, 220, 0.94); box-shadow: 0 0 0 10px rgba(243, 233, 220, 0.94); border-radius: 4px;
+}
+
+.spr {
+  position: fixed; left: 0; top: 0; overflow: visible; pointer-events: none; will-change: transform, opacity;
+  stroke: var(--tinta); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round;
+}
+.spr.claro { stroke: #f5e6d0; }
+.ramos { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.ramos use { transform-box: view-box; will-change: transform; }
+
+.fogo-fundo { position: fixed; inset: 0; background: radial-gradient(ellipse at 50% 100%, #e8501f 0%, #8a2a1a 45%, #2a1612 100%); }
+.fundo-papel { position: fixed; inset: 0; background: #ece0ca; }
+.faisca { position: fixed; left: 0; top: 0; border-radius: 50%; background: #ffcf6b; box-shadow: 0 0 8px 2px #f08a24; pointer-events: none; will-change: transform, opacity; }
+.fundo-grao { position: fixed; inset: 0; background: #3b2a20; }
+.spr.medalha { background: #f3e9dc; border: 1px solid #b9ad9a; border-radius: 50%; padding: 6px; box-sizing: border-box; }
+.spr.medalha-escura { background: rgba(42, 22, 18, 0.55); border-radius: 50%; padding: 8px; box-sizing: border-box; }
+
+.im { position: fixed; left: 0; top: 0; pointer-events: none; user-select: none; will-change: transform, opacity; }
+.cam { position: fixed; left: 0; top: 0; pointer-events: none; will-change: transform; animation: balanco calc(var(--ciclo) / 2) ease-in-out infinite; }
+.cam-l { position: absolute; inset: 0; width: 100%; height: 100%; user-select: none; }
+.cam-l.a, .cam-l.b { animation: perna var(--ciclo) ease-in-out infinite; }
+.cam-l.b { animation-delay: calc(var(--ciclo) / -2); }
+.cam-l.cauda { animation: cauda calc(var(--ciclo) * 2) ease-in-out infinite; }
+.cam-l.orelha { animation: orelha calc(var(--ciclo) * 1.5) ease-in-out infinite; }
+@keyframes balanco { 0%, 100% { translate: 0 0; } 50% { translate: 0 -1.6%; } }
+@keyframes perna { 0%, 100% { transform: rotate(calc(var(--amp) * -1)); } 50% { transform: rotate(var(--amp)); } }
+@keyframes cauda { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(7deg); } }
+@keyframes orelha { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(4deg); } }
+.sombra { position: fixed; left: 0; top: 0; border-radius: 50%; background: radial-gradient(rgba(0, 0, 0, .38), transparent 70%); pointer-events: none; }
+.cena-ceu { position: fixed; inset: 0; background: linear-gradient(#f2e8d4 0%, #e3d2b1 70%); }
+.cena-chao { position: fixed; left: 0; right: 0; bottom: 0; background: linear-gradient(#8c6c47, #5a3f2a); }
+.colinas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.cortina { position: fixed; inset: 0; background: rgba(243, 233, 220, 0.72); }
+
+.portao.portao-ativo { background: none; box-shadow: none; }
+.cena-fundo, .cena-cam, .cena-deriva, .fx { position: fixed; inset: 0; }
+.cena-cam, .cena-deriva { will-change: transform, opacity; }
+.cena-img { position: absolute; max-width: none; user-select: none; pointer-events: none; }
+.fx { pointer-events: none; overflow: hidden; }
+.petala { position: absolute; left: 0; top: 0; border-radius: 60% 40% 60% 40%; background: #fffaf0; box-shadow: 0 0 3px rgba(0, 0, 0, .25); }
+.poeira { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(#fff6c8, rgba(255, 220, 120, 0)); }
+.brasa { position: absolute; left: 0; top: 0; border-radius: 50%; box-shadow: 0 0 6px 2px rgba(255, 120, 30, .8); }
+.luz-fogo { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 85%, rgba(255, 110, 20, .5), transparent 62%); mix-blend-mode: screen; pointer-events: none; }
+.giro { position: absolute; inset: 0; transform-origin: var(--gx) var(--gy); pointer-events: none; mix-blend-mode: soft-light; opacity: .55;
+  background: repeating-conic-gradient(from 0deg at var(--gx) var(--gy), rgba(255, 255, 255, 0) 0deg 13deg, rgba(255, 250, 230, .45) 13deg 21deg);
+  -webkit-mask-image: radial-gradient(circle at var(--gx) var(--gy), transparent 14%, #000 45%, transparent 100%); mask-image: radial-gradient(circle at var(--gx) var(--gy), transparent 14%, #000 45%, transparent 100%); }
+.fx-it { position: absolute; left: 0; top: 0; pointer-events: none; will-change: transform; }
+.cereja { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ff7a63, #b2312a 55%, #5e1511); }
+.folha { position: absolute; left: 0; top: 0; border-radius: 0 100% 0 100%; background: linear-gradient(135deg, #6f9a58, #24472b); }
+.gaivota { position: absolute; left: 0; top: 0; }
+.espuma { position: absolute; left: 0; top: 0; border-radius: 50%; background: #fff; }
+
+.portao.portao-ativo { pointer-events: none; }

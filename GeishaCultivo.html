@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geisha · Cultivo · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/geisha-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="cultivo.html">Voltar ao mapa</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">栽培</span> Cultivo</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/geisha-cultivo.jpg" alt="Ilustração do café Geisha: Boquete, Panamá">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Geisha</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-vulcao"/></svg>
+          <span>Boquete, Panamá</span>
+        </p>
+        <p class="cafe-lead">Uma variedade etíope que encontrou no Panamá o seu lugar: neblina, altitude e colheita feita com cuidado.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Boquete, Panamá</dd></div>
+      <div><dt>Variedade</dt><dd>Geisha, de origem etíope</dd></div>
+      <div><dt>Colheita</dt><dd>À mão, só no ponto certo</dd></div>
+      <div><dt>No copo</dt><dd>Floral e leve, com jasmim e cítricos</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é feito</h2>
+        <ol class="cafe-passos">
+        <li>Os pés crescem em encostas altas do vulcão Barú, entre neblina e árvores de sombra.</li>
+        <li>A colheita é feita à mão, apenas nas cerejas que estão no ponto certo, em várias passadas.</li>
+        <li>O processamento é feito em pequenos lotes, acompanhados de perto.</li>
+        <li>Os grãos secos são selecionados e seguem para a torra.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Encostas do vulcão Barú, em altitude, com neblina constante e floresta de montanha. O solo vulcânico e o clima fresco ajudam a dar o toque floral.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="JacuBirdCultivo.html" rel="prev"><small>Café anterior</small><span>Jacu Bird</span></a>
+    <a href="SantaHelenaCultivo.html" rel="next"><small>Próximo café</small><span>Santa Helena</span></a>
+  </nav>
+</body>
+</html>
