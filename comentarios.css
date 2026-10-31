@@ -1,0 +1,55 @@
+#comentarios {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+#comentarios input,
+#comentarios textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: .5rem;
+    padding: .4rem;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, .6);
+}
+
+#comentarios textarea {
+    min-height: 5rem;
+}
+
+#comentarios form button {
+    font: inherit;
+    padding: .35rem .9rem;
+    cursor: pointer;
+}
+
+#comentarios ul {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+
+#comentarios li {
+    padding: .75rem 0;
+    border-top: 1px solid rgba(128, 128, 128, .35);
+}
+
+#comentarios li p {
+    margin: .25rem 0 .5rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#comentarios li button {
+    font: inherit;
+    font-size: .85em;
+    color: inherit;
+    opacity: .7;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+    text-decoration: underline;
+}
