@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geisha · Torra · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/geisha-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="torra.html">Voltar à fornalha</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Torra</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/geisha-cultivo.jpg" alt="Ilustração do café Geisha: Boquete, Panamá">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Geisha</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-vulcao"/></svg>
+          <span>Boquete, Panamá</span>
+        </p>
+        <p class="cafe-lead">Uma torra curta e delicada, para não apagar o jasmim e os cítricos.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Ponto da torra</dt><dd>Clara</dd></div>
+      <div><dt>O que a torra busca</dt><dd>Guardar o floral, o jasmim e os cítricos</dd></div>
+      <div><dt>Tamanho dos lotes</dt><dd>Pequenos, acompanhados de perto</dd></div>
+      <div><dt>Depois da torra</dt><dd>Esfria rápido e descansa alguns dias</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é torrado</h2>
+        <ol class="cafe-passos">
+        <li>Os grãos verdes entram no tambor aquecido e secam devagar, sem queimar a superfície.</li>
+        <li>Eles amarelam e ficam dourados.</li>
+        <li>No primeiro estalo, os grãos racham como pipoca. É aí que se define a torra clara.</li>
+        <li>O torrador tira o café pouco depois do primeiro estalo, antes que os aromas delicados se percam, e o esfria depressa.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>No torrador</h2>
+        <p>Torra feita em pequenos lotes. O torrador acompanha a cor, o cheiro e o som dos estalos para saber a hora de tirar o café.</p>
+        <aside class="cafe-nota"><b>Vale saber</b><p>O ponto exato muda de torrador para torrador. Aqui mostramos o ponto em que esse café costuma ir bem.</p></aside>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="JacuBirdTorra.html" rel="prev"><small>Café anterior</small><span>Jacu Bird</span></a>
+    <a href="SantaHelenaTorra.html" rel="next"><small>Próximo café</small><span>Santa Helena</span></a>
+  </nav>
+</body>
+</html>
