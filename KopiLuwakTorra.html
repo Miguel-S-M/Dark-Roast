@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopi Luwak · Torra · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/kopi-luwak-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="torra.html">Voltar à fornalha</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Torra</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/kopi-luwak-cultivo.jpg" alt="Ilustração do café Kopi Luwak: Sumatra, Indonésia">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Kopi Luwak</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-civeta"/></svg>
+          <span>Sumatra, Indonésia</span>
+        </p>
+        <p class="cafe-lead">Os grãos chegam lavados e secos depois de passar pela civeta. Cabe à torra deixar o café suave e achocolatado.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Ponto da torra</dt><dd>Média a escura</dd></div>
+      <div><dt>O que a torra busca</dt><dd>Suavidade e notas de chocolate</dd></div>
+      <div><dt>Tamanho dos lotes</dt><dd>Pequenos, com grãos selecionados à mão</dd></div>
+      <div><dt>Depois da torra</dt><dd>Esfria rápido e descansa alguns dias</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é torrado</h2>
+        <ol class="cafe-passos">
+        <li>Os grãos verdes, já descascados e escolhidos um a um, entram no tambor aquecido do torrador.</li>
+        <li>Eles secam, amarelam e depois escurecem, soltando um cheiro que lembra pão tostado.</li>
+        <li>No primeiro estalo, os grãos racham como pipoca. O torrador segue um pouco além disso, para o chocolate aparecer.</li>
+        <li>Antes de a torra ficar forte demais, o café sai do tambor e é esfriado depressa.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>No torrador</h2>
+        <p>Torra feita em pequenos lotes. O torrador acompanha a cor, o cheiro e o som dos estalos para saber a hora de tirar o café.</p>
+        <aside class="cafe-nota"><b>Vale saber</b><p>O ponto exato muda de torrador para torrador. Aqui mostramos o ponto em que esse café costuma ir bem.</p></aside>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="BlueMountainTorra.html" rel="prev"><small>Café anterior</small><span>Blue Mountain</span></a>
+    <a href="BlackIvoryTorra.html" rel="next"><small>Próximo café</small><span>Black Ivory</span></a>
+  </nav>
+</body>
+</html>
