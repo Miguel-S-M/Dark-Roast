@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santa Helena · Colheita · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/santa-helena-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="colheita.html">Voltar ao armazém</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">収穫</span> Colheita</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/santa-helena-cultivo.jpg" alt="Ilustração do café Santa Helena: Ilha de Santa Helena">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Santa Helena</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-ilha"/></svg>
+          <span>Ilha de Santa Helena</span>
+        </p>
+        <p class="cafe-lead">Numa ilha pequena e isolada, a colheita é feita à mão, em pequenas fazendas.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Ilha de Santa Helena</dd></div>
+      <div><dt>Variedade</dt><dd>Bourbon</dd></div>
+      <div><dt>Quem colhe</dt><dd>Fazendeiros da ilha, à mão</dd></div>
+      <div><dt>Depois da colheita</dt><dd>Secagem e torra em pequenos lotes</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é colhido</h2>
+        <ol class="cafe-passos">
+        <li>Os pés de Bourbon crescem em pequenas fazendas, entre penhascos e com ventos constantes.</li>
+        <li>A colheita é feita à mão.</li>
+        <li>Os lotes são pequenos, porque o isolamento da ilha mantém a produção reduzida.</li>
+        <li>O café segue para secagem e torra.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Ilha vulcânica no meio do Atlântico Sul, com penhascos, ventos constantes e clima ameno.</p>
+      <aside class="cafe-nota"><b>Vale saber</b><p>Segundo a tradição, Napoleão, exilado na ilha, tomava o café local.</p></aside>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="GeishaColheita.html" rel="prev"><small>Café anterior</small><span>Geisha</span></a>
+    <a href="BlueMountainColheita.html" rel="next"><small>Próximo café</small><span>Blue Mountain</span></a>
+  </nav>
+</body>
+</html>

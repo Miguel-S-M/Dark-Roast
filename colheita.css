@@ -1,0 +1,275 @@
+/* ===== Página da colheita (colheita.html): um armazém com sacas de café ===== */
+/* As cores e fontes vêm da classe .origem (tema carvão), definida no index.css */
+.pagina-colheita {
+  --piso: clamp(72px, 13vh, 130px);
+  --madeira: linear-gradient(180deg, #5a4430 0%, #43321f 55%, #34261a 100%);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background: #14110f;
+}
+
+/* ----- Viga do teto: voltar + título da seção ----- */
+.col-topo {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  background: var(--madeira);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}
+.col-voltar { color: #cfc5b6; text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid rgba(207, 197, 182, 0.35); }
+.col-voltar:hover, .col-voltar:focus-visible { color: #fff; border-color: var(--shu); }
+.col-voltar:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; }
+.col-secao { display: flex; align-items: baseline; gap: 10px; color: #cfc5b6; font-size: 0.85rem; }
+.col-secao .kanji { font-family: "Shippori Mincho", serif; font-size: 1.3rem; color: #efe3cc; }
+
+/* ----- O armazém ----- */
+.armazem {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 clamp(14px, 3vw, 28px) calc(var(--piso) - 34px);
+}
+/* parede de tábuas */
+.armazem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 28%, transparent 62%, rgba(0, 0, 0, 0.55)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, #2b2520 0 138px, #120f0d 138px 141px, #29231e 141px 262px, #120f0d 262px 265px, #2d2722 265px 410px, #120f0d 410px 413px);
+}
+/* colunas de madeira nos cantos */
+.armazem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, #3a2c1d, #2a1f15 70%, transparent) left / 22px 100% no-repeat,
+    linear-gradient(270deg, #3a2c1d, #2a1f15 70%, transparent) right / 22px 100% no-repeat;
+}
+
+/* chão */
+.piso {
+  position: absolute;
+  z-index: -1;
+  left: 0; right: 0; bottom: 0;
+  height: var(--piso);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 210px, rgba(0, 0, 0, 0.4) 210px 212px),
+    linear-gradient(180deg, #0e0c0a 0, #1c1713 30%, #261e17 100%);
+  border-top: 2px solid #0a0807;
+  box-shadow: 0 -18px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* janela alta e o feixe de luz que cai dela */
+.janela {
+  position: absolute;
+  z-index: 0;
+  top: 14px;
+  right: clamp(16px, 9vw, 150px);
+  width: clamp(58px, 9vw, 120px);
+  aspect-ratio: 4 / 5;
+  border: 7px solid #2a1f16;
+  background:
+    linear-gradient(#2a1f16, #2a1f16) center / 5px 100% no-repeat,
+    linear-gradient(#2a1f16, #2a1f16) center / 100% 5px no-repeat,
+    linear-gradient(165deg, #fdf0cc, #e8c576);
+  box-shadow: 0 0 40px rgba(255, 224, 150, 0.45);
+}
+.janela::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 100%;
+  height: 560%;
+  background: linear-gradient(180deg, rgba(255, 228, 160, 0.3), rgba(255, 228, 160, 0.02));
+  clip-path: polygon(0 0, 100% 0, -120% 100%, -520% 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.poeira { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.poeira i {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #ffe9b0;
+  opacity: 0;
+  animation: poeira var(--d) ease-in-out var(--a) infinite;
+}
+@keyframes poeira {
+  0%   { opacity: 0;   transform: translate(0, 0); }
+  30%  { opacity: 0.7; }
+  70%  { opacity: 0.5; }
+  100% { opacity: 0;   transform: translate(-26px, 34px); }
+}
+
+/* ----- Letreiro pendurado ----- */
+.col-letreiro {
+  position: relative;
+  z-index: 5;
+  margin: 34px 0 0;
+  padding: 12px 30px 14px;
+  text-align: center;
+  background: #efe3cc;
+  color: #2a2622;
+  border: 1px solid #b9ad9a;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+}
+.col-letreiro::before, .col-letreiro::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  width: 1px; height: 36px;
+  background: #8a7a62;
+}
+.col-letreiro::before { left: 22%; }
+.col-letreiro::after { right: 22%; }
+.col-letreiro .kanji { display: block; font-family: "Shippori Mincho", serif; font-size: 2.2rem; line-height: 1; color: var(--shu); }
+.col-titulo { margin: 4px 0 6px; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.3rem; letter-spacing: 0.1em; }
+.col-dica { margin: 0; font-size: 0.85rem; color: #6f665b; max-width: 30ch; }
+
+/* ----- Prateleira com as sacas ----- */
+.pilha {
+  position: relative;
+  z-index: 3;
+  list-style: none;
+  margin: auto 0 0;
+  padding: 0;
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: clamp(20px, 4vw, 44px);
+  padding-top: clamp(28px, 5vh, 56px);
+}
+.pilha::before, .pilha::after {      /* montantes da prateleira */
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 12px;
+  background: linear-gradient(90deg, #4a3825, #33261a);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.pilha::before { left: -10px; }
+.pilha::after { right: -10px; }
+.pilha li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 12px;
+  --tilt: 0deg;
+  animation: sobe 0.6s ease calc(var(--i) * 90ms) both;
+}
+.pilha li:nth-child(1) { --tilt: -1.5deg; }
+.pilha li:nth-child(2) { --tilt: 1deg; }
+.pilha li:nth-child(3) { --tilt: -0.6deg; }
+.pilha li:nth-child(4) { --tilt: 1.2deg; }
+.pilha li:nth-child(5) { --tilt: -1deg; }
+.pilha li:nth-child(6) { --tilt: 0.8deg; }
+.pilha li::after {                   /* tábua onde a saca fica */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 16px;
+  background: var(--madeira);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+@keyframes sobe { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ----- A saca (a ilustração é a saca.png do projeto) ----- */
+.saca {
+  position: relative;
+  display: block;
+  width: min(190px, 84%);
+  margin-bottom: -6px;
+  color: inherit;
+  text-decoration: none;
+  transform: rotate(var(--tilt));
+  transform-origin: 50% 100%;
+  transition: transform 0.25s ease, filter 0.25s ease, opacity 0.35s ease;
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.55));
+  -webkit-tap-highlight-color: transparent;
+}
+.saca img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+.saca:hover, .saca:focus-visible {
+  transform: translateY(-10px) rotate(0deg) scale(1.04);
+  filter: drop-shadow(0 16px 12px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 14px rgba(217, 73, 63, 0.4));
+}
+.saca:focus-visible { outline: 2px solid var(--shu); outline-offset: 4px; }
+
+/* etiqueta de papel amarrada na saca (cobre o "CAFÉ" impresso) */
+.etiqueta {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 68%;
+  padding: 8px 6px 9px;
+  transform: translateX(-50%) rotate(-2deg);
+  text-align: center;
+  background: #efe3cc;
+  color: #2a2622;
+  border: 1px solid #b9ad9a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s;
+}
+.etiqueta::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: -5px;
+  width: 8px; height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--shu);
+  box-shadow: 0 0 0 2px #efe3cc;
+}
+.etiqueta b { display: block; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(0.8rem, 1.5vw, 1.02rem); line-height: 1.15; }
+.etiqueta small { display: block; margin-top: 3px; font-size: 0.66rem; color: #6f665b; }
+.saca:hover .etiqueta, .saca:focus-visible .etiqueta { border-color: var(--shu); }
+
+/* saca escolhida: sobe antes de abrir a página */
+.pilha.escolheu .saca:not(.escolhida) { opacity: 0.25; }
+.saca.escolhida { transform: translateY(-26px) rotate(0deg) scale(1.14); transition-duration: 0.4s; }
+
+/* montes decorativos nas laterais (só em telas largas) */
+.monte { display: none; position: absolute; z-index: 2; bottom: calc(var(--piso) - 18px); width: 230px; height: 250px; pointer-events: none; filter: brightness(0.5) saturate(0.8); }
+.monte img { position: absolute; width: 112px; height: auto; }
+.monte img:nth-child(1) { left: 0; bottom: 0; transform: rotate(-2deg); }
+.monte img:nth-child(2) { left: 114px; bottom: 0; transform: rotate(2deg); }
+.monte img:nth-child(3) { left: 58px; bottom: 122px; transform: rotate(-1deg); }
+.monte-esq { left: 3%; }
+.monte-dir { right: 3%; }
+@media (min-width: 1260px) { .monte { display: block; } }
+
+@media (max-width: 620px) {
+  .pilha { grid-template-columns: repeat(2, 1fr); }
+  .saca { width: min(160px, 88%); }
+  .etiqueta small { display: none; }
+  .col-letreiro { padding: 10px 22px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pilha li, .poeira i { animation: none; }
+  .poeira i { opacity: 0.4; }
+  .saca, .saca.escolhida { transition: none; }
+}

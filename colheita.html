@@ -8,14 +8,55 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="etapa.css">
+<link rel="stylesheet" href="colheita.css">
 </head>
-<body class="origem pagina-etapa">
-  <a class="etapa-voltar" href="index.html#origem">Voltar para a origem</a>
-  <main class="etapa-miolo">
-    <span class="etapa-kanji" lang="ja" aria-hidden="true">収穫</span>
-    <h1 class="etapa-titulo">Colheita</h1>
-    <p class="etapa-texto">Esta etapa ainda está sendo preparada.</p>
+<body class="origem pagina-colheita" data-tema="carvao">
+  <header class="col-topo">
+    <a class="col-voltar" href="index.html#origem">Voltar para a origem</a>
+    <p class="col-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">収穫</span> Colheita</p>
+  </header>
+
+  <main class="armazem">
+    <div class="piso" aria-hidden="true"></div>
+    <div class="janela" aria-hidden="true"></div>
+    <div class="poeira" aria-hidden="true"><i style="--x:70%;--y:20%;--d:7s;--a:-1s"></i><i style="--x:64%;--y:28%;--d:9s;--a:-3s"></i><i style="--x:58%;--y:36%;--d:8s;--a:-5s"></i><i style="--x:52%;--y:30%;--d:10s;--a:-2s"></i><i style="--x:46%;--y:44%;--d:9s;--a:-6s"></i><i style="--x:60%;--y:48%;--d:11s;--a:-4s"></i><i style="--x:40%;--y:52%;--d:8s;--a:-7s"></i><i style="--x:54%;--y:56%;--d:10s;--a:-0s"></i><i style="--x:34%;--y:60%;--d:9s;--a:-3s"></i><i style="--x:66%;--y:38%;--d:7s;--a:-5s"></i></div>
+
+    <div class="col-letreiro">
+      <span class="kanji" lang="ja" aria-hidden="true">収穫</span>
+      <h1 class="col-titulo">Colheita</h1>
+      <p class="col-dica">Escolha uma saca para ver como aquele café é colhido.</p>
+    </div>
+
+    <div class="monte monte-esq" aria-hidden="true"><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""></div>
+    <div class="monte monte-dir" aria-hidden="true"><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""></div>
+
+    <ul class="pilha">
+      <li style="--i:0"><a class="saca" href="KopiLuwakColheita.html" aria-label="Kopi Luwak, Sumatra: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><b>Kopi Luwak</b><small>Sumatra</small></span>
+      </a></li>
+      <li style="--i:1"><a class="saca" href="BlackIvoryColheita.html" aria-label="Black Ivory, Tailândia: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><b>Black Ivory</b><small>Tailândia</small></span>
+      </a></li>
+      <li style="--i:2"><a class="saca" href="JacuBirdColheita.html" aria-label="Jacu Bird, Espírito Santo: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><b>Jacu Bird</b><small>Espírito Santo</small></span>
+      </a></li>
+      <li style="--i:3"><a class="saca" href="GeishaColheita.html" aria-label="Geisha, Panamá: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><b>Geisha</b><small>Panamá</small></span>
+      </a></li>
+      <li style="--i:4"><a class="saca" href="SantaHelenaColheita.html" aria-label="Santa Helena, Ilha de Santa Helena: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><b>Santa Helena</b><small>Ilha de Santa Helena</small></span>
+      </a></li>
+      <li style="--i:5"><a class="saca" href="BlueMountainColheita.html" aria-label="Blue Mountain, Jamaica: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><b>Blue Mountain</b><small>Jamaica</small></span>
+      </a></li>
+    </ul>
   </main>
+  <script src="colheita.js" defer></script>
 </body>
 </html>

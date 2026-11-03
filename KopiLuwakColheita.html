@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kopi Luwak · Colheita · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/kopi-luwak-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="colheita.html">Voltar ao armazém</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">収穫</span> Colheita</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/kopi-luwak-cultivo.jpg" alt="Ilustração do café Kopi Luwak: Sumatra, Indonésia">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Kopi Luwak</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-civeta"/></svg>
+          <span>Sumatra, Indonésia</span>
+        </p>
+        <p class="cafe-lead">Aqui ninguém sobe nos pés de café: quem colhe é a civeta, e as pessoas só recolhem o que ela deixa no chão.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Sumatra, Indonésia</dd></div>
+      <div><dt>Quem colhe</dt><dd>A civeta-de-palmeira</dd></div>
+      <div><dt>Onde se recolhe</dt><dd>No chão da floresta</dd></div>
+      <div><dt>Depois da colheita</dt><dd>Lavagem e secagem ao sol</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é colhido</h2>
+        <ol class="cafe-passos">
+        <li>À noite, a civeta-de-palmeira percorre os cafezais e escolhe só as cerejas mais maduras. É ela quem faz a seleção.</li>
+        <li>Os grãos saem inteiros e ficam espalhados pelo chão da floresta.</li>
+        <li>Os coletores caminham pela mata e recolhem os grãos à mão, um a um.</li>
+        <li>Os grãos são lavados, secos ao sol e descascados antes de seguir para a torra.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Chão úmido de floresta tropical, em terras altas de Sumatra. Achar os grãos exige andar muito por terreno irregular, e por isso a colheita rende pouco.</p>
+      <aside class="cafe-nota"><b>Vale saber</b><p>Parte do mercado mantém civetas presas em gaiolas, prática criticada por defensores dos animais. O modo tradicional é recolher os grãos de animais livres.</p></aside>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="BlueMountainColheita.html" rel="prev"><small>Café anterior</small><span>Blue Mountain</span></a>
+    <a href="BlackIvoryColheita.html" rel="next"><small>Próximo café</small><span>Black Ivory</span></a>
+  </nav>
+</body>
+</html>

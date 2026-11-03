@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Black Ivory · Colheita · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/black-ivory-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="colheita.html">Voltar ao armazém</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">収穫</span> Colheita</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/black-ivory-cultivo.jpg" alt="Ilustração do café Black Ivory: Chiang Rai, Tailândia">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Black Ivory</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-elefante"/></svg>
+          <span>Chiang Rai, Tailândia</span>
+        </p>
+        <p class="cafe-lead">A colheita acontece em duas partes: primeiro as cerejas são escolhidas para os elefantes, depois os tratadores procuram os grãos.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Lugar</dt><dd>Chiang Rai, Tailândia</dd></div>
+      <div><dt>Quem colhe</dt><dd>Elefantes e tratadores</dd></div>
+      <div><dt>Rendimento</dt><dd>Muito baixo</dd></div>
+      <div><dt>Depois da colheita</dt><dd>Lavagem, secagem e seleção à mão</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é colhido</h2>
+        <ol class="cafe-passos">
+        <li>As cerejas de café são misturadas com arroz e frutas e oferecidas aos elefantes.</li>
+        <li>Depois da digestão longa do elefante, os grãos saem entre o esterco.</li>
+        <li>Os tratadores procuram e recolhem os grãos à mão, com cuidado.</li>
+        <li>Os grãos são lavados, secos e selecionados. Muitas cerejas se perdem pelo caminho, por isso os lotes são pequenos.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>Ao redor</h2>
+        <p>Montanhas do norte da Tailândia, perto do Triângulo Dourado. O café é cultivado junto a um santuário de elefantes, e os tratadores acompanham os animais de perto.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="KopiLuwakColheita.html" rel="prev"><small>Café anterior</small><span>Kopi Luwak</span></a>
+    <a href="JacuBirdColheita.html" rel="next"><small>Próximo café</small><span>Jacu Bird</span></a>
+  </nav>
+</body>
+</html>
