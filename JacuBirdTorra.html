@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacu Bird · Torra · Dark Roast</title>
+<script>
+  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
+  try {
+    var t = +sessionStorage.getItem("transicao");
+    if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="cafe.css">
+<script src="desenhos.js" defer></script>
+<script src="cafe.js" defer></script>
+</head>
+<body class="origem pagina-cafe">
+
+  <div class="entrada" aria-hidden="true"><img src="ilustracoes/jacu-bird-cultivo.jpg" alt=""></div>
+
+  <header class="cafe-topo">
+    <a class="cafe-voltar" href="torra.html">Voltar à fornalha</a>
+    <p class="cafe-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Torra</p>
+  </header>
+
+  <main>
+    <section class="cafe-heroi">
+      <figure class="cafe-poster">
+        <img src="ilustracoes/jacu-bird-cultivo.jpg" alt="Ilustração do café Jacu Bird: Espírito Santo, Brasil">
+      </figure>
+      <div>
+        <h1 class="cafe-nome">Jacu Bird</h1>
+        <p class="cafe-lugar">
+          <svg class="cena-desenho" viewBox="0 0 64 64" aria-hidden="true"><use href="#cena-jacu"/></svg>
+          <span>Espírito Santo, Brasil</span>
+        </p>
+        <p class="cafe-lead">Uma torra média, sem pressa, para deixar aparecer o lado macio e doce desse café.</p>
+        <dl class="cafe-ficha">
+      <div><dt>Ponto da torra</dt><dd>Média</dd></div>
+      <div><dt>O que a torra busca</dt><dd>Maciez e doçura</dd></div>
+      <div><dt>Tamanho dos lotes</dt><dd>Pequenos</dd></div>
+      <div><dt>Depois da torra</dt><dd>Esfria rápido e descansa alguns dias</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cafe-corpo">
+      <div>
+        <h2>Como é torrado</h2>
+        <ol class="cafe-passos">
+        <li>Os grãos, recolhidos na mata, lavados, secos e selecionados, entram no tambor aquecido.</li>
+        <li>Com o calor, perdem a umidade, ficam dourados e começam a caramelizar.</li>
+        <li>Passado o primeiro estalo, o torrador reduz o fogo e deixa o grão desenvolver a doçura.</li>
+        <li>O café sai do tambor num ponto médio e esfria depressa.</li>
+        </ol>
+      </div>
+      <div class="cafe-arredores">
+        <h2>No torrador</h2>
+        <p>Torra feita em pequenos lotes. O torrador acompanha a cor, o cheiro e o som dos estalos para saber a hora de tirar o café.</p>
+        <aside class="cafe-nota"><b>Vale saber</b><p>O ponto exato muda de torrador para torrador. Aqui mostramos o ponto em que esse café costuma ir bem.</p></aside>
+      </div>
+    </section>
+  </main>
+
+  <nav class="cafe-vizinhos" aria-label="Outros cafés">
+    <a href="BlackIvoryTorra.html" rel="prev"><small>Café anterior</small><span>Black Ivory</span></a>
+    <a href="GeishaTorra.html" rel="next"><small>Próximo café</small><span>Geisha</span></a>
+  </nav>
+</body>
+</html>
