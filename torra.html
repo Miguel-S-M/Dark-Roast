@@ -8,14 +8,74 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="etapa.css">
+<link rel="stylesheet" href="torra.css">
 </head>
-<body class="origem pagina-etapa">
-  <a class="etapa-voltar" href="index.html#origem">Voltar para a origem</a>
-  <main class="etapa-miolo">
-    <span class="etapa-kanji" lang="ja" aria-hidden="true">焙煎</span>
-    <h1 class="etapa-titulo">Torra</h1>
-    <p class="etapa-texto">Esta etapa ainda está sendo preparada.</p>
+<body class="origem pagina-torra" data-tema="carvao">
+  <header class="tor-topo">
+    <a class="tor-voltar" href="index.html#origem">Voltar para a origem</a>
+    <p class="tor-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Torra</p>
+  </header>
+
+  <main class="forja">
+    <div class="clarao" aria-hidden="true"></div>
+    <div class="chao" aria-hidden="true"></div>
+
+    <div class="tor-placa">
+      <span class="kanji" lang="ja" aria-hidden="true">焙煎</span>
+      <h1 class="tor-titulo">Torra</h1>
+      <p class="tor-dica" aria-live="polite">Clique na fornalha.</p>
+    </div>
+
+    <svg class="bigorna" viewBox="0 0 160 90" aria-hidden="true">
+      <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b302a"/><stop offset="1" stop-color="#130e0b"/></linearGradient></defs>
+      <path d="M10 18 H128 L152 14 Q158 22 148 30 L130 32 Q116 36 112 48 V56 H128 V74 H34 V56 H50 V48 Q50 36 34 32 H12 Q4 28 10 18Z" fill="url(#bg)"/>
+      <path d="M12 19 H128" stroke="#6a5a4e" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <button class="fornalha" type="button" aria-label="Acender a fornalha e soltar os grãos de café">
+      <span class="luz"></span>
+      <span class="chamine"></span>
+      <span class="capela"></span>
+      <span class="corpo"></span>
+      <span class="boca">
+        <span class="fogo">
+          <span class="chama" style="--l:6%;--t:.9s;--a:0s"></span>
+          <span class="chama" style="--l:31%;--t:.7s;--a:-.3s"></span>
+          <span class="chama" style="--l:56%;--t:1.1s;--a:-.6s"></span>
+        </span>
+        <span class="brasas"></span>
+      </span>
+      <span class="soleira"></span>
+    </button>
+
+    <nav class="graos" id="graos" aria-label="Cafés: clique em um grão para ver a torra">
+      <a class="grao" href="KopiLuwakTorra.html" hidden aria-label="Kopi Luwak: torra média a escura">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-3.png" alt="" width="240" height="320"></span>
+        <span class="grao-nome"><b>Kopi Luwak</b><small>torra média a escura</small></span>
+      </a>
+      <a class="grao" href="BlackIvoryTorra.html" hidden aria-label="Black Ivory: torra média a escura">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-3.png" alt="" width="240" height="320" style="filter:brightness(0.85)"></span>
+        <span class="grao-nome"><b>Black Ivory</b><small>torra média a escura</small></span>
+      </a>
+      <a class="grao" href="JacuBirdTorra.html" hidden aria-label="Jacu Bird: torra média">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-2.png" alt="" width="240" height="320"></span>
+        <span class="grao-nome"><b>Jacu Bird</b><small>torra média</small></span>
+      </a>
+      <a class="grao" href="GeishaTorra.html" hidden aria-label="Geisha: torra clara">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-1.png" alt="" width="240" height="320"></span>
+        <span class="grao-nome"><b>Geisha</b><small>torra clara</small></span>
+      </a>
+      <a class="grao" href="SantaHelenaTorra.html" hidden aria-label="Santa Helena: torra clara a média">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-1.png" alt="" width="240" height="320" style="filter:brightness(0.88)"></span>
+        <span class="grao-nome"><b>Santa Helena</b><small>torra clara a média</small></span>
+      </a>
+      <a class="grao" href="BlueMountainTorra.html" hidden aria-label="Blue Mountain: torra média">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-2.png" alt="" width="240" height="320"></span>
+        <span class="grao-nome"><b>Blue Mountain</b><small>torra média</small></span>
+      </a>
+    </nav>
+    <noscript><ul class="sem-js"><li><a href="KopiLuwakTorra.html">Kopi Luwak</a></li><li><a href="BlackIvoryTorra.html">Black Ivory</a></li><li><a href="JacuBirdTorra.html">Jacu Bird</a></li><li><a href="GeishaTorra.html">Geisha</a></li><li><a href="SantaHelenaTorra.html">Santa Helena</a></li><li><a href="BlueMountainTorra.html">Blue Mountain</a></li></ul></noscript>
   </main>
+  <script src="torra.js" defer></script>
 </body>
 </html>
