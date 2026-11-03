@@ -1,0 +1,200 @@
+/* ===== Página da torra (torra.html): uma fornalha de forja que solta os grãos ===== */
+/* As cores e fontes vêm da classe .origem (tema carvão), definida no index.css */
+.pagina-torra {
+  --chao: 36%;
+  --tij-parede: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='56'%3E%3Crect width='64' height='56' fill='%23312220'/%3E%3Cpath d='M0 1.5H64M0 29.5H64M1.5 0V28M33.5 30V56' stroke='%23140d0b' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+  --tij-forno: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='40'%3E%3Cpath d='M0 1H48M0 21H48M1 0V20M25 22V40' stroke='rgba(0,0,0,0.5)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background: #0f0b09;
+}
+.pagina-torra [hidden] { display: none !important; }
+
+/* ----- Faixa de cima ----- */
+.tor-topo {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  background: #1a1411;
+  border-bottom: 1px solid #3a2c22;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+}
+.tor-voltar { color: #cfc5b6; text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid rgba(207, 197, 182, 0.35); }
+.tor-voltar:hover, .tor-voltar:focus-visible { color: #fff; border-color: var(--shu); }
+.tor-voltar:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; }
+.tor-secao { display: flex; align-items: baseline; gap: 10px; color: #cfc5b6; font-size: 0.85rem; }
+.tor-secao .kanji { font-family: "Shippori Mincho", serif; font-size: 1.3rem; color: #efe3cc; }
+
+/* ----- A forja ----- */
+.forja { position: relative; isolation: isolate; flex: 1; min-height: 680px; overflow: hidden; }
+.forja::before {                        /* parede de tijolos */
+  content: ""; position: absolute; inset: 0; z-index: -4;
+  background: var(--tij-parede);
+}
+.forja::after {                         /* sombra nas bordas */
+  content: ""; position: absolute; inset: 0; z-index: -3; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 55%, transparent 18%, rgba(0, 0, 0, 0.78) 88%);
+}
+.clarao {                               /* clarão do fogo na parede */
+  position: absolute; inset: 0; z-index: -2; pointer-events: none; opacity: 0.35;
+  background: radial-gradient(ellipse at 50% 55%, rgba(255, 120, 40, 0.5), transparent 55%);
+  mix-blend-mode: screen;
+  transition: opacity 0.6s ease;
+  animation: respira 3s ease-in-out infinite alternate;
+}
+.forja.quente .clarao { opacity: 0.6; }
+.forja.acesa .clarao { opacity: 1; }
+@keyframes respira { from { filter: brightness(0.85); } to { filter: brightness(1.15); } }
+
+.chao {
+  position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; height: var(--chao);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 180px, rgba(0, 0, 0, 0.45) 180px 182px),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 110, 30, 0.3), transparent 62%),
+    linear-gradient(180deg, #1c1511, #110c09);
+  border-top: 2px solid #0a0706;
+  box-shadow: 0 -16px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* ----- Placa com o título ----- */
+.tor-placa {
+  position: absolute; z-index: 7; top: 18px; left: clamp(14px, 4vw, 48px);
+  width: min(220px, 34vw);
+  padding: 10px 16px 12px; text-align: center;
+  background: #efe3cc; color: #2a2622; border: 1px solid #b9ad9a;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+}
+.tor-placa .kanji { display: block; font-family: "Shippori Mincho", serif; font-size: 1.9rem; line-height: 1; color: var(--shu); }
+.tor-titulo { margin: 3px 0 5px; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.15rem; letter-spacing: 0.1em; }
+.tor-dica { margin: 0; font-size: 0.8rem; line-height: 1.45; color: #6f665b; }
+
+/* ----- A fornalha (botão) ----- */
+.fornalha {
+  position: absolute; z-index: 3; left: 50%; bottom: calc(var(--chao) - 22px);
+  transform: translateX(-50%);
+  width: clamp(270px, 60vw, 440px); height: clamp(260px, 46vh, 400px);
+  padding: 0; border: 0; background: none; cursor: pointer; color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.fornalha:focus-visible { outline: 2px solid var(--shu); outline-offset: 8px; }
+.fornalha > span { display: block; position: absolute; }
+.fornalha .luz {                        /* halo de luz atrás da pedra */
+  z-index: -1; left: 50%; top: 66%; width: 170%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 140, 40, 0.4), rgba(255, 100, 20, 0.14) 36%, transparent 66%);
+  mix-blend-mode: screen; pointer-events: none; transition: opacity 0.4s;
+  animation: respira 2.4s ease-in-out infinite alternate;
+}
+.fornalha .chamine {
+  left: 50%; width: 30%; transform: translateX(-50%); bottom: 74%; height: 100vh;
+  background: var(--tij-forno), linear-gradient(90deg, #5a4a40, #3d3029 55%, #2a1f1a);
+  background-color: #4b3d34; box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.5);
+}
+.fornalha .capela {
+  left: 5%; right: 5%; top: 22%; height: 25%;
+  clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+  background: var(--tij-forno), linear-gradient(90deg, #5e4e44, #3f322b 60%, #2b201b);
+  background-color: #4b3d34;
+}
+.fornalha .corpo {
+  left: 0; right: 0; top: 46%; bottom: 0; border-radius: 6px 6px 0 0;
+  background: var(--tij-forno), linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent 40%, rgba(0, 0, 0, 0.4));
+  background-color: #4b3d34;
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.55), 0 14px 24px rgba(0, 0, 0, 0.6);
+}
+.fornalha .corpo::after {               /* reflexo do fogo na pedra */
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 55%, rgba(255, 120, 40, 0.3), transparent 62%);
+  mix-blend-mode: screen; opacity: 0.6; transition: opacity 0.4s;
+}
+.fornalha .boca {
+  left: 22%; right: 22%; top: 54%; bottom: 13%; overflow: hidden;
+  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+  background: radial-gradient(ellipse at 50% 100%, #5a1a08 0, #1a0805 55%, #080303 100%);
+  box-shadow: 0 0 0 8px #2b211c, 0 0 0 11px #130c09, inset 0 0 30px #000;
+}
+.fornalha .soleira {
+  left: -5%; right: -5%; bottom: 0; height: 13%;
+  background: linear-gradient(180deg, #6a5a4e, #3a2e27);
+  border-top: 2px solid #86766a; box-shadow: 0 10px 16px rgba(0, 0, 0, 0.6);
+}
+.boca .fogo { position: absolute; inset: 0; }
+.boca .chama {
+  position: absolute; bottom: -6%; left: var(--l); width: 38%; height: 58%;
+  border-radius: 50% 50% 45% 45% / 85% 85% 30% 30%;
+  background: radial-gradient(ellipse at 50% 90%, #fff6c4 0 14%, #ffc247 36%, #ec5b1c 62%, rgba(180, 30, 10, 0) 74%);
+  filter: blur(3px); mix-blend-mode: screen; transform-origin: 50% 100%;
+  animation: arde var(--t) ease-in-out var(--a) infinite alternate;
+  transition: height 0.5s ease;
+}
+@keyframes arde {
+  0%   { transform: scaleY(0.82) scaleX(1.05) rotate(-3deg); }
+  50%  { transform: scaleY(1.06) scaleX(0.94) rotate(2deg); }
+  100% { transform: scaleY(0.9) scaleX(1) rotate(-1deg); }
+}
+.boca .brasas {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 22%;
+  background:
+    radial-gradient(circle at 20% 100%, #ff9a3c 0, transparent 40%),
+    radial-gradient(circle at 55% 100%, #ffb45a 0, transparent 38%),
+    radial-gradient(circle at 85% 100%, #ff7a2a 0, transparent 42%),
+    linear-gradient(#3a0f06, #1d0804);
+  animation: brasa 1.8s ease-in-out infinite alternate;
+}
+@keyframes brasa { from { filter: brightness(0.8); } to { filter: brightness(1.25); } }
+.fornalha:hover .chama, .fornalha:focus-visible .chama { height: 72%; }
+.fornalha:hover .luz { opacity: 1; }
+.forja.quente .chama { height: 74%; }
+.fornalha.acesa .chama { height: 98%; animation-duration: 0.35s; }
+.fornalha.acesa .corpo::after { opacity: 1; }
+
+.bigorna { position: absolute; z-index: 2; left: clamp(10px, 8vw, 140px); bottom: calc(var(--chao) - 30px); width: clamp(110px, 12vw, 170px); height: auto; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.6)); }
+
+/* ----- Grãos ----- */
+.graos { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.grao, .grao-extra { position: absolute; left: 0; top: 0; will-change: transform; }
+.grao-extra { display: block; height: auto; opacity: 0.85; filter: brightness(0.8); }
+.grao { display: block; width: clamp(60px, 7.5vw, 92px); pointer-events: auto; color: #efe3cc; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.grao-corpo { display: block; transform: rotate(var(--giro, 0deg)); transition: transform 0.25s ease, filter 0.25s ease; filter: drop-shadow(0 8px 6px rgba(0, 0, 0, 0.6)); }
+.grao-corpo img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+.grao:hover .grao-corpo, .grao:focus-visible .grao-corpo {
+  transform: scale(1.18) rotate(-6deg);
+  filter: drop-shadow(0 0 12px rgba(255, 150, 60, 0.85)) drop-shadow(0 8px 6px rgba(0, 0, 0, 0.6));
+}
+.grao:focus-visible { outline: 2px solid var(--shu); outline-offset: 6px; border-radius: 12px; }
+.grao-nome {
+  position: absolute; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 4px;
+  min-width: 100%; padding: 3px 8px 4px; text-align: center; white-space: nowrap;
+  background: rgba(15, 11, 9, 0.72); border: 1px solid #4d463f; border-radius: 3px;
+  opacity: 0; transition: opacity 0.4s ease 0.1s;
+}
+.grao.pousou .grao-nome { opacity: 1; }
+.grao-nome b { display: block; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: 0.86rem; line-height: 1.2; }
+.grao-nome small { display: block; font-size: 0.66rem; color: #b7ab9b; }
+.grao:hover .grao-nome, .grao:focus-visible .grao-nome { border-color: var(--shu); }
+.graos.escolheu .grao:not(.escolhido) { opacity: 0.25; transition: opacity 0.35s; }
+.grao.escolhido .grao-corpo { transform: scale(1.7) rotate(0deg); filter: drop-shadow(0 0 24px rgba(255, 150, 60, 1)); transition-duration: 0.4s; }
+
+.faisca { position: absolute; z-index: 6; width: 4px; height: 4px; border-radius: 50%; background: #ffc65a; box-shadow: 0 0 6px 2px rgba(255, 140, 40, 0.8); pointer-events: none; }
+
+.sem-js { position: absolute; z-index: 9; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: center; margin: 0; padding: 0; list-style: none; }
+.sem-js a { color: #efe3cc; }
+
+@media (max-width: 759px) {
+  .bigorna { display: none; }
+  .tor-placa { width: 138px; padding: 8px 10px 10px; }
+  .tor-dica { font-size: 0.74rem; }
+  .grao-nome small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clarao, .fornalha .luz, .boca .chama, .boca .brasas { animation: none; }
+  .grao-corpo, .grao-nome { transition: none; }
+}
