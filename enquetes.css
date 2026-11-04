@@ -1,0 +1,48 @@
+/* ===== Página de enquetes (enquetes.html) ===== */
+.enq-resumo { margin: 0; min-height: 1.4em; font-size: 0.95rem; color: var(--tinta); }
+.enq-resumo strong { color: var(--shu); font-weight: 500; }
+.enq-layout { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: clamp(20px, 4vw, 44px); align-items: start; }
+.enq-lista h2 { margin: 0 0 16px; font-size: 1.3rem; letter-spacing: 0.06em; }
+.opcoes-form { display: grid; gap: 8px; margin-bottom: 8px; }
+.opcao-form { display: flex; gap: 6px; }
+.opcao-form input { flex: 1; }
+.dica-form { margin: 0 0 14px; font-size: 0.82rem; color: var(--suave); }
+
+.enquete {
+  --cat: var(--suave);
+  margin-bottom: 20px;
+  padding: 18px 20px 16px;
+  background: color-mix(in srgb, var(--tinta) 5%, var(--papel));
+  border: 1px solid var(--linha);
+  border-top: 3px solid var(--cat);
+  animation: entra 0.35s ease both;
+}
+@keyframes entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.enquete-cab { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+.enquete-meta { font-size: 0.8rem; color: var(--suave); }
+.enquete h3 { margin: 0 0 14px; font-size: 1.25rem; line-height: 1.4; }
+.enquete-opcoes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.enquete-opcoes .chip::before { display: none; }
+.enquete-opcoes .chip[aria-pressed="true"]::before { display: inline-block; content: "✓"; width: auto; height: auto; background: none; color: var(--cat); }
+.enquete-grafico { margin: 0 0 12px; }
+.enquete-grafico svg { display: block; width: 100%; height: auto; }
+.enquete-grafico figcaption { margin-top: 4px; font-size: 0.8rem; color: var(--suave); }
+.enquete-rodape { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* gráfico de barras (SVG) */
+.g-rotulo { fill: var(--tinta); font-size: 14px; font-family: "Zen Kaku Gothic New", "Inter", sans-serif; }
+.g-valor { fill: var(--suave); font-size: 13px; font-family: "Inter", sans-serif; }
+.g-trilho { fill: color-mix(in srgb, var(--tinta) 10%, var(--papel)); }
+.g-barra { fill: var(--cat); width: 0; transition: width 0.6s ease; }
+
+@media (max-width: 860px) {
+  .enq-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .enquete { padding: 14px 14px 12px; }
+  .linha-form { flex-direction: column; align-items: stretch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .enquete { animation: none; }
+  .g-barra { transition: none; }
+}

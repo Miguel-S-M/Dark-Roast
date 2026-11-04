@@ -9,11 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="torra.css">
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
 </head>
 <body class="origem pagina-torra" data-tema="carvao">
   <header class="tor-topo">
     <a class="tor-voltar" href="index.html#origem">Voltar para a origem</a>
-    <p class="tor-secao" style="margin:0"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Torra</p>
+    <p class="tor-secao"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Torra</p>
+    <div class="conta-barra" data-conta></div>
   </header>
 
   <main class="forja">
@@ -24,6 +29,7 @@
       <span class="kanji" lang="ja" aria-hidden="true">焙煎</span>
       <h1 class="tor-titulo">Torra</h1>
       <p class="tor-dica" aria-live="polite">Clique na fornalha.</p>
+      <a class="tor-enquetes" href="enquetes.html">Enquetes: qual torra você prefere?</a>
     </div>
 
     <svg class="bigorna" viewBox="0 0 160 90" aria-hidden="true">
@@ -39,9 +45,9 @@
       <span class="corpo"></span>
       <span class="boca">
         <span class="fogo">
-          <span class="chama" style="--l:6%;--t:.9s;--a:0s"></span>
-          <span class="chama" style="--l:31%;--t:.7s;--a:-.3s"></span>
-          <span class="chama" style="--l:56%;--t:1.1s;--a:-.6s"></span>
+          <span class="chama"></span>
+          <span class="chama"></span>
+          <span class="chama"></span>
         </span>
         <span class="brasas"></span>
       </span>
@@ -49,32 +55,32 @@
     </button>
 
     <nav class="graos" id="graos" aria-label="Cafés: clique em um grão para ver a torra">
-      <a class="grao" href="KopiLuwakTorra.html" hidden aria-label="Kopi Luwak: torra média a escura">
+      <a class="grao" href="cafe.html?c=kopi-luwak&amp;e=torra" hidden aria-label="Kopi Luwak: torra média a escura">
         <span class="grao-corpo"><img src="ilustracoes/png/grao-3.png" alt="" width="240" height="320"></span>
-        <span class="grao-nome"><b>Kopi Luwak</b><small>torra média a escura</small></span>
+        <span class="grao-nome"><strong>Kopi Luwak</strong><small>torra média a escura</small></span>
       </a>
-      <a class="grao" href="BlackIvoryTorra.html" hidden aria-label="Black Ivory: torra média a escura">
-        <span class="grao-corpo"><img src="ilustracoes/png/grao-3.png" alt="" width="240" height="320" style="filter:brightness(0.85)"></span>
-        <span class="grao-nome"><b>Black Ivory</b><small>torra média a escura</small></span>
+      <a class="grao" href="cafe.html?c=black-ivory&amp;e=torra" hidden aria-label="Black Ivory: torra média a escura">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-3.png" alt="" width="240" height="320"></span>
+        <span class="grao-nome"><strong>Black Ivory</strong><small>torra média a escura</small></span>
       </a>
-      <a class="grao" href="JacuBirdTorra.html" hidden aria-label="Jacu Bird: torra média">
+      <a class="grao" href="cafe.html?c=jacu-bird&amp;e=torra" hidden aria-label="Jacu Bird: torra média">
         <span class="grao-corpo"><img src="ilustracoes/png/grao-2.png" alt="" width="240" height="320"></span>
-        <span class="grao-nome"><b>Jacu Bird</b><small>torra média</small></span>
+        <span class="grao-nome"><strong>Jacu Bird</strong><small>torra média</small></span>
       </a>
-      <a class="grao" href="GeishaTorra.html" hidden aria-label="Geisha: torra clara">
+      <a class="grao" href="cafe.html?c=geisha&amp;e=torra" hidden aria-label="Geisha: torra clara">
         <span class="grao-corpo"><img src="ilustracoes/png/grao-1.png" alt="" width="240" height="320"></span>
-        <span class="grao-nome"><b>Geisha</b><small>torra clara</small></span>
+        <span class="grao-nome"><strong>Geisha</strong><small>torra clara</small></span>
       </a>
-      <a class="grao" href="SantaHelenaTorra.html" hidden aria-label="Santa Helena: torra clara a média">
-        <span class="grao-corpo"><img src="ilustracoes/png/grao-1.png" alt="" width="240" height="320" style="filter:brightness(0.88)"></span>
-        <span class="grao-nome"><b>Santa Helena</b><small>torra clara a média</small></span>
+      <a class="grao" href="cafe.html?c=santa-helena&amp;e=torra" hidden aria-label="Santa Helena: torra clara a média">
+        <span class="grao-corpo"><img src="ilustracoes/png/grao-1.png" alt="" width="240" height="320"></span>
+        <span class="grao-nome"><strong>Santa Helena</strong><small>torra clara a média</small></span>
       </a>
-      <a class="grao" href="BlueMountainTorra.html" hidden aria-label="Blue Mountain: torra média">
+      <a class="grao" href="cafe.html?c=blue-mountain&amp;e=torra" hidden aria-label="Blue Mountain: torra média">
         <span class="grao-corpo"><img src="ilustracoes/png/grao-2.png" alt="" width="240" height="320"></span>
-        <span class="grao-nome"><b>Blue Mountain</b><small>torra média</small></span>
+        <span class="grao-nome"><strong>Blue Mountain</strong><small>torra média</small></span>
       </a>
     </nav>
-    <noscript><ul class="sem-js"><li><a href="KopiLuwakTorra.html">Kopi Luwak</a></li><li><a href="BlackIvoryTorra.html">Black Ivory</a></li><li><a href="JacuBirdTorra.html">Jacu Bird</a></li><li><a href="GeishaTorra.html">Geisha</a></li><li><a href="SantaHelenaTorra.html">Santa Helena</a></li><li><a href="BlueMountainTorra.html">Blue Mountain</a></li></ul></noscript>
+    <noscript><ul class="sem-js"><li><a href="cafe.html?c=kopi-luwak&amp;e=torra">Kopi Luwak</a></li><li><a href="cafe.html?c=black-ivory&amp;e=torra">Black Ivory</a></li><li><a href="cafe.html?c=jacu-bird&amp;e=torra">Jacu Bird</a></li><li><a href="cafe.html?c=geisha&amp;e=torra">Geisha</a></li><li><a href="cafe.html?c=santa-helena&amp;e=torra">Santa Helena</a></li><li><a href="cafe.html?c=blue-mountain&amp;e=torra">Blue Mountain</a></li></ul></noscript>
   </main>
   <script src="torra.js" defer></script>
 </body>

@@ -110,7 +110,7 @@
 }
 .cafe-arredores p { margin: 0 0 24px; line-height: 1.9; }
 .cafe-nota { padding: 14px 16px; border-left: 2px solid var(--shu); background: color-mix(in srgb, var(--tinta) 4%, var(--papel)); }
-.cafe-nota b { display: block; margin-bottom: 4px; font-family: "Shippori Mincho", serif; font-weight: 500; color: var(--shu); }
+.cafe-nota strong { display: block; margin-bottom: 4px; font-family: "Shippori Mincho", serif; font-weight: 500; color: var(--shu); }
 .cafe-nota p { margin: 0; font-size: 0.92rem; line-height: 1.7; }
 
 /* ----- Rodapé: café anterior e próximo ----- */
@@ -146,3 +146,7 @@
   .cafe-poster { max-width: 520px; }
   .cafe-ficha div { grid-template-columns: 7em 1fr; }
 }
+
+.cafe-enquete { display: inline-block; margin-top: 18px; color: var(--tinta); text-decoration: none; border-bottom: 1px solid var(--shu); }
+.cafe-enquete:hover, .cafe-enquete:focus-visible { color: var(--shu); }
+.cafe-vazio { max-width: 560px; margin: 14vh auto 0; padding: 0 20px; text-align: center; color: var(--suave); }

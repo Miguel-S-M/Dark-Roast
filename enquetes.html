@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enquetes da torra · Dark Roast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="enquetes.css">
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
+<script src="enquetes.js" defer></script>
+</head>
+<body class="origem pagina-app" data-tema="carvao">
+  <header class="app-topo">
+    <a class="app-voltar" href="torra.html">Voltar à fornalha</a>
+    <p class="app-secao"><span class="kanji" lang="ja" aria-hidden="true">焙煎</span> Enquetes</p>
+    <div class="conta-barra" data-conta></div>
+  </header>
+
+  <main class="app-miolo">
+    <section class="app-abertura">
+      <h1>Qual torra você prefere?</h1>
+      <p class="app-lead">Vote nas enquetes da torra, crie as suas e veja os resultados em gráfico. Para votar e criar enquetes, entre na sua conta.</p>
+      <p class="enq-resumo" id="resumo" aria-live="polite"></p>
+    </section>
+
+    <div class="enq-layout">
+      <aside>
+        <section class="painel">
+          <h2>Categorias</h2>
+          <div class="chips" id="categorias" role="group" aria-label="Filtrar enquetes por categoria"></div>
+          <details>
+            <summary>Nova categoria</summary>
+            <form class="app-form" id="form-categoria" novalidate>
+              <div class="linha-form">
+                <div class="campo">
+                  <label for="categoria-nome">Nome</label>
+                  <input id="categoria-nome" name="nome" type="text" maxlength="24" required>
+                </div>
+                <div class="campo">
+                  <label for="categoria-cor">Cor</label>
+                  <input id="categoria-cor" name="cor" type="color" value="#7a5af8">
+                </div>
+              </div>
+              <p class="dica-form" id="erro-categoria" role="alert"></p>
+              <button class="botao" type="submit">Criar categoria</button>
+            </form>
+          </details>
+        </section>
+
+        <section class="painel">
+          <h2>Nova enquete</h2>
+          <form class="app-form" id="form-enquete" novalidate>
+            <div class="campo">
+              <label for="enquete-pergunta">Pergunta</label>
+              <input id="enquete-pergunta" name="pergunta" type="text" maxlength="120" required>
+            </div>
+            <div class="campo">
+              <label for="enquete-categoria">Categoria</label>
+              <select id="enquete-categoria" name="categoria"></select>
+            </div>
+            <fieldset>
+              <legend>Opções (de 2 a 6)</legend>
+              <div class="opcoes-form" id="opcoes-form"></div>
+              <button class="botao claro pequeno" type="button" id="mais-opcao">+ Adicionar opção</button>
+            </fieldset>
+            <p class="dica-form" id="erro-enquete" role="alert"></p>
+            <button class="botao" type="submit">Publicar enquete</button>
+          </form>
+        </section>
+      </aside>
+
+      <section class="enq-lista" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Todas as enquetes</h2>
+        <div id="lista"></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sugestões · Dark Roast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="exportacao.css">
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="cafes-dados.js" defer></script>
+<script src="exportacao-dados.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
+<script src="sugestoes.js" defer></script>
+</head>
+<body class="origem pagina-app pagina-sugestoes" data-tema="carvao">
+  <header class="app-topo">
+    <a class="app-voltar" href="exportacao.html">Voltar ao porto</a>
+    <p class="app-secao"><span class="kanji" lang="ja" aria-hidden="true">輸出</span> <span id="secao"></span></p>
+    <div class="conta-barra" data-conta></div>
+  </header>
+
+  <main class="app-miolo">
+    <section class="app-abertura">
+      <h1 id="titulo"></h1>
+      <p class="app-lead" id="lead"></p>
+      <p class="app-aviso">São ideias para começar a pesquisar. Antes de exportar ou plantar de verdade, confirme os dados de mercado e as regras vigentes.</p>
+    </section>
+
+    <div class="sug-barra">
+      <label for="ordem">Ordenar por</label>
+      <select id="ordem">
+        <option value="apoios">Mais apoiadas</option>
+        <option value="catalogo">Ordem do catálogo</option>
+      </select>
+    </div>
+
+    <div class="sug-lista" id="lista"></div>
+
+    <section class="painel sug-publico" aria-labelledby="titulo-publico">
+      <h2 id="titulo-publico">Sugestões do público</h2>
+      <div class="sug-lista" id="lista-extras"></div>
+    </section>
+
+    <section class="painel" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Faça a sua sugestão</h2>
+      <form class="app-form" id="form-sugestao" novalidate>
+        <div class="campo">
+          <label for="sug-nome" id="rotulo-nome"></label>
+          <input id="sug-nome" name="nome" type="text" maxlength="40" required>
+        </div>
+        <div class="campo">
+          <label for="sug-motivo" id="rotulo-motivo"></label>
+          <textarea id="sug-motivo" name="motivo" maxlength="400" required></textarea>
+        </div>
+        <p class="dica-form" id="erro-sugestao" role="alert"></p>
+        <button class="botao" type="submit" id="botao-sugerir"></button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

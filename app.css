@@ -1,0 +1,80 @@
+/* ===== Páginas de aplicação (enquetes e exportação): tema carvão, painéis, formulários e botões ===== */
+/* As cores e fontes vêm da classe .origem[data-tema="carvao"], definida no index.css */
+.pagina-app { margin: 0; padding: 0; min-height: 100vh; min-height: 100dvh; background: var(--papel); color: var(--tinta); }
+.pagina-app h1, .pagina-app h2, .pagina-app h3 { font-family: "Shippori Mincho", serif; font-weight: 400; text-align: left; }
+
+.app-topo {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px clamp(20px, 4vw, 48px);
+  border-bottom: 1px solid var(--linha);
+  background: color-mix(in srgb, var(--papel) 85%, #000);
+}
+.app-voltar { color: var(--suave); text-decoration: none; font-size: 0.85rem; border-bottom: 1px solid var(--linha); }
+.app-voltar:hover, .app-voltar:focus-visible { color: var(--shu); border-color: var(--shu); }
+.app-voltar:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; }
+.app-secao { display: flex; align-items: baseline; gap: 10px; color: var(--suave); font-size: 0.85rem; }
+.app-secao .kanji { font-family: "Shippori Mincho", serif; font-size: 1.3rem; color: var(--tinta); }
+
+.app-miolo { max-width: 1100px; margin: 0 auto; padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 48px) 72px; }
+.app-abertura { margin-bottom: clamp(20px, 4vw, 36px); }
+.app-abertura h1 { margin: 0 0 12px; font-size: clamp(1.8rem, 4.5vw, 2.8rem); line-height: 1.15; letter-spacing: 0.04em; }
+.app-lead { margin: 0 0 12px; max-width: 60ch; line-height: 1.9; color: var(--suave); }
+.app-aviso { margin: 0; max-width: 60ch; padding: 10px 14px; font-size: 0.88rem; line-height: 1.6; border-left: 2px solid var(--shu); background: color-mix(in srgb, var(--tinta) 5%, var(--papel)); }
+
+/* ----- Painéis e formulários ----- */
+.painel { margin-bottom: 20px; padding: 18px 20px; background: color-mix(in srgb, var(--tinta) 5%, var(--papel)); border: 1px solid var(--linha); }
+.painel h2 { margin: 0 0 14px; font-size: 1.2rem; letter-spacing: 0.06em; }
+.painel summary { cursor: pointer; color: var(--suave); font-size: 0.9rem; }
+.painel summary:hover, .painel summary:focus-visible { color: var(--shu); }
+.app-form .campo { display: grid; gap: 6px; margin-bottom: 14px; }
+.app-form label, .app-form legend { font-size: 0.85rem; color: var(--suave); }
+.app-form fieldset { margin: 0 0 14px; padding: 0; border: 0; }
+.app-form input, .app-form textarea, .app-form select {
+  font: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.65rem;
+  color: var(--tinta);
+  background: color-mix(in srgb, var(--tinta) 8%, var(--papel));
+  border: 1px solid var(--linha);
+}
+.app-form input[type="color"] { width: 3.2rem; height: 2.4rem; padding: 2px; cursor: pointer; }
+.app-form textarea { min-height: 5.5rem; resize: vertical; }
+.app-form input:focus-visible, .app-form textarea:focus-visible, .app-form select:focus-visible { outline: 2px solid var(--shu); outline-offset: 1px; }
+.linha-form { display: flex; gap: 10px; align-items: flex-end; }
+.linha-form .campo { flex: 1; margin-bottom: 0; }
+
+.botao { font: inherit; padding: 0.55rem 1.2rem; color: #fff; background: var(--shu); border: 1px solid var(--shu); cursor: pointer; }
+.botao:hover { filter: brightness(1.12); }
+.botao.claro { color: var(--tinta); background: transparent; border-color: var(--linha); }
+.botao.claro:hover { border-color: var(--shu); color: var(--shu); filter: none; }
+.botao.pequeno { padding: 0.25rem 0.7rem; font-size: 0.85rem; }
+.botao:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+.botao[aria-pressed="true"] { background: color-mix(in srgb, var(--shu) 35%, var(--papel)); border-color: var(--shu); color: var(--tinta); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.chip-grupo { display: inline-flex; align-items: center; }
+.chip {
+  font: inherit;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.3rem 0.8rem;
+  color: var(--tinta);
+  background: transparent;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--cat, var(--suave)); }
+.chip:hover { border-color: var(--tinta); }
+.chip[aria-pressed="true"] { background: color-mix(in srgb, var(--cat, var(--tinta)) 28%, var(--papel)); border-color: var(--cat, var(--tinta)); }
+.chip:focus-visible, .chip-x:focus-visible { outline: 2px solid var(--shu); outline-offset: 2px; }
+.chip-x { font: inherit; margin-left: 2px; padding: 0 6px; color: var(--suave); background: none; border: 0; cursor: pointer; }
+.chip-x:hover { color: var(--shu); }
+
+.selo { display: inline-block; padding: 0.1rem 0.6rem; font-size: 0.78rem; color: var(--selo-texto, #fff); background: var(--cat, var(--suave)); border-radius: 3px; }
+.vazio { padding: 28px 16px; text-align: center; color: var(--suave); border: 1px dashed var(--linha); }

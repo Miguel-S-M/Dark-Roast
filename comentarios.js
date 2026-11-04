@@ -1,34 +1,38 @@
-var form = document.getElementById("form-comentario");
-var lista = document.getElementById("lista-comentarios");
-var chave = "comentarios" + location.pathname;
-var comentarios = JSON.parse(localStorage.getItem(chave)) || [];
+// ===== Comentários da página inicial: criar e excluir, salvos no localStorage =====
+(function () {
+  "use strict";
+  const form = document.getElementById("form-comentario");
+  const lista = document.getElementById("lista-comentarios");
+  const chave = "comentarios" + location.pathname;
+  let comentarios = Dados.ler(chave, []);
 
-function salvar() {
-  localStorage.setItem(chave, JSON.stringify(comentarios));
-}
+  function mostrar() {
+    lista.replaceChildren(...comentarios.map((comentario, posicao) =>
+      Dom.criar("li", {},
+        Dom.criar("strong", { texto: comentario.nome }),
+        Dom.criar("p", { texto: comentario.texto }),
+        Dom.criar("button", { type: "button", texto: "Excluir", onclick: () => {
+          comentarios.splice(posicao, 1);
+          Dados.gravar(chave, comentarios);
+          mostrar();
+        } }))));
+  }
 
-function mostrar() {
-  lista.innerHTML = "";
-  comentarios.forEach(function (comentario, posicao) {
-    var item = document.createElement("li");
-    item.innerHTML = "<b></b><p></p><button>Excluir</button>";
-    item.querySelector("b").textContent = comentario.nome;
-    item.querySelector("p").textContent = comentario.texto;
-    item.querySelector("button").onclick = function () {
-      comentarios.splice(posicao, 1);
-      salvar();
-      mostrar();
-    };
-    lista.appendChild(item);
+  // se a pessoa estiver logada, o nome já vem preenchido
+  function preencherNome() {
+    const atual = Contas.usuarioAtual();
+    if (atual) form.nome.value = atual.nome;
+  }
+
+  form.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    comentarios.unshift({ nome: form.nome.value.trim(), texto: form.texto.value.trim() });
+    Dados.gravar(chave, comentarios);
+    form.texto.value = "";
+    mostrar();
   });
-}
 
-form.onsubmit = function (evento) {
-  evento.preventDefault();
-  comentarios.unshift({ nome: form.nome.value, texto: form.texto.value });
-  salvar();
-  form.texto.value = "";
+  document.addEventListener("conta:mudou", preencherNome);
+  preencherNome();
   mostrar();
-};
-
-mostrar();
+})();

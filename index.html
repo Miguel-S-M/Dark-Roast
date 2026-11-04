@@ -13,12 +13,14 @@
 <link rel="stylesheet" href="animacoes.css">
 <script src="desenhos.js" defer></script>
 <script src="animacoes.js" defer></script>
-<script src="index.js" defer></script>
 
-<style>
-</style>
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
 </head>
 <body>
+  <div class="conta-barra conta-fixa" data-conta></div>
   <h1>Dark Roast</h1>
   <h2>Cafés exóticos de todo o mundo</h2>
 
@@ -27,15 +29,15 @@
   <section class="origem" id="origem" aria-labelledby="origem-titulo">
 
     <!-- Desenho do portão (torii), definido uma vez e reaproveitado 4 vezes -->
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <svg class="torii-def" width="0" height="0" aria-hidden="true">
       <symbol id="torii" viewBox="0 0 200 220">
-        <path d="M2 30 Q100 46 198 30 L194 16 Q100 32 6 16 Z" style="fill:var(--shu);opacity:var(--viga-op)"/>
-        <path d="M14 36 Q100 52 186 36 L186 44 Q100 60 14 44 Z" style="fill:none;stroke:var(--fio);stroke-width:1.4px;vector-effect:non-scaling-stroke"/>
-        <rect x="94" y="50" width="12" height="20" style="fill:none;stroke:var(--fio);stroke-width:1.4px;vector-effect:non-scaling-stroke"/>
-        <rect x="16" y="70" width="168" height="8" style="fill:none;stroke:var(--fio);stroke-width:1.4px;vector-effect:non-scaling-stroke"/>
-        <rect x="26" y="46" width="10" height="166" style="fill:none;stroke:var(--fio);stroke-width:1.4px;vector-effect:non-scaling-stroke"/>
-        <rect x="164" y="46" width="10" height="166" style="fill:none;stroke:var(--fio);stroke-width:1.4px;vector-effect:non-scaling-stroke"/>
-        <path d="M12 214 H188" style="fill:none;stroke:var(--fio);stroke-width:1px;vector-effect:non-scaling-stroke"/>
+        <path d="M2 30 Q100 46 198 30 L194 16 Q100 32 6 16 Z" class="torii-viga"/>
+        <path d="M14 36 Q100 52 186 36 L186 44 Q100 60 14 44 Z" class="torii-fio"/>
+        <rect x="94" y="50" width="12" height="20" class="torii-fio"/>
+        <rect x="16" y="70" width="168" height="8" class="torii-fio"/>
+        <rect x="26" y="46" width="10" height="166" class="torii-fio"/>
+        <rect x="164" y="46" width="10" height="166" class="torii-fio"/>
+        <path d="M12 214 H188" class="torii-chao"/>
       </symbol>
     </svg>
 

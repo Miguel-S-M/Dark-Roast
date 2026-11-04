@@ -244,7 +244,7 @@
   background: var(--shu);
   box-shadow: 0 0 0 2px #efe3cc;
 }
-.etiqueta b { display: block; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(0.8rem, 1.5vw, 1.02rem); line-height: 1.15; }
+.etiqueta strong { display: block; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(0.8rem, 1.5vw, 1.02rem); line-height: 1.15; }
 .etiqueta small { display: block; margin-top: 3px; font-size: 0.66rem; color: #6f665b; }
 .saca:hover .etiqueta, .saca:focus-visible .etiqueta { border-color: var(--shu); }
 
@@ -273,3 +273,23 @@
   .poeira i { opacity: 0.4; }
   .saca, .saca.escolhida { transition: none; }
 }
+
+/* posição e ritmo de cada grão de poeira na luz */
+.poeira i:nth-child(1) { --x: 70%; --y: 20%; --d: 7s; --a: -1s; }
+.poeira i:nth-child(2) { --x: 64%; --y: 28%; --d: 9s; --a: -3s; }
+.poeira i:nth-child(3) { --x: 58%; --y: 36%; --d: 8s; --a: -5s; }
+.poeira i:nth-child(4) { --x: 52%; --y: 30%; --d: 10s; --a: -2s; }
+.poeira i:nth-child(5) { --x: 46%; --y: 44%; --d: 9s; --a: -6s; }
+.poeira i:nth-child(6) { --x: 60%; --y: 48%; --d: 11s; --a: -4s; }
+.poeira i:nth-child(7) { --x: 40%; --y: 52%; --d: 8s; --a: -7s; }
+.poeira i:nth-child(8) { --x: 54%; --y: 56%; --d: 10s; --a: -0s; }
+.poeira i:nth-child(9) { --x: 34%; --y: 60%; --d: 9s; --a: -3s; }
+.poeira i:nth-child(10) { --x: 66%; --y: 38%; --d: 7s; --a: -5s; }
+
+/* entrada escalonada das sacas */
+.pilha li:nth-child(1) { --i: 0; }
+.pilha li:nth-child(2) { --i: 1; }
+.pilha li:nth-child(3) { --i: 2; }
+.pilha li:nth-child(4) { --i: 3; }
+.pilha li:nth-child(5) { --i: 4; }
+.pilha li:nth-child(6) { --i: 5; }

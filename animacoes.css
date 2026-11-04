@@ -58,3 +58,12 @@
 .espuma { position: absolute; left: 0; top: 0; border-radius: 50%; background: #fff; }
 
 .portao.portao-ativo { pointer-events: none; }
+
+/* telas pequenas: as figuras de apoio das cenas ficam mais leves */
+@media (max-width: 600px) {
+  .cortina { background: rgba(243, 233, 220, 0.85); }
+  .petala, .brasa, .gaivota, .espuma { transform: scale(0.8); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cam, .cam-l.a, .cam-l.b, .cam-l.cauda, .cam-l.orelha { animation: none; }
+}

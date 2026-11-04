@@ -197,3 +197,8 @@ h2{
   font-weight: 300;
   line-height: 1.8;
 }
+/* desenho do portão (torii) */
+.torii-def { position: absolute; }
+.torii-viga { fill: var(--shu); opacity: var(--viga-op); }
+.torii-fio, .torii-chao { fill: none; stroke: var(--fio); stroke-width: 1.4px; vector-effect: non-scaling-stroke; }
+.torii-chao { stroke-width: 1px; }

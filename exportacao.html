@@ -8,14 +8,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="etapa.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="exportacao.css">
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
 </head>
-<body class="origem pagina-etapa">
-  <a class="etapa-voltar" href="index.html#origem">Voltar para a origem</a>
-  <main class="etapa-miolo">
-    <span class="etapa-kanji" lang="ja" aria-hidden="true">輸出</span>
-    <h1 class="etapa-titulo">Exportação</h1>
-    <p class="etapa-texto">Esta etapa ainda está sendo preparada.</p>
+<body class="origem pagina-app pagina-porto" data-tema="carvao">
+  <header class="app-topo">
+    <a class="app-voltar" href="index.html#origem">Voltar para a origem</a>
+    <p class="app-secao"><span class="kanji" lang="ja" aria-hidden="true">輸出</span> Exportação</p>
+    <div class="conta-barra" data-conta></div>
+  </header>
+
+  <main class="porto">
+    <div class="porto-ceu" aria-hidden="true"></div>
+    <div class="porto-lua" aria-hidden="true"></div>
+    <img class="porto-aviao" src="ilustracoes/png/aviao.png" alt="" aria-hidden="true">
+    <div class="porto-mar" aria-hidden="true"></div>
+    <img class="porto-navio" src="ilustracoes/png/navio.png" alt="" aria-hidden="true">
+
+    <div class="porto-letreiro">
+      <span class="kanji" lang="ja" aria-hidden="true">輸出</span>
+      <h1>Exportação</h1>
+      <p>Escolha um contêiner para ver as sugestões.</p>
+    </div>
+
+    <nav class="conteineres" aria-label="Sugestões de exportação">
+      <a class="conteiner vermelho" href="sugestoes.html?t=paises">
+        <small>Contêiner 1</small>
+        <strong>Para onde exportar</strong>
+        <span>Países que podem receber os nossos cafés.</span>
+      </a>
+      <a class="conteiner azul" href="sugestoes.html?t=cafes">
+        <small>Contêiner 2</small>
+        <strong>O que cultivar a seguir</strong>
+        <span>Novos cafés para levar ao mapa do cultivo.</span>
+      </a>
+    </nav>
   </main>
 </body>
 </html>

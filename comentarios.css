@@ -57,3 +57,14 @@
     padding: 0;
     text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+    #comentarios {
+        margin: 1rem auto;
+        padding: 0 12px;
+    }
+
+    #comentarios h2 {
+        padding: 16px 0;
+    }
+}
