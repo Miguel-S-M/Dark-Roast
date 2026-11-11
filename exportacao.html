@@ -26,7 +26,7 @@
   <main class="porto">
     <div class="porto-ceu" aria-hidden="true"></div>
     <div class="porto-lua" aria-hidden="true"></div>
-    <img class="porto-aviao" src="ilustracoes/png/aviao.png" alt="" aria-hidden="true">
+    <button class="porto-aviao-botao" id="desafio-aviao-abrir" type="button" aria-label="Investigar o avião que está voando ao contrário" title="Investigar avião"><img class="porto-aviao" id="porto-aviao" src="ilustracoes/png/aviao.png" alt="Avião em movimento"></button>
     <div class="porto-mar" aria-hidden="true"></div>
     <img class="porto-navio" src="ilustracoes/png/navio.png" alt="" aria-hidden="true">
 
@@ -53,6 +53,85 @@
         <span>Calcule o preço e monte o seu carrinho.</span>
       </a>
     </nav>
+
+    <section class="desafio-aviao" id="desafio-aviao" role="dialog"
+      aria-modal="true" aria-labelledby="desafio-aviao-titulo" aria-hidden="true">
+      <div class="desafio-aviao-painel">
+        <button class="desafio-aviao-fechar" id="desafio-aviao-fechar" type="button"
+          aria-label="Fechar desafio">×</button>
+        <p class="desafio-aviao-etiqueta">DESAFIO DE PROGRAMAÇÃO · JAVASCRIPT</p>
+        <h2 id="desafio-aviao-titulo">Você achou o erro!</h2>
+        <p>O avião está se deslocando para a direita, mas sua orientação está invertida.
+          Encontre a linha incorreta e corrija o código para fazê-lo voar normalmente.</p>
+        <label for="desafio-aviao-codigo">Corrija o valor de <code>escalaHorizontal</code>:</label>
+        <textarea id="desafio-aviao-codigo" spellcheck="false" autocapitalize="off"
+          autocomplete="off" aria-describedby="desafio-aviao-ajuda">const escalaHorizontal = 1;
+
+if (escalaHorizontal === -1) {
+  console.log("Orientação corrigida!");
+}</textarea>
+        <p class="desafio-aviao-ajuda" id="desafio-aviao-ajuda">
+          Dica: <code>scaleX(-1)</code> espelha a imagem horizontalmente.
+        </p>
+        <div class="desafio-aviao-acoes">
+          <button type="button" id="desafio-aviao-executar">Executar correção</button>
+          <span id="desafio-aviao-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script>
+  (() => {
+    const abrir = document.getElementById("desafio-aviao-abrir");
+    const dialogo = document.getElementById("desafio-aviao");
+    const fechar = document.getElementById("desafio-aviao-fechar");
+    const codigo = document.getElementById("desafio-aviao-codigo");
+    const executar = document.getElementById("desafio-aviao-executar");
+    const status = document.getElementById("desafio-aviao-status");
+    const aviao = document.getElementById("porto-aviao");
+
+    function abrirDesafio() {
+      dialogo.classList.add("ativo");
+      dialogo.setAttribute("aria-hidden", "false");
+      status.textContent = "";
+      codigo.focus();
+    }
+
+    function fecharDesafio() {
+      dialogo.classList.remove("ativo");
+      dialogo.setAttribute("aria-hidden", "true");
+      abrir.focus();
+    }
+
+    abrir.addEventListener("click", abrirDesafio);
+    fechar.addEventListener("click", fecharDesafio);
+    dialogo.addEventListener("click", (evento) => {
+      if (evento.target === dialogo) fecharDesafio();
+    });
+    document.addEventListener("keydown", (evento) => {
+      if (evento.key === "Escape" && dialogo.classList.contains("ativo")) {
+        fecharDesafio();
+      }
+    });
+
+    executar.addEventListener("click", () => {
+      // O desafio aceita a correção do valor, sem executar código digitado pelo visitante.
+      const linhaCorreta = /const\s+escalaHorizontal\s*=\s*-1\s*;/.test(codigo.value);
+      if (!linhaCorreta) {
+        status.textContent = "Ainda não! O valor precisa ser -1. Tente novamente.";
+        status.className = "erro";
+        return;
+      }
+
+      aviao.classList.add("orientacao-corrigida");
+      abrir.classList.add("desafio-resolvido");
+      status.textContent = "Correto! O avião agora está voando na direção certa.";
+      status.className = "sucesso";
+      executar.disabled = true;
+      codigo.readOnly = true;
+    });
+  })();
+  </script>
 </body>
 </html>
