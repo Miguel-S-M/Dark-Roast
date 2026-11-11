@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colheita · Dark Roast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="colheita.css">
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="banco.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
+</head>
+<body class="origem pagina-colheita" data-tema="carvao">
+  <header class="col-topo">
+    <a class="col-voltar" href="index.html#origem">Voltar para a origem</a>
+    <p class="col-secao"><span class="kanji" lang="ja" aria-hidden="true">収穫</span> Colheita</p>
+    <div class="conta-barra" data-conta></div>
+  </header>
+
+  <main class="armazem">
+    <div class="piso" aria-hidden="true"></div>
+    <div class="janela" aria-hidden="true"></div>
+    <div class="poeira" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="col-letreiro">
+      <span class="kanji" lang="ja" aria-hidden="true">収穫</span>
+      <h1 class="col-titulo">Colheita</h1>
+      <p class="col-dica">Escolha uma saca para ver como aquele café é colhido.</p>
+    </div>
+
+    <div class="monte monte-esq" aria-hidden="true"><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""></div>
+    <div class="monte monte-dir" aria-hidden="true"><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""><img src="ilustracoes/png/saca.png" alt=""></div>
+
+    <ul class="pilha">
+      <li><a class="saca" href="cafe.html?c=kopi-luwak&amp;e=colheita" aria-label="Kopi Luwak, Sumatra: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><strong>Kopi Luwak</strong><small>Sumatra</small></span>
+      </a></li>
+      <li><a class="saca" href="cafe.html?c=black-ivory&amp;e=colheita" aria-label="Black Ivory, Tailândia: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><strong>Black Ivory</strong><small>Tailândia</small></span>
+      </a></li>
+      <li><a class="saca" href="cafe.html?c=jacu-bird&amp;e=colheita" aria-label="Jacu Bird, Espírito Santo: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><strong>Jacu Bird</strong><small>Espírito Santo</small></span>
+      </a></li>
+      <li><a class="saca" href="cafe.html?c=geisha&amp;e=colheita" aria-label="Geisha, Panamá: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><strong>Geisha</strong><small>Panamá</small></span>
+      </a></li>
+      <li><a class="saca" href="cafe.html?c=santa-helena&amp;e=colheita" aria-label="Santa Helena, Ilha de Santa Helena: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><strong>Santa Helena</strong><small>Ilha de Santa Helena</small></span>
+      </a></li>
+      <li><a class="saca" href="cafe.html?c=blue-mountain&amp;e=colheita" aria-label="Blue Mountain, Jamaica: ver como é colhido">
+        <img src="ilustracoes/png/saca.png" alt="" width="400" height="500">
+        <span class="etiqueta"><strong>Blue Mountain</strong><small>Jamaica</small></span>
+      </a></li>
+    </ul>
+  </main>
+  <script src="colheita.js" defer></script>
+</body>
+</html>
