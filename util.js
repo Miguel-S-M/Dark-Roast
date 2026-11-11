@@ -1,10 +1,10 @@
-// ===== Ferramentas compartilhadas: guardar dados no navegador e criar elementos HTML =====
+// Ajudas comuns às páginas: localStorage, criação de elementos e um par de atalhos
 const Dados = {
   ler(chave, padrao) {
     try {
       const valor = JSON.parse(localStorage.getItem(chave));
       return valor === null ? padrao : valor;
-    } catch (erro) {
+    } catch {
       return padrao;
     }
   },
@@ -12,14 +12,14 @@ const Dados = {
     try {
       localStorage.setItem(chave, JSON.stringify(valor));
       return true;
-    } catch (erro) {
+    } catch {
       return false;
     }
   },
   existe(chave) {
     try {
       return localStorage.getItem(chave) !== null;
-    } catch (erro) {
+    } catch {
       return false;
     }
   },
@@ -49,9 +49,18 @@ const Dom = {
     });
     return elemento;
   },
-  // campo de formulário: rótulo + elemento
   campo(rotulo, id, controle) {
     controle.id = id;
     return Dom.criar("div", { classe: "campo" }, Dom.criar("label", { for: id, texto: rotulo }), controle);
   },
 };
+
+// clique "normal": botão esquerdo, sem Ctrl/Cmd/Shift/Alt (esses abrem em nova aba ou janela)
+function cliqueComum(evento) {
+  return evento.button === 0 && !(evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey);
+}
+
+// as animações de saída avisam a próxima página, que mostra a imagem de entrada
+function marcarTransicao() {
+  try { sessionStorage.setItem("transicao", String(Date.now())); } catch { /* sem sessionStorage, segue sem a imagem */ }
+}

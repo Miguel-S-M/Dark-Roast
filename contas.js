@@ -1,5 +1,5 @@
-// ===== Contas de usuário (cadastro e login) guardadas no localStorage =====
-// Sem back-end, tudo fica só neste navegador. A senha nunca é guardada: só um hash com sal.
+// Cadastro e login. Sem back-end, tudo fica no localStorage deste navegador.
+// A senha não é guardada, só um hash com sal (isso não substitui um servidor de verdade).
 const Contas = (function () {
   "use strict";
   const CHAVE_USUARIOS = "dr_usuarios";
@@ -11,19 +11,18 @@ const Contas = (function () {
   }
 
   function gerarSal() {
-    const bytes = new Uint8Array(8);
-    if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
-    else bytes.forEach((_, i) => { bytes[i] = Math.floor(Math.random() * 256); });
+    const bytes = crypto.getRandomValues(new Uint8Array(8));
     return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
   }
 
   async function gerarHash(sal, senha) {
     const texto = sal + ":" + senha;
-    if (window.crypto && crypto.subtle) {
+    // crypto.subtle só existe em https ou localhost
+    if (crypto.subtle) {
       const resumo = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(texto));
       return Array.from(new Uint8Array(resumo), (b) => b.toString(16).padStart(2, "0")).join("");
     }
-    let h = 5381; // plano B simples, para navegadores sem crypto.subtle
+    let h = 5381; // djb2: fraco, só para o site continuar funcionando em http
     for (const letra of texto) h = ((h << 5) + h + letra.codePointAt(0)) | 0;
     return "d" + (h >>> 0).toString(16);
   }
@@ -40,7 +39,7 @@ const Contas = (function () {
     if (senha.length < 6) return { ok: false, erro: "A senha precisa de pelo menos 6 caracteres." };
     if (senha !== confirmacao) return { ok: false, erro: "As senhas não são iguais." };
     const usuarios = Dados.ler(CHAVE_USUARIOS, {});
-    const chave = nome.toLowerCase();
+    const chave = nome.toLowerCase(); // "Ana" e "ana" contam como a mesma pessoa
     if (usuarios[chave]) return { ok: false, erro: "Esse nome já está em uso." };
     const sal = gerarSal();
     usuarios[chave] = { nome, sal, hash: await gerarHash(sal, senha), criadaEm: Date.now() };
@@ -62,7 +61,7 @@ const Contas = (function () {
   }
 
   function sair() {
-    try { localStorage.removeItem(CHAVE_SESSAO); } catch (erro) { /* sem armazenamento */ }
+    try { localStorage.removeItem(CHAVE_SESSAO); } catch { /* sem armazenamento */ }
     avisarMudanca();
   }
 

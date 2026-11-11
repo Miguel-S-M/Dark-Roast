@@ -1,4 +1,4 @@
-// ===== Armazém da colheita: a saca escolhida sobe e então abre a página do café =====
+// Armazém da colheita: a saca escolhida sobe e então abre a página do café
 (function () {
   const pilha = document.querySelector(".pilha");
   if (!pilha) return;
@@ -6,9 +6,8 @@
 
   pilha.addEventListener("click", (e) => {
     const saca = e.target.closest("a.saca");
-    if (!saca || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    // avisa a página do café que veio do armazém (ela mostra a imagem de entrada)
-    try { sessionStorage.setItem("transicao", String(Date.now())); } catch (_) {}
+    if (!saca || e.defaultPrevented || !cliqueComum(e)) return;
+    marcarTransicao();
     if (reduz) return;
     e.preventDefault();
     pilha.classList.add("escolheu");

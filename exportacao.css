@@ -1,6 +1,5 @@
-/* ===== Exportação: o porto (exportacao.html) e as páginas de sugestões (sugestoes.html) ===== */
-
-/* ----- Porto ----- */
+/* Exportação: o porto (exportacao.html) e as páginas de sugestões (sugestoes.html) */
+/* Porto */
 .pagina-porto { display: flex; flex-direction: column; overflow-x: hidden; background: #0d1b2e; }
 .porto { position: relative; isolation: isolate; flex: 1; min-height: 620px; overflow: hidden; }
 .porto-ceu { position: absolute; inset: 0 0 38% 0; z-index: -3; background: linear-gradient(#0a1424, #1b3552 70%, #2d4d6b); }
@@ -24,7 +23,7 @@
 .porto-letreiro h1 { margin: 4px 0 6px; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.3rem; letter-spacing: 0.1em; text-align: center; }
 .porto-letreiro p { margin: 0; font-size: 0.85rem; color: #6f665b; }
 
-.conteineres { position: absolute; z-index: 3; left: 50%; bottom: clamp(18px, 5vh, 54px); transform: translateX(-50%); display: flex; gap: clamp(12px, 3vw, 32px); width: min(820px, calc(100% - 32px)); }
+.conteineres { position: absolute; z-index: 3; left: 50%; bottom: clamp(18px, 5vh, 54px); transform: translateX(-50%); display: flex; gap: clamp(12px, 3vw, 32px); width: min(1060px, calc(100% - 32px)); }
 .conteiner {
   flex: 1;
   display: block;
@@ -40,13 +39,14 @@
 }
 .conteiner.vermelho { --cor-conteiner: #8f2a24; }
 .conteiner.azul { --cor-conteiner: #27485f; }
+.conteiner.madeira { --cor-conteiner: #5a3e24; }
 .conteiner:hover, .conteiner:focus-visible { transform: translateY(-6px); box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.12), 0 18px 26px rgba(0, 0, 0, 0.6); }
 .conteiner:focus-visible { outline: 2px solid #efe3cc; outline-offset: 3px; }
 .conteiner small { display: block; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; }
 .conteiner strong { display: block; margin: 6px 0; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: clamp(1.1rem, 2.6vw, 1.5rem); line-height: 1.25; }
 .conteiner span { display: block; font-size: 0.88rem; line-height: 1.5; opacity: 0.9; }
 
-/* ----- Sugestões ----- */
+/* Sugestões */
 .sug-barra { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 0.88rem; color: var(--suave); }
 .sug-barra select { font: inherit; padding: 0.3rem 0.6rem; color: var(--tinta); background: color-mix(in srgb, var(--tinta) 8%, var(--papel)); border: 1px solid var(--linha); }
 .sug-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin-bottom: 28px; }
@@ -68,7 +68,7 @@
 .sug-autor { font-size: 0.8rem; color: var(--suave); }
 
 @media (max-width: 640px) {
-  .porto { min-height: 760px; }
+  .porto { min-height: 900px; }
   .conteineres { flex-direction: column; }
   .porto-navio { bottom: 46%; }
   .sug-lista { grid-template-columns: 1fr; }

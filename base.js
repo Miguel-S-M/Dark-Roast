@@ -1,4 +1,4 @@
-// ===== Parte comum a todas as páginas: barra da conta, janela "Sobre" e avisos =====
+// Parte comum a todas as páginas: barra da conta, janela "Sobre" e avisos
 (function () {
   "use strict";
   // Troque pelos nomes do grupo
@@ -33,7 +33,6 @@
     temporizador = setTimeout(() => aviso.classList.remove("visivel"), 3200);
   }
 
-  // ----- Janela de login e cadastro -----
   function montarLogin() {
     const mensagem = Dom.criar("p", { classe: "dr-msg" });
     const erro = Dom.criar("p", { classe: "dr-erro", role: "alert" });
@@ -93,7 +92,6 @@
     return new Promise((resolver) => { resolverLogin = resolver; });
   }
 
-  // ----- Janela "Sobre" -----
   function abrirSobre() {
     if (!dialogoSobre) {
       dialogoSobre = criarDialogo("Sobre o Dark Roast",
@@ -106,12 +104,13 @@
     dialogoSobre.showModal();
   }
 
-  // ----- Barra no alto das páginas -----
   function desenharBarras() {
     const usuario = Contas.usuarioAtual();
+    const noCarrinho = typeof Carrinho === "undefined" ? 0 : Carrinho.quantidade();
     document.querySelectorAll("[data-conta]").forEach((caixa) => {
       const itens = [
         Dom.criar("a", { classe: "barra-link", href: "enquetes.html", "aria-current": location.pathname.endsWith("enquetes.html") ? "page" : null, texto: "Enquetes" }),
+        Dom.criar("a", { classe: "barra-link", href: "loja.html", "aria-current": location.pathname.endsWith("loja.html") ? "page" : null, texto: noCarrinho ? "Loja (" + noCarrinho + ")" : "Loja" }),
         Dom.criar("button", { type: "button", classe: "barra-botao", texto: "Sobre", onclick: abrirSobre }),
       ];
       if (usuario) {
@@ -126,6 +125,7 @@
   }
 
   document.addEventListener("conta:mudou", desenharBarras);
+  document.addEventListener("banco:mudou", desenharBarras);
   desenharBarras();
 
   window.DarkRoast = {

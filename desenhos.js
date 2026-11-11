@@ -1,4 +1,4 @@
-
+// Desenhos SVG usados em várias páginas: entram uma vez no body e são chamados com <use>
 (function () {
   const html = `<svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>

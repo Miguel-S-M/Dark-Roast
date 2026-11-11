@@ -1,4 +1,4 @@
-/* ===== Página da torra (torra.html): uma fornalha de forja que solta os grãos ===== */
+/* Página da torra (torra.html): uma fornalha de forja que solta os grãos */
 /* As cores e fontes vêm da classe .origem (tema carvão), definida no index.css */
 .pagina-torra {
   --chao: 36%;
@@ -15,7 +15,7 @@
 }
 .pagina-torra [hidden] { display: none !important; }
 
-/* ----- Faixa de cima ----- */
+/* Faixa de cima */
 .tor-topo {
   position: relative;
   z-index: 8;
@@ -34,17 +34,17 @@
 .tor-secao { display: flex; align-items: baseline; gap: 10px; color: #cfc5b6; font-size: 0.85rem; }
 .tor-secao .kanji { font-family: "Shippori Mincho", serif; font-size: 1.3rem; color: #efe3cc; }
 
-/* ----- A forja ----- */
+/* A forja */
 .forja { position: relative; isolation: isolate; flex: 1; min-height: 680px; overflow: hidden; }
-.forja::before {                        /* parede de tijolos */
+.forja::before { /* parede de tijolos */
   content: ""; position: absolute; inset: 0; z-index: -4;
   background: var(--tij-parede);
 }
-.forja::after {                         /* sombra nas bordas */
+.forja::after { /* sombra nas bordas */
   content: ""; position: absolute; inset: 0; z-index: -3; pointer-events: none;
   background: radial-gradient(ellipse at 50% 55%, transparent 18%, rgba(0, 0, 0, 0.78) 88%);
 }
-.clarao {                               /* clarão do fogo na parede */
+.clarao { /* clarão do fogo na parede */
   position: absolute; inset: 0; z-index: -2; pointer-events: none; opacity: 0.35;
   background: radial-gradient(ellipse at 50% 55%, rgba(255, 120, 40, 0.5), transparent 55%);
   mix-blend-mode: screen;
@@ -65,7 +65,7 @@
   box-shadow: 0 -16px 28px rgba(0, 0, 0, 0.5);
 }
 
-/* ----- Placa com o título ----- */
+/* Placa com o título */
 .tor-placa {
   position: absolute; z-index: 7; top: 18px; left: clamp(14px, 4vw, 48px);
   width: min(220px, 34vw);
@@ -77,7 +77,7 @@
 .tor-titulo { margin: 3px 0 5px; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.15rem; letter-spacing: 0.1em; }
 .tor-dica { margin: 0; font-size: 0.8rem; line-height: 1.45; color: #6f665b; }
 
-/* ----- A fornalha (botão) ----- */
+/* A fornalha (botão) */
 .fornalha {
   position: absolute; z-index: 3; left: 50%; bottom: calc(var(--chao) - 22px);
   transform: translateX(-50%);
@@ -87,7 +87,7 @@
 }
 .fornalha:focus-visible { outline: 2px solid var(--shu); outline-offset: 8px; }
 .fornalha > span { display: block; position: absolute; }
-.fornalha .luz {                        /* halo de luz atrás da pedra */
+.fornalha .luz { /* halo de luz atrás da pedra */
   z-index: -1; left: 50%; top: 66%; width: 170%; aspect-ratio: 1; transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 140, 40, 0.4), rgba(255, 100, 20, 0.14) 36%, transparent 66%);
   mix-blend-mode: screen; pointer-events: none; transition: opacity 0.4s;
@@ -110,7 +110,7 @@
   background-color: #4b3d34;
   box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.55), 0 14px 24px rgba(0, 0, 0, 0.6);
 }
-.fornalha .corpo::after {               /* reflexo do fogo na pedra */
+.fornalha .corpo::after { /* reflexo do fogo na pedra */
   content: ""; position: absolute; inset: 0;
   background: radial-gradient(ellipse at 50% 55%, rgba(255, 120, 40, 0.3), transparent 62%);
   mix-blend-mode: screen; opacity: 0.6; transition: opacity 0.4s;
@@ -158,7 +158,7 @@
 
 .bigorna { position: absolute; z-index: 2; left: clamp(10px, 8vw, 140px); bottom: calc(var(--chao) - 30px); width: clamp(110px, 12vw, 170px); height: auto; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.6)); }
 
-/* ----- Grãos ----- */
+/* Grãos */
 .graos { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 .grao, .grao-extra { position: absolute; left: 0; top: 0; will-change: transform; }
 .grao-extra { display: block; height: auto; opacity: 0.85; filter: brightness(0.8); }

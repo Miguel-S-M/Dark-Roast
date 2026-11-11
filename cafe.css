@@ -1,8 +1,8 @@
-/* ===== Páginas de cada café (KopiLuwak.html, BlackIvory.html, ...) ===== */
+/* Páginas de cada café (KopiLuwak.html, BlackIvory.html, ...) */
 /* As cores e fontes vêm da classe .origem, definida no index.css */
 .pagina-cafe { margin: 0; padding: 0; min-height: 100vh; }
 
-/* ----- Faixa de cima ----- */
+/* Faixa de cima */
 .cafe-topo {
   display: flex;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 .cafe-secao { display: flex; align-items: baseline; gap: 10px; color: var(--suave); font-size: 0.85rem; }
 .cafe-secao .kanji { font-family: "Shippori Mincho", serif; font-size: 1.3rem; color: var(--tinta); }
 
-/* ----- Abertura: imagem + nome ----- */
+/* Abertura: imagem + nome */
 .cafe-heroi {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
@@ -67,13 +67,13 @@
 }
 .cafe-lead { margin: 0 0 28px; max-width: 38ch; font-size: 1.08rem; line-height: 1.9; }
 
-/* ----- Ficha ----- */
+/* Ficha */
 .cafe-ficha { margin: 0; border-top: 1px solid var(--linha); }
 .cafe-ficha div { display: grid; grid-template-columns: 8.5em 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--linha); }
 .cafe-ficha dt { color: var(--suave); font-size: 0.85rem; }
 .cafe-ficha dd { margin: 0; font-size: 0.95rem; line-height: 1.6; }
 
-/* ----- Corpo: passos e arredores ----- */
+/* Corpo: passos e arredores */
 .cafe-corpo {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -113,7 +113,7 @@
 .cafe-nota strong { display: block; margin-bottom: 4px; font-family: "Shippori Mincho", serif; font-weight: 500; color: var(--shu); }
 .cafe-nota p { margin: 0; font-size: 0.92rem; line-height: 1.7; }
 
-/* ----- Rodapé: café anterior e próximo ----- */
+/* Rodapé: café anterior e próximo */
 .cafe-vizinhos {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -134,7 +134,7 @@
 .cafe-vizinhos a:hover span, .cafe-vizinhos a:focus-visible span { color: var(--shu); }
 .cafe-vizinhos a:focus-visible, .cafe-voltar:focus-visible { outline: 2px solid var(--shu); outline-offset: 3px; }
 
-/* ----- Entrada vinda do mapa: a imagem aparece e some, mostrando a página ----- */
+/* Entrada vinda do mapa: a imagem aparece e some, mostrando a página */
 .entrada { display: none; position: fixed; inset: 0; z-index: 50; place-items: center; background: var(--papel); pointer-events: none; }
 .entrada img { width: min(78vmin, 560px); height: auto; border: 1px solid var(--linha); }
 .vindo-do-mapa .entrada { display: grid; animation: entrada-sai 0.9s ease 0.5s forwards; }

@@ -1,4 +1,4 @@
-// ===== Comentários da página inicial: criar e excluir, salvos no localStorage =====
+// Comentários da página inicial: criar e excluir, salvos no localStorage
 (function () {
   "use strict";
   const form = document.getElementById("form-comentario");

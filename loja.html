@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loja · Dark Roast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="extras.css">
+<link rel="stylesheet" href="base.css">
+<script src="util.js" defer></script>
+<script src="banco.js" defer></script>
+<script src="cafes-dados.js" defer></script>
+<script src="cafes-extra.js" defer></script>
+<script src="contas.js" defer></script>
+<script src="base.js" defer></script>
+<script src="loja.js" defer></script>
+</head>
+<body class="origem pagina-app pagina-loja" data-tema="carvao">
+  <header class="app-topo">
+    <a class="app-voltar" href="exportacao.html">Voltar ao porto</a>
+    <p class="app-secao"><span class="kanji" lang="ja" aria-hidden="true">輸出</span> Loja</p>
+    <div class="conta-barra" data-conta></div>
+  </header>
+
+  <main class="app-miolo">
+    <section class="app-abertura">
+      <h1>Loja</h1>
+      <p class="app-lead">Calcule quanto custa levar um dos nossos cafés para casa e monte o seu carrinho.</p>
+    <div class="loja-grade">
+      <section class="painel app-form" aria-labelledby="titulo-calc">
+        <h2 id="titulo-calc">Calculadora de preço</h2>
+        <form id="form-calculo" novalidate>
+          <div id="campo-cafe"></div>
+          <div class="linha-form">
+            <div class="campo">
+              <label for="calc-qtd">Quantidade</label>
+              <input id="calc-qtd" type="number" min="0" step="any" value="250" inputmode="decimal">
+            </div>
+            <div class="campo">
+              <label for="calc-unid">Unidade</label>
+              <select id="calc-unid"><option value="g">gramas</option><option value="kg">quilos</option></select>
+            </div>
+          </div>
+          <p class="loja-erro" id="erro-calculo" role="alert"></p>
+          <dl class="calc-resultado" id="resultado" aria-live="polite"></dl>
+          <button type="submit" class="botao">Adicionar ao carrinho</button>
+        </form>
+      </section>
+
+      <div>
+        <section class="painel app-form" aria-labelledby="titulo-carrinho">
+          <h2 id="titulo-carrinho">Seu carrinho</h2>
+          <div id="carrinho"></div>
+        </section>
+        <section class="painel" aria-labelledby="titulo-pedidos">
+          <h2 id="titulo-pedidos">Pedidos anteriores</h2>
+          <div id="pedidos"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

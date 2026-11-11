@@ -1,4 +1,4 @@
-/* ===== Parte comum: barra da conta, janelas (dialog) e avisos ===== */
+/* Parte comum: barra da conta, janelas (dialog) e avisos */
 /* Funciona nas páginas claras e escuras: usa as cores do tema (.origem) quando existem */
 header[class$="-topo"] { justify-content: flex-start; flex-wrap: wrap; }
 header[class$="-topo"] p[class$="-secao"] { margin: 0 0 0 auto; }
@@ -41,7 +41,7 @@ header[class$="-topo"] p[class$="-secao"] { margin: 0 0 0 auto; }
   backdrop-filter: blur(4px);
 }
 
-/* ----- Janelas ----- */
+/* Janelas */
 .dr-dialogo {
   width: min(440px, calc(100vw - 32px));
   max-height: calc(100vh - 32px);
@@ -76,7 +76,7 @@ header[class$="-topo"] p[class$="-secao"] { margin: 0 0 0 auto; }
 .dr-form .botao { font: inherit; padding: 0.55rem 1.2rem; color: #fff; background: #b2312a; border: 0; cursor: pointer; }
 .dr-form .botao:hover { background: #8e2620; }
 
-/* ----- Aviso rápido ----- */
+/* Aviso rápido */
 .dr-aviso {
   position: fixed;
   z-index: 60;

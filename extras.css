@@ -1,0 +1,89 @@
+/* Seções a mais das páginas de café (ficha, calendário, ciclo, método, jogo) e a loja */
+.extras { max-width: 1100px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px) clamp(24px, 4vw, 48px); }
+.extra { margin-bottom: clamp(32px, 5vw, 56px); }
+.extra h2 { margin: 0 0 8px; text-align: left; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.4rem; letter-spacing: 0.08em; }
+.extra-lead { margin: 0 0 20px; max-width: 62ch; line-height: 1.8; font-size: 0.92rem; color: var(--suave); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rolagem { overflow-x: auto; }
+
+.extra-botao { display: inline-block; font: inherit; padding: 0.55rem 1.2rem; color: #fff; text-decoration: none; background: var(--shu); border: 1px solid var(--shu); cursor: pointer; }
+.extra-botao:hover { filter: brightness(1.12); }
+.extra-botao.claro { color: var(--tinta); background: transparent; border-color: var(--linha); }
+.extra-botao.claro:hover { color: var(--shu); border-color: var(--shu); filter: none; }
+.extra-botao:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+
+/* ficha e comparador */
+.tecnica { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.comparar .campo { display: grid; gap: 6px; margin-bottom: 14px; }
+.comparar label { font-size: 0.85rem; color: var(--suave); }
+.comparar select { font: inherit; padding: 0.45rem 0.6rem; color: var(--tinta); background: color-mix(in srgb, var(--tinta) 6%, var(--papel)); border: 1px solid var(--linha); }
+.comparar select:focus-visible { outline: 2px solid var(--shu); outline-offset: 1px; }
+.comparacao { width: 100%; border-collapse: collapse; font-size: 0.88rem; line-height: 1.5; }
+.comparacao th, .comparacao td { padding: 8px 10px 8px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--linha); }
+.comparacao thead th { font-family: "Shippori Mincho", serif; font-weight: 500; color: var(--shu); }
+.comparacao tbody th { width: 7.5em; font-weight: 400; color: var(--suave); }
+
+/* calendário */
+.cal { width: 100%; min-width: 560px; border-collapse: separate; border-spacing: 2px; font-size: 0.8rem; }
+.cal caption { margin-bottom: 8px; text-align: left; color: var(--suave); font-size: 0.85rem; }
+.cal thead th { padding: 4px 0; font-weight: 400; color: var(--suave); text-transform: uppercase; letter-spacing: 0.05em; }
+.cal tbody th { width: 9.5em; padding-right: 8px; text-align: left; font-weight: 400; }
+.cal td { height: 26px; background: color-mix(in srgb, var(--tinta) 6%, var(--papel)); }
+.cal thead td { background: none; }
+.cal td.on[data-fase="florada"] { background: #e3b7b0; }
+.cal td.on[data-fase="amadurecimento"] { background: #d8b45a; }
+.cal td.on[data-fase="colheita"] { background: var(--shu); }
+.cal th.agora { color: var(--shu); font-weight: 600; border-bottom: 2px solid var(--shu); }
+.cal td.agora { box-shadow: inset 2px 0 0 var(--tinta), inset -2px 0 0 var(--tinta); }
+.cal-hoje { margin: 12px 0 0; font-size: 0.92rem; }
+
+/* ciclo da planta */
+.ciclo { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.ciclo li { padding-top: 14px; border-top: 1px solid var(--linha); }
+.ciclo svg { display: block; width: 64px; height: 64px; margin-bottom: 8px; }
+.ciclo strong { display: block; margin-bottom: 4px; font-family: "Shippori Mincho", serif; font-weight: 500; }
+.ciclo p { margin: 0; font-size: 0.86rem; line-height: 1.65; color: var(--suave); }
+
+/* à mão ou à máquina */
+.metodo-par { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 18px; }
+.metodo-card { position: relative; padding: 18px 20px; border: 1px solid var(--linha); }
+.metodo-card h3 { margin: 0 0 10px; text-align: left; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: 1.15rem; }
+.metodo-card p { margin: 0 0 8px; font-size: 0.9rem; line-height: 1.7; }
+.metodo-card.deste { border-color: var(--shu); background: color-mix(in srgb, var(--shu) 6%, var(--papel)); }
+.metodo-tag { display: inline-block; margin-bottom: 8px; padding: 0.1rem 0.6rem; font-size: 0.75rem; color: #fff; background: var(--shu); }
+.metodo-motivo { margin: 0; max-width: 70ch; line-height: 1.8; }
+
+/* jogo da colheita */
+.jogo-ramo { display: flex; flex-wrap: wrap; gap: 6px 14px; align-content: flex-start; min-height: 190px; padding: 22px; margin-bottom: 14px; background: color-mix(in srgb, #4a6741 12%, var(--papel)); border: 1px solid var(--linha); }
+.jogo-cereja { position: relative; width: 56px; height: 56px; padding: 0; background: none; border: 0; cursor: grab; touch-action: none; }
+.jogo-cereja svg { width: 100%; height: 100%; pointer-events: none; }
+.jogo-cereja:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
+.jogo-cereja.pegando { z-index: 5; cursor: grabbing; filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.3)); }
+.jogo-cesto { display: inline-flex; align-items: center; gap: 12px; padding: 8px 20px 8px 12px; margin-bottom: 14px; border: 2px dashed var(--linha); transition: border-color 0.15s, background 0.15s; }
+.jogo-cesto.alvo { border-color: var(--shu); background: color-mix(in srgb, var(--shu) 10%, var(--papel)); }
+.jogo-cesto svg { width: 64px; height: 64px; }
+.jogo-cesto-n { font-family: "Shippori Mincho", serif; font-size: 1.6rem; }
+.jogo-placar { margin: 0 0 6px; font-size: 0.92rem; }
+.jogo-recado { min-height: 3.2em; margin: 0 0 12px; max-width: 62ch; line-height: 1.7; }
+
+/* loja */
+.loja-grade { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 20px; align-items: start; }
+.calc-resultado { margin: 0 0 16px; }
+.calc-resultado div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--linha); }
+.calc-resultado dt { color: var(--suave); font-size: 0.88rem; }
+.calc-resultado dd { margin: 0; text-align: right; }
+.carrinho-linha { display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--linha); }
+.carrinho-kg { display: flex; align-items: center; gap: 4px; font-size: 0.85rem; color: var(--suave); }
+.carrinho-kg input { width: 5.5rem; }
+.carrinho-total { display: flex; justify-content: space-between; margin: 14px 0; font-size: 1.05rem; }
+.carrinho-total strong { font-family: "Shippori Mincho", serif; font-size: 1.4rem; font-weight: 500; }
+.carrinho-acoes { display: flex; gap: 10px; justify-content: flex-end; }
+.pedido { padding: 10px 0; border-bottom: 1px solid var(--linha); }
+.pedido header { display: flex; justify-content: space-between; }
+.pedido ul { margin: 6px 0 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--suave); }
+.loja-erro { min-height: 1.2em; margin: 0 0 10px; color: #e8776f; font-size: 0.88rem; }
+
+@media (max-width: 760px) {
+  .loja-grade { grid-template-columns: 1fr; }
+  .carrinho-linha { grid-template-columns: 1fr auto; }
+}

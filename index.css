@@ -24,8 +24,8 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-/* ==================== PARTE: ORIGEM ==================== */
-/* ===== Seção Origem · tema kissaten ===== */
+/* PARTE: ORIGEM */
+/* Seção Origem · tema kissaten */
 .origem {
   --papel: #f3e9dc; /* mesma cor do fundo do site */
   --tinta: #2a2622;
@@ -65,7 +65,7 @@ h2 {
   line-height: 1.7;
 }
 
-/* ----- Os quatro portões ----- */
+/* Os quatro portões */
 .origem-portoes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -126,7 +126,7 @@ h2 {
   background: var(--shu);
 }
 
-/* ----- Painéis ----- */
+/* Painéis */
 .origem-painel {
   margin-top: clamp(32px, 5vw, 56px);
   padding-top: 24px;

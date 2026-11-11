@@ -1,4 +1,4 @@
-// ===== Forja: ao clicar na fornalha, os grãos pulam para a tela. Cada grão leva à torra de um café =====
+// Forja: ao clicar na fornalha, os grãos pulam para a tela. Cada grão leva à torra de um café
 (function () {
   const forja = document.querySelector(".forja");
   const fornalha = document.querySelector(".fornalha");
@@ -10,6 +10,7 @@
   const reais = Array.from(camada.querySelectorAll(".grao"));
   const reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const rnd = (a, b) => a + Math.random() * (b - a);
+  // o segundo translate centraliza o elemento no ponto (x, y)
   const T = (x, y, r, s) => `translate(${x}px,${y}px) translate(-50%,-50%) rotate(${r}deg) scale(${s})`;
   let lancado = false;
   let tempo;
@@ -128,8 +129,8 @@
   // clicar em um grão: ele cresce na luz da fornalha e a página do café abre
   camada.addEventListener("click", (e) => {
     const grao = e.target.closest("a.grao");
-    if (!grao || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    try { sessionStorage.setItem("transicao", String(Date.now())); } catch (_) {}
+    if (!grao || e.defaultPrevented || !cliqueComum(e)) return;
+    marcarTransicao();
     if (reduz) return;
     e.preventDefault();
     camada.classList.add("escolheu");

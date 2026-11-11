@@ -1,4 +1,4 @@
-// ===== Página de um café: monta o conteúdo a partir de cafes-dados.js =====
+// Página de um café: monta o conteúdo a partir de cafes-dados.js
 // Endereço: cafe.html?c=geisha&e=torra  (c = café, e = etapa: cultivo, colheita ou torra)
 (function () {
   "use strict";
@@ -15,7 +15,7 @@
   const principal = document.getElementById("conteudo");
 
   // limpa o aviso da transição e tira a imagem de entrada quando a animação acabar
-  try { sessionStorage.removeItem("transicao"); } catch (erro) { /* sem sessionStorage */ }
+  try { sessionStorage.removeItem("transicao"); } catch { /* sem sessionStorage */ }
   const entrada = document.querySelector(".entrada");
   entrada.addEventListener("animationend", () => entrada.remove());
 

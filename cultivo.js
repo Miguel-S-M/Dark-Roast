@@ -1,4 +1,4 @@
-
+// Mapa-múndi da página de cultivo: d3 desenha, os pontos dos cafés são links HTML por cima
 (function () {
   const DADOS = "https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json";
   const CAFES = [
@@ -47,7 +47,7 @@
     return;
   }
 
-  // ---------- Pontos clicáveis (HTML por cima do mapa) ----------
+  // Pontos clicáveis (HTML por cima do mapa)
   const pontos = CAFES.map((c) => {
     const a = document.createElement("a");
     a.className = "ponto";
@@ -91,7 +91,6 @@
     });
   }
 
-  // ---------- Desenho do mapa ----------
   function montar() {
     larg = tela.clientWidth;
     alt = tela.clientHeight;
@@ -141,12 +140,12 @@
     svg.call(zoom.transform, inicial);
   }
 
-  // ---------- Transição: o mapa se aproxima do ponto e a imagem do café abre a página ----------
+  // Transição: o mapa se aproxima do ponto e a imagem do café abre a página
   let saindo = false;
   function abrir(p) {
     if (saindo) return;
     saindo = true;
-    try { sessionStorage.setItem("transicao", String(Date.now())); } catch (e) {}
+    marcarTransicao();
     if (reduzMovimento) { location.href = p.cafe.pagina; return; }
     const r = p.el.getBoundingClientRect();
     const x = r.left + r.width / 2, y = r.top + r.height / 2;
@@ -163,7 +162,7 @@
   }
   caixaPontos.addEventListener("click", (ev) => {
     const a = ev.target.closest("a.ponto");
-    if (!a || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+    if (!a || !cliqueComum(ev)) return;
     ev.preventDefault();
     abrir(pontos.find((p) => p.el === a));
   });
@@ -175,7 +174,6 @@
     if (inicial) svg.transition().duration(dur(700)).call(zoom.transform, inicial);
   });
 
-  // ---------- Botões ----------
   document.getElementById("zoom-mais").addEventListener("click", () =>
     svg.transition().duration(dur(300)).call(zoom.scaleBy, 1.7));
   document.getElementById("zoom-menos").addEventListener("click", () =>
@@ -183,7 +181,6 @@
   document.getElementById("zoom-inicio").addEventListener("click", () =>
     svg.transition().duration(dur(700)).call(zoom.transform, inicial));
 
-  // ---------- Carregar os dados e desenhar ----------
   d3.json(DADOS).then((dados) => {
     mundo = dados;
     status.textContent = "";

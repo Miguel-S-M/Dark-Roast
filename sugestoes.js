@@ -1,4 +1,4 @@
-// ===== Sugestões: países para exportar e novos cafés para cultivar =====
+// Sugestões: países para exportar e novos cafés para cultivar
 // Endereço: sugestoes.html?t=paises  ou  sugestoes.html?t=cafes
 // Há ideias prontas (exportacao-dados.js) e o usuário logado pode apoiar ideias e sugerir as suas.
 (function () {

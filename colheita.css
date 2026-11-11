@@ -1,4 +1,4 @@
-/* ===== Página da colheita (colheita.html): um armazém com sacas de café ===== */
+/* Página da colheita (colheita.html): um armazém com sacas de café */
 /* As cores e fontes vêm da classe .origem (tema carvão), definida no index.css */
 .pagina-colheita {
   --piso: clamp(72px, 13vh, 130px);
@@ -14,7 +14,7 @@
   background: #14110f;
 }
 
-/* ----- Viga do teto: voltar + título da seção ----- */
+/* Viga do teto: voltar + título da seção */
 .col-topo {
   position: relative;
   z-index: 6;
@@ -33,7 +33,7 @@
 .col-secao { display: flex; align-items: baseline; gap: 10px; color: #cfc5b6; font-size: 0.85rem; }
 .col-secao .kanji { font-family: "Shippori Mincho", serif; font-size: 1.3rem; color: #efe3cc; }
 
-/* ----- O armazém ----- */
+/* O armazém */
 .armazem {
   position: relative;
   isolation: isolate;
@@ -124,7 +124,7 @@
   100% { opacity: 0;   transform: translate(-26px, 34px); }
 }
 
-/* ----- Letreiro pendurado ----- */
+/* Letreiro pendurado */
 .col-letreiro {
   position: relative;
   z-index: 5;
@@ -149,7 +149,7 @@
 .col-titulo { margin: 4px 0 6px; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.3rem; letter-spacing: 0.1em; }
 .col-dica { margin: 0; font-size: 0.85rem; color: #6f665b; max-width: 30ch; }
 
-/* ----- Prateleira com as sacas ----- */
+/* Prateleira com as sacas */
 .pilha {
   position: relative;
   z-index: 3;
@@ -162,7 +162,7 @@
   row-gap: clamp(20px, 4vw, 44px);
   padding-top: clamp(28px, 5vh, 56px);
 }
-.pilha::before, .pilha::after {      /* montantes da prateleira */
+.pilha::before, .pilha::after { /* montantes da prateleira */
   content: "";
   position: absolute;
   top: 0; bottom: 0;
@@ -186,7 +186,7 @@
 .pilha li:nth-child(4) { --tilt: 1.2deg; }
 .pilha li:nth-child(5) { --tilt: -1deg; }
 .pilha li:nth-child(6) { --tilt: 0.8deg; }
-.pilha li::after {                   /* tábua onde a saca fica */
+.pilha li::after { /* tábua onde a saca fica */
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -198,7 +198,7 @@
 }
 @keyframes sobe { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
-/* ----- A saca (a ilustração é a saca.png do projeto) ----- */
+/* A saca (a ilustração é a saca.png do projeto) */
 .saca {
   position: relative;
   display: block;

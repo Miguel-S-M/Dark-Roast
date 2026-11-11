@@ -1,4 +1,4 @@
-// ===== Enquetes da torra: categorias com cor, votação por conta, gráfico e filtro =====
+// Enquetes da torra: categorias com cor, votação por conta, gráfico e filtro
 // Tudo fica no localStorage. Cada conta vota uma vez por enquete e pode trocar o voto.
 (function () {
   "use strict";
@@ -26,7 +26,8 @@
     opcoesForm: document.getElementById("opcoes-form"),
   };
 
-  // ----- Dados iniciais (só na primeira visita) -----
+  // Dados iniciais (só na primeira visita)
+  // monta uma enquete com votos de mentira (convidado-1, convidado-2...) para o gráfico não começar vazio
   function enqueteInicial(id, pergunta, categoriaId, opcoes, contagens) {
     const votos = {};
     let n = 0;
@@ -54,7 +55,6 @@
     Dados.gravar(CHAVE_ENQUETES, enquetes);
   }
 
-  // ----- Ajudas -----
   const salvar = () => { Dados.gravar(CHAVE_CATEGORIAS, categorias); Dados.gravar(CHAVE_ENQUETES, enquetes); };
   const categoriaDe = (id) => categorias.find((c) => c.id === id);
   const usuario = () => Contas.usuarioAtual();
@@ -76,7 +76,6 @@
     elemento.style.setProperty("--selo-texto", corDoTexto(cor));
   }
 
-  // ----- Gráfico de barras em SVG -----
   function grafico(enquete) {
     const totais = contagem(enquete);
     const soma = totais.reduce((a, b) => a + b, 0);
@@ -97,12 +96,12 @@
         barra,
         Dom.svg("text", { classe: "g-valor", x: largura, y: y + 22, "text-anchor": "end", texto: totais[i] + " (" + percentual + "%)" }));
     });
+    // dois frames de espera: as barras nascem com largura 0 e a transição do CSS só roda se o navegador desenhar isso antes
     requestAnimationFrame(() => requestAnimationFrame(() => barras.forEach(([barra, w]) => barra.setAttribute("width", w))));
     return Dom.criar("figure", { classe: "enquete-grafico" }, svg,
       Dom.criar("figcaption", { texto: soma + (soma === 1 ? " voto no total" : " votos no total") }));
   }
 
-  // ----- Votar, compartilhar e excluir -----
   function votar(enquete, indice) {
     const atual = window.DarkRoast.exigirLogin("Entre na sua conta para votar.");
     if (!atual) return;
@@ -115,7 +114,8 @@
   function codificar(enquete) {
     const categoria = categoriaDe(enquete.categoriaId) || { nome: "Sem categoria", cor: "#a0968a" };
     const json = JSON.stringify({ p: enquete.pergunta, o: enquete.opcoes, c: categoria.nome, k: categoria.cor });
-    return btoa(unescape(encodeURIComponent(json)));
+    const bytes = new TextEncoder().encode(json);
+    return btoa(String.fromCharCode(...bytes));
   }
 
   function compartilhar(enquete) {
@@ -130,7 +130,8 @@
     if (!trecho) return;
     history.replaceState(null, "", location.pathname + location.search);
     try {
-      const dados = JSON.parse(decodeURIComponent(escape(atob(trecho[1]))));
+      const bytes = Uint8Array.from(atob(trecho[1]), (c) => c.charCodeAt(0));
+      const dados = JSON.parse(new TextDecoder().decode(bytes));
       const opcoes = Array.isArray(dados.o) ? dados.o.map((o) => String(o).slice(0, 60)).filter(Boolean) : [];
       if (typeof dados.p !== "string" || !dados.p.trim() || opcoes.length < MIN_OPCOES || opcoes.length > MAX_OPCOES) throw new Error("enquete inválida");
       const nomeCategoria = String(dados.c || "Compartilhadas").slice(0, 24);
@@ -146,7 +147,7 @@
       }
       filtro = "todas";
       setTimeout(() => window.DarkRoast.aviso(igual ? "Você já tem essa enquete." : "Enquete recebida por link!"), 300);
-    } catch (erro) {
+    } catch {
       setTimeout(() => window.DarkRoast.aviso("Esse link de enquete não é válido."), 300);
     }
   }
@@ -168,7 +169,6 @@
     return botao;
   }
 
-  // ----- Desenho da página -----
   function cartao(enquete) {
     const categoria = categoriaDe(enquete.categoriaId);
     const atual = usuario();
@@ -238,7 +238,6 @@
       : [Dom.criar("p", { classe: "vazio", texto: "Nenhuma enquete nessa categoria ainda. Que tal criar a primeira?" })]));
   }
 
-  // ----- Formulários -----
   function campoOpcao(valor) {
     const entrada = Dom.criar("input", { type: "text", maxlength: 60, "aria-label": "Opção", value: valor || "" });
     const linha = Dom.criar("div", { classe: "opcao-form" }, entrada,

@@ -3,4 +3,4 @@
 try {
   var hora = Number(sessionStorage.getItem("transicao"));
   if (hora && Date.now() - hora < 6000) document.documentElement.classList.add("vindo-do-mapa");
-} catch (erro) { /* sem sessionStorage: segue sem a imagem de entrada */ }
+} catch { /* sem sessionStorage: segue sem a imagem de entrada */ }

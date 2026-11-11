@@ -1,4 +1,4 @@
-/* ===== Página do mapa (cultivo.html): mapa em tela cheia ===== */
+/* Página do mapa (cultivo.html): mapa em tela cheia */
 /* As cores e fontes vêm da classe .origem, definida no index.css */
 .pagina-cultivo {
   position: relative;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-/* ----- Mapa ----- */
+/* Mapa */
 .mapa-tela { position: absolute; inset: 0; overflow: hidden; cursor: grab; }
 .mapa-tela:active { cursor: grabbing; }
 #mapa-svg { display: block; width: 100%; height: 100%; touch-action: none; }
@@ -31,7 +31,7 @@
   pointer-events: none;
 }
 
-/* ----- Cartão do título (canto superior esquerdo) ----- */
+/* Cartão do título (canto superior esquerdo) */
 .cultivo-card {
   position: absolute;
   z-index: 4;
@@ -67,7 +67,7 @@
 }
 .cultivo-dica { margin: 0; color: var(--suave); font-size: 0.82rem; line-height: 1.6; }
 
-/* ----- Controles e legenda ----- */
+/* Controles e legenda */
 .mapa-controles { z-index: 4; position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
 .mapa-controles button {
   min-width: 40px;
@@ -110,7 +110,7 @@
 }
 .mapa-status:empty { display: none; }
 
-/* ----- Pontos dos cafés ----- */
+/* Pontos dos cafés */
 .ponto {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -172,7 +172,7 @@
 .ponto.esq .ponto-rotulo { left: auto; right: 22px; }
 .ponto.esq .ponto-lugar { left: auto; right: 0; }
 
-/* ----- Desenho, linha e texto ao redor de cada ponto ----- */
+/* Desenho, linha e texto ao redor de cada ponto */
 .ponto { --med: 64px; }
 .ponto-fio, .ponto-cena { display: none; }
 .com-cenas .ponto-fio, .com-cenas .ponto-cena,
@@ -241,7 +241,7 @@
 .ponto.fora .ponto-cena, .ponto.fora .ponto-fio { display: none !important; }
 .com-texto .ponto-nota, .ponto:hover .ponto-nota, .ponto:focus-visible .ponto-nota { display: block; }
 
-/* ----- Transição para a página de um café ----- */
+/* Transição para a página de um café */
 .transicao {
   position: fixed;
   inset: 0;

@@ -1,4 +1,4 @@
-/* ===== Páginas das etapas ainda sem conteúdo ===== */
+/* Páginas das etapas ainda sem conteúdo */
 .pagina-etapa { margin: 0; padding: 24px; min-height: 100vh; box-sizing: border-box; }
 .etapa-voltar { color: var(--suave); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--linha); }
 .etapa-voltar:hover, .etapa-voltar:focus-visible { color: var(--shu); border-color: var(--shu); }
