@@ -1,32 +1,49 @@
 #comentarios {
     max-width: 600px;
     margin: 2rem auto;
+    padding: 0 1rem;
 }
-#comentarios h2{
-    padding: 30px;
 
+#comentarios h2 {
+    margin-bottom: 1.5rem;
 }
+
 #comentarios input,
 #comentarios textarea {
     display: block;
     width: 100%;
-    margin-bottom: .5rem;
-    padding: .4rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    padding: 0.7rem;
     font: inherit;
-    color: inherit;
-    background: transparent;
-    border: 1px solid rgba(128, 128, 128, .6);
-    background-color: #f8f1e7;
+    background: #f8f1e7;
+    border: 1px solid #bbb;
+    border-radius: 6px;
 }
 
 #comentarios textarea {
-    min-height: 5rem;
+    min-height: 100px;
+    resize: vertical;
+}
+
+#comentarios input:focus,
+#comentarios textarea:focus {
+    outline: none;
+    border-color: #8b6f47;
 }
 
 #comentarios form button {
+    padding: 0.6rem 1rem;
     font: inherit;
-    padding: .35rem .9rem;
+    color: white;
+    background: #8b6f47;
+    border: 0;
+    border-radius: 6px;
     cursor: pointer;
+}
+
+#comentarios form button:hover {
+    background: #735a39;
 }
 
 #comentarios ul {
@@ -36,35 +53,37 @@
 }
 
 #comentarios li {
-    padding: .75rem 0;
-    border-top: 1px solid rgba(128, 128, 128, .35);
+    padding: 1rem 0;
+    border-top: 1px solid #ddd;
 }
 
 #comentarios li p {
-    margin: .25rem 0 .5rem;
+    margin: 0.5rem 0;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
 #comentarios li button {
+    padding: 0;
     font: inherit;
-    font-size: .85em;
-    color: inherit;
-    opacity: .7;
-    cursor: pointer;
+    font-size: 0.85rem;
+    color: #735a39;
     background: none;
     border: 0;
-    padding: 0;
+    cursor: pointer;
     text-decoration: underline;
 }
 
 @media (max-width: 480px) {
     #comentarios {
         margin: 1rem auto;
-        padding: 0 12px;
     }
 
     #comentarios h2 {
-        padding: 16px 0;
+        font-size: 1.4rem;
+    }
+
+    #comentarios form button {
+        width: 100%;
     }
 }
