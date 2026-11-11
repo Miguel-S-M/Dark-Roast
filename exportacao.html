@@ -61,18 +61,28 @@
           aria-label="Fechar desafio">×</button>
         <p class="desafio-aviao-etiqueta">DESAFIO DE PROGRAMAÇÃO · JAVASCRIPT</p>
         <h2 id="desafio-aviao-titulo">Você achou o erro!</h2>
-        <p>O avião está se deslocando para a direita, mas sua orientação está invertida.
-          Encontre a linha incorreta e corrija o código para fazê-lo voar normalmente.</p>
-        <label for="desafio-aviao-codigo">Corrija o valor de <code>escalaHorizontal</code>:</label>
+        <p>O sistema de navegação identificou uma inconsistência na rota da aeronave.
+          Analise o código, corrija a configuração e execute novamente.</p>
+        <label for="desafio-aviao-codigo">Arquivo: sistema-de-navegacao.js</label>
         <textarea id="desafio-aviao-codigo" spellcheck="false" autocapitalize="off"
-          autocomplete="off" aria-describedby="desafio-aviao-ajuda">const escalaHorizontal = 1;
+          autocomplete="off" aria-label="Código JavaScript do sistema de navegação">const rota = {
+  partida: "esquerda",
+  chegada: "direita"
+};
 
-if (escalaHorizontal === -1) {
-  console.log("Orientação corrigida!");
-}</textarea>
-        <p class="desafio-aviao-ajuda" id="desafio-aviao-ajuda">
-          Dica: <code>scaleX(-1)</code> espelha a imagem horizontalmente.
-        </p>
+function validarRota(plano) {
+  return plano.partida !== plano.chegada;
+}
+
+function iniciarVoo(plano) {
+  if (!validarRota(plano)) {
+    return "Rota inválida";
+  }
+
+  return "Rota carregada";
+}
+
+console.log(iniciarVoo(rota));</textarea>
         <div class="desafio-aviao-acoes">
           <button type="button" id="desafio-aviao-executar">Executar correção</button>
           <span id="desafio-aviao-status" role="status" aria-live="polite"></span>
@@ -116,17 +126,19 @@ if (escalaHorizontal === -1) {
     });
 
     executar.addEventListener("click", () => {
-      // O desafio aceita a correção do valor, sem executar código digitado pelo visitante.
-      const linhaCorreta = /const\s+escalaHorizontal\s*=\s*-1\s*;/.test(codigo.value);
-      if (!linhaCorreta) {
-        status.textContent = "Ainda não! O valor precisa ser -1. Tente novamente.";
+      // Valida a configuração esperada sem executar código escrito pelo visitante.
+      const rotaCorrigida =
+        /partida\s*:\s*["']direita["']\s*,\s*chegada\s*:\s*["']esquerda["']/.test(codigo.value);
+
+      if (!rotaCorrigida) {
+        status.textContent = "Configuração rejeitada. Revise o código e tente novamente.";
         status.className = "erro";
         return;
       }
 
-      aviao.classList.add("orientacao-corrigida");
       abrir.classList.add("desafio-resolvido");
-      status.textContent = "Correto! O avião agora está voando na direção certa.";
+      abrir.classList.add("rota-corrigida");
+      status.textContent = "Rota validada. Sistema de navegação atualizado.";
       status.className = "sucesso";
       executar.disabled = true;
       codigo.readOnly = true;

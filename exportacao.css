@@ -108,8 +108,12 @@
   outline-offset: 6px;
   border-radius: 8px;
 }
-.porto-aviao-botao.orientacao-corrigida .porto-aviao {
-  scale: -1 1;
+.porto-aviao-botao.rota-corrigida {
+  animation-name: voa-corrigido;
+}
+@keyframes voa-corrigido {
+  from { transform: translateX(calc(100vw + 160px)); }
+  to { transform: translateX(-160px); }
 }
 .porto-aviao-botao.desafio-resolvido {
   filter: drop-shadow(0 0 9px rgba(120, 220, 170, 0.55));
