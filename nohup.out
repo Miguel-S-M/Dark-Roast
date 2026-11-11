@@ -1,0 +1,26 @@
+127.0.0.1 - - [11/Nov/2026 20:13:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:09] "GET /animacoes.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:09] "GET /comentarios.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:09] "GET /base.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /desenhos.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /animacoes.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /comentarios.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /base.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /contas.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /index.css HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /banco.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /util.js HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/cena/cena-exportacao.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/png/grao-3.png HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/cena/cena-cultivo.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/cena/cena-torra.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/cena/cena-colheita.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/png/grao-2.png HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/png/foice.png HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:10] "GET /ilustracoes/png/grao-1.png HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:11] code 404, message File not found
+127.0.0.1 - - [11/Nov/2026 20:13:11] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [11/Nov/2026 20:13:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Nov/2026 20:13:36] "GET / HTTP/1.1" 200 -
