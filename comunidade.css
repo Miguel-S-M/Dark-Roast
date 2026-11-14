@@ -221,3 +221,12 @@
     width: 100%;
   }
 }
+
+.comunidade .botao{
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.comunidade .botao:hover{
+  transform: translateY(-2px);
+  filter: brightness(0.92);
+  }
