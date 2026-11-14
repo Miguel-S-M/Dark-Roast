@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Comunidade · Dark Roast</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="comunidade.css">
+  <link rel="stylesheet" href="base.css">
+
+  <script src="util.js" defer></script>
+  <script src="banco.js" defer></script>
+  <script src="contas.js" defer></script>
+  <script src="base.js" defer></script>
+  <script src="comunidade.js" defer></script>
+</head>
+
+<body class="origem pagina-app comunidade">
+
+  <header class="app-topo">
+    <a class="app-voltar" href="index.html">Voltar ao início</a>
+
+    <p class="app-secao">
+      <span class="kanji" aria-hidden="true">珈</span>
+      Comunidade
+    </p>
+
+    <div class="conta-barra" data-conta></div>
+  </header>
+
+  <main class="app-miolo">
+
+    <section class="app-abertura">
+      <h1>Comunidade Dark Roast</h1>
+
+      <p class="app-lead">
+        Um espaço para compartilhar ideias, conversar
+        e descobrir novidades sobre o universo do café.
+      </p>
+
+      <p id="resumo" aria-live="polite"></p>
+    </section>
+
+    <section class="painel">
+      <h2>Compartilhe uma publicação</h2>
+
+      <form class="app-form" id="form-publicacao">
+
+        <div class="campo">
+          <label for="titulo-publicacao">Título</label>
+          <input
+            type="text"
+            id="titulo-publicacao"
+            maxlength="80"
+            placeholder="Dê um título à sua publicação"
+            required
+          >
+        </div>
+
+        <div class="campo">
+          <label for="texto-publicacao">O que você gostaria de compartilhar?</label>
+          <textarea
+            id="texto-publicacao"
+            maxlength="1000"
+            placeholder="Escreva sua publicação..."
+            required
+          ></textarea>
+        </div>
+
+        <div class="campo">
+          <label for="categoria-publicacao">Categoria</label>
+          <select id="categoria-publicacao" required>
+            <option value="Geral">Geral</option>
+            <option value="Cafés">Cafés</option>
+            <option value="Cultivo">Cultivo</option>
+            <option value="Torra">Torra</option>
+            <option value="Dicas">Dicas</option>
+          </select>
+        </div>
+
+        <p id="erro-publicacao" role="alert"></p>
+
+        <button class="botao" type="submit">
+          Publicar
+        </button>
+
+      </form>
+    </section>
+
+    <section class="painel">
+      <h2>Explore as publicações</h2>
+
+      <div
+        class="chips"
+        id="categorias"
+        role="group"
+        aria-label="Filtrar publicações"
+      ></div>
+
+      <div id="lista-publicacoes"></div>
+    </section>
+
+  </main>
+
+</body>
+</html>

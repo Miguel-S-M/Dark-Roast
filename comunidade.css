@@ -1,0 +1,223 @@
+.comunidade {
+  --papel: #f3e9dc;
+  --tinta: #2a2622;
+  --suave: #6f665b;
+  --linha: #cdbfa8;
+  --destaque: #b2312a;
+}
+
+.app-miolo {
+  width: min(100%, 1050px);
+  margin: 0 auto;
+}
+
+.app-abertura {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.app-abertura h1 {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.app-lead {
+  max-width: 650px;
+  margin: 15px auto;
+  color: var(--suave);
+  line-height: 1.8;
+}
+
+.painel {
+  background: #f5f0e6;
+  border: 1px solid var(--linha);
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 28px;
+  box-shadow: 0 3px 12px #2a26220c;
+}
+
+.painel h2 {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 22px;
+}
+
+.app-form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  background: #fffdf9;
+  color: var(--tinta);
+  font: inherit;
+}
+
+.campo textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+  outline: 2px solid #b2312a55;
+  border-color: var(--destaque);
+}
+
+.botao {
+  width: fit-content;
+  padding: 11px 22px;
+  border: 1px solid var(--destaque);
+  border-radius: 3px;
+  background: var(--destaque);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.botao:hover {
+  background: #85251f;
+  transform: translateY(-2px);
+}
+
+.botao:focus-visible {
+  outline: 2px solid var(--tinta);
+  outline-offset: 3px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+
+.chip {
+  padding: 8px 15px;
+  border: 1px solid var(--linha);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+  font: inherit;
+  transition: 0.2s;
+}
+
+.chip:hover,
+.chip[aria-pressed="true"] {
+  background: var(--destaque);
+  border-color: var(--destaque);
+  color: white;
+}
+
+.publicacao {
+  padding: 22px 0;
+  border-top: 1px solid var(--linha);
+}
+
+.publicacao h3 {
+  margin: 0 0 8px;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.publicacao p {
+  color: var(--suave);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.publicacao-meta {
+  font-size: 0.85rem;
+  color: var(--suave);
+}
+
+.publicacao-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.publicacao-acoes button {
+  padding: 8px 12px;
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--tinta);
+  font: inherit;
+  cursor: pointer;
+}
+
+.publicacao-acoes button:hover {
+  border-color: var(--destaque);
+  color: var(--destaque);
+}
+
+#erro-publicacao {
+  color: var(--destaque);
+}
+
+#resumo {
+  color: var(--suave);
+}
+
+.vazio {
+  padding: 25px;
+  text-align: center;
+  color: var(--suave);
+}
+
+.comentarios {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--linha);
+}
+
+.comentario {
+  padding: 10px 0;
+  border-bottom: 1px solid #cdbfa866;
+}
+
+.comentario strong {
+  color: var(--tinta);
+}
+
+@media (max-width: 600px) {
+  .painel {
+    padding: 17px;
+  }
+
+  .publicacao-acoes {
+    gap: 7px;
+  }
+
+  .botao {
+    width: 100%;
+  }
+}
