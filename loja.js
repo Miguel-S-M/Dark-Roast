@@ -87,7 +87,7 @@
 
   function finalizar() {
     const feito = Carrinho.finalizar();
-    window.DarkRoast.aviso(feito ? "Pedido registrado." : "Não foi possível registrar o pedido neste navegador.");
+    window.DarkRoast.aviso(feito ? "Pedido registrado (simulação, sem pagamento)." : "Não foi possível registrar o pedido neste navegador.");
     desenhar();
   }
 

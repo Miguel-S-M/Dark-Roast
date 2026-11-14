@@ -1,0 +1,31 @@
+/* Visual de pixel art: o quinto portão da página inicial, a cena dele e o que o monte.html usa em comum */
+.pixelado, .px { image-rendering: pixelated; image-rendering: crisp-edges; }
+.px { display: block; max-width: 100%; height: auto; }
+
+.portao-pixel .pixel-torii { display: block; width: 100%; height: auto; image-rendering: pixelated; opacity: 0.85; transition: opacity 0.2s, transform 0.2s steps(3); }
+.portao-pixel:hover .pixel-torii, .portao-pixel:focus-visible .pixel-torii { opacity: 1; transform: translateY(-3px); }
+.portao-pixel .portao-texto { left: 24%; right: 24%; top: 38%; }
+.portao-pixel .portao-kanji { color: var(--tinta); }
+.portao-pixel .portao-nome { font-family: "DotGothic16", "Zen Kaku Gothic New", monospace; line-height: 1.25; }
+
+.petala-pixel { position: absolute; left: 0; top: 0; image-rendering: pixelated; }
+.pixel-titulo {
+  position: absolute;
+  left: 50%;
+  top: clamp(12px, 3vh, 36px);
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 12px 26px 14px;
+  text-align: center;
+  color: #f3e9dc;
+  font-family: "DotGothic16", "Zen Kaku Gothic New", monospace;
+  background: rgba(15, 12, 42, 0.82);
+  border: 3px solid #f3e9dc;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.6);
+}
+.pixel-titulo span { font-size: 1.5rem; line-height: 1; color: #f4a6b8; }
+.pixel-titulo strong { font-weight: 400; font-size: clamp(1.2rem, 3.2vw, 1.9rem); letter-spacing: 0.06em; }
+.pixel-titulo small { font-size: 0.85rem; color: #cfc6e8; animation: piscar 1.2s steps(2) infinite; }
+@keyframes piscar { 50% { opacity: 0.25; } }

@@ -1,4 +1,4 @@
-// Animação dos quatro portões da página inicial: o portão vai ao centro e a cena abre
+// Animação dos portões da página inicial: o portão vai ao centro e a cena abre
 (function () {
   const INTRO = 700; // ms que o portão leva para ir ao centro, antes da cena aparecer
   const PNG = "ilustracoes/png/", CENA = "ilustracoes/cena/";
@@ -7,6 +7,8 @@
     torra:      { arq: "cena-torra.jpg",      iw: 1915, ih: 1262, cx: 0.499, cy: 0.482, cor: "#120806", efeito: "brasas" },
     colheita:   { arq: "cena-colheita.jpg",   iw: 1915, ih: 1285, cx: 0.497, cy: 0.472, cor: "#efd9a4", efeito: "redemoinho" },
     exportacao: { arq: "cena-exportacao.jpg", iw: 1915, ih: 1285, cx: 0.495, cy: 0.41,  cor: "#10233b", efeito: "mar" },
+    // a cena do quinto portão é pixel art desenhada em canvas (pixel.js), não um arquivo
+    monte:      { gerar: () => Pixel.cena().toDataURL(), pixel: true, iw: 320, ih: 211, cx: 0.5, cy: 0.45, cor: "#0f0c2a", efeito: "pixel" },
   };
   const rnd = (a, b) => a + Math.random() * (b - a);
   const pick = (v) => v[Math.floor(Math.random() * v.length)];
@@ -66,6 +68,17 @@
         loop(e, quadros, rnd(6000, 10000), rnd(0, 9000));
       }
     },
+    pixel(fx, W, H) {
+      const cores = ["#f4a6b8", "#e87fa0", "#fbd4de"];
+      for (let i = 0; i < 34; i++) {
+        const p = div("petala-pixel", fx), s = pick([4, 6, 8]), x = rnd(0, W);
+        p.style.width = p.style.height = s + "px"; p.style.background = pick(cores);
+        p.animate([{ transform: `translate(${x}px,-20px)` }, { transform: `translate(${x + rnd(-120, 120)}px,${H + 20}px)` }],
+          { duration: rnd(7000, 14000), delay: -rnd(0, 14000), iterations: Infinity, easing: "steps(40)" });
+      }
+      const titulo = div("pixel-titulo", fx);
+      titulo.innerHTML = '<span lang="ja">調合</span><strong>Monte do seu jeito</strong><small>clique para começar</small>';
+    },
     mar(fx, W, H, pai, lay, src) {
       [[0.5, 3200, 9, 0.5], [0.74, 2500, 7, -0.6]].forEach(([corte, dur, amp, rot]) => {
         const o = imagem(src, "cena-img onda", pai);
@@ -93,14 +106,14 @@
   };
 
   function cena(nome, W, H, link) {
-    const c = CENAS[nome], lay = layout(W, H, c), src = CENA + c.arq;
+    const c = CENAS[nome], lay = layout(W, H, c), src = c.gerar ? c.gerar() : CENA + c.arq;
     const fundo = div("cena-fundo"); fundo.style.background = c.cor;
     anima(fundo, [{ opacity: 0 }, { opacity: 1 }], { duration: 500 });
     const cam = div("cena-cam"); cam.style.transformOrigin = `${lay.gx}px ${lay.gy}px`;
     anima(cam, [{ transform: "scale(1.14)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 1100, easing: "cubic-bezier(.2,.7,.2,1)" });
     const deriva = div("cena-deriva", cam); deriva.style.transformOrigin = `${lay.gx}px ${lay.gy}px`;
     deriva.animate([{ transform: "scale(1)" }, { transform: "scale(1.035)" }], { duration: 9000, direction: "alternate", iterations: Infinity, easing: "ease-in-out", delay: 1100 });
-    const im = imagem(src, "cena-img", deriva);
+    const im = imagem(src, "cena-img" + (c.pixel ? " pixelado" : ""), deriva);
     Object.assign(im.style, { width: lay.dw + "px", height: lay.dh + "px", left: lay.ox + "px", top: lay.oy + "px" });
     const fx = div("fx", deriva); anima(fx, [{ opacity: 0 }, { opacity: 1 }], { duration: 900, delay: 900 });
     EFEITOS[c.efeito](fx, W, H, deriva, lay, src);
@@ -142,7 +155,8 @@
     inicio = setTimeout(() => { if (aberto && !saindo) cena(nome, W, H, link); }, INTRO);
   }
 
-  Object.values(CENAS).forEach((c) => { new Image().src = CENA + c.arq; });
+  Object.values(CENAS).forEach((c) => { if (c.arq) new Image().src = CENA + c.arq; });
+  document.querySelectorAll("img.pixel-torii").forEach((img) => { img.src = Pixel.torii().toDataURL(); });
   ["grao-1", "grao-2", "grao-3", "foice"].forEach((n) => { new Image().src = PNG + n + ".png"; });
 
   document.querySelectorAll(".portao[data-animacao]").forEach((a) =>

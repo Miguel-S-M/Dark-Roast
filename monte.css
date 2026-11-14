@@ -1,0 +1,126 @@
+/* Página "Monte do seu jeito": painel em pixel art sobre a cena da noite */
+.pagina-monte {
+  --noite: #0f0c2a;
+  --painel: #1d1740;
+  --papel2: #f3e9dc;
+  --ouro: #f2c14e;
+  --rosa: #f4a6b8;
+  font-family: "DotGothic16", "Zen Kaku Gothic New", monospace;
+  background: var(--noite);
+}
+.pagina-monte::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(rgba(15, 12, 42, 0.55), rgba(15, 12, 42, 0.75)), var(--cena) center bottom / cover no-repeat;
+  image-rendering: pixelated;
+}
+.pagina-monte h1, .pagina-monte h2, .pagina-monte h3 { font-family: "DotGothic16", monospace; letter-spacing: 0.05em; }
+.monte { max-width: 960px; margin: 0 auto; padding: clamp(16px, 4vw, 40px) clamp(12px, 3vw, 24px) 64px; }
+
+.monte-trilha { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; font-size: 0.8rem; }
+.monte-trilha li { padding: 4px 10px; color: #9b94bd; background: rgba(15, 12, 42, 0.8); border: 2px solid #4a4470; }
+.monte-trilha li.feito { color: var(--papel2); border-color: #e0453a; }
+.monte-trilha li.atual { color: var(--noite); background: var(--ouro); border-color: var(--ouro); }
+
+.monte-painel {
+  padding: clamp(16px, 4vw, 32px);
+  color: var(--papel2);
+  background: rgba(29, 23, 64, 0.92);
+  border: 4px solid var(--papel2);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.55);
+}
+.tela h1 { margin: 0 0 8px; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 400; text-align: left; }
+.tela-lead { margin: 0 0 22px; max-width: 62ch; line-height: 1.8; color: #cfc6e8; }
+.tela h1:focus { outline: none; }
+
+.cartoes { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.cartao {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  justify-items: start;
+  padding: 14px;
+  font: inherit;
+  text-align: left;
+  color: var(--papel2);
+  background: var(--noite);
+  border: 3px solid #6b6396;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  transition: transform 0.12s steps(2), box-shadow 0.12s steps(2);
+}
+.cartao:hover, .cartao:focus-visible { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #000; border-color: var(--rosa); outline: none; }
+.cartao[aria-pressed="true"] { border-color: var(--ouro); background: #2a2255; }
+.cartao strong { font-weight: 400; font-size: 1.1rem; }
+.cartao small { color: #9b94bd; }
+.cartao span { font-size: 0.9rem; line-height: 1.5; color: #cfc6e8; }
+.cartao.pequeno { padding: 10px 12px; }
+
+.px-botao {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font: inherit;
+  color: #fff;
+  text-decoration: none;
+  background: #e0453a;
+  border: 3px solid #fff;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+}
+.px-botao:hover { filter: brightness(1.12); }
+.px-botao:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 #000; }
+.px-botao:focus-visible { outline: 3px solid var(--ouro); outline-offset: 3px; }
+.px-botao.claro { color: var(--papel2); background: transparent; border-color: #6b6396; }
+.px-botao.claro:hover { border-color: var(--rosa); filter: none; }
+.px-botao.grande { padding: 0.9rem 1.6rem; font-size: 1.15rem; touch-action: none; user-select: none; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
+.jogo-linha { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; margin-bottom: 18px; }
+.jogo-info { display: grid; gap: 14px; justify-items: start; min-width: 200px; }
+.estalo { min-height: 1.6em; margin: 0; font-size: 1.2rem; color: var(--ouro); }
+
+.barra-torra { position: relative; height: 26px; margin: 28px 0 8px; background: var(--noite); border: 3px solid var(--papel2); }
+.barra-preenchimento { height: 100%; width: 0; background: repeating-linear-gradient(90deg, #e0453a 0 8px, #b2312a 8px 10px); }
+.barra-torra .marca { position: absolute; top: -6px; bottom: -6px; width: 3px; background: var(--ouro); }
+.barra-torra .marca small { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 0.72rem; color: var(--ouro); }
+.barra-nivel .faixa { position: absolute; top: 0; bottom: 0; background: rgba(79, 191, 107, 0.4); border-left: 3px solid #4fbf6b; border-right: 3px solid #4fbf6b; }
+.barra-nivel .barra-preenchimento { background: repeating-linear-gradient(90deg, #6aa6e0 0 8px, #4f86bf 8px 10px); }
+
+.resultado { margin-top: 16px; padding: 14px 16px; border: 3px solid var(--ouro); background: var(--noite); }
+.resultado[hidden] { display: none; }
+.resultado strong { display: block; margin-bottom: 4px; font-weight: 400; font-size: 1.25rem; color: var(--ouro); }
+.resultado p { margin: 0; line-height: 1.7; }
+
+.previa-linha { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+.previa-linha .cartoes { flex: 1; min-width: 260px; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+
+.final { display: flex; flex-wrap: wrap; gap: clamp(18px, 4vw, 40px); align-items: flex-start; }
+.final-texto { flex: 1; min-width: 280px; }
+.final-texto p { margin: 0 0 12px; line-height: 1.85; color: #e6def5; }
+.perfil { display: grid; gap: 6px; margin: 18px 0 0; padding: 0; list-style: none; }
+.perfil li { display: flex; align-items: center; gap: 12px; }
+.perfil span.rotulo { width: 6.5em; color: #cfc6e8; }
+.perfil .quadrado { display: inline-block; width: 18px; height: 12px; margin-right: 3px; background: #3a3366; }
+.perfil .quadrado.on { background: var(--ouro); }
+
+@media (max-width: 640px) {
+  .jogo-linha { justify-content: center; }
+  .monte-painel { box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.55); }
+}
+
+/* barra com as etapas e o botão da vitrine */
+.monte-barra { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
+.monte-barra .monte-trilha { margin: 0; }
+.px-botao.pequeno { padding: 0.25rem 0.9rem; font-size: 0.85rem; box-shadow: 3px 3px 0 #000; }
+
+/* vitrine */
+.vitrine { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; margin-bottom: 8px; }
+.vitrine-item { display: grid; gap: 8px; align-content: start; justify-items: start; padding: 14px; background: var(--noite); border: 3px solid #6b6396; box-shadow: 4px 4px 0 #000; }
+.vitrine-item h2 { margin: 0; font-size: 1.05rem; font-weight: 400; text-align: left; }
+.vitrine-sub { margin: 0; font-size: 0.85rem; line-height: 1.5; color: #cfc6e8; }
+.vitrine-item small { color: #9b94bd; }
+.vitrine-item .acoes { margin-top: 4px; }
+.vitrine-item .px-botao { padding: 0.3rem 0.8rem; font-size: 0.85rem; box-shadow: 3px 3px 0 #000; }
+.px-botao:disabled { opacity: 0.6; cursor: default; filter: none; }
