@@ -58,7 +58,7 @@ window.CAFES = [
     nome: "Kopi Luwak",
     lugar: "Sumatra, Indonésia",
     icone: "civeta",
-    imagem: "ilustracoes/kopi-luwak-cultivo.jpg",
+    imagem: "../ilustracoes/kopi-luwak-cultivo.jpg",
   },
   {
     id: "black-ivory",
@@ -118,7 +118,7 @@ window.CAFES = [
     nome: "Black Ivory",
     lugar: "Chiang Rai, Tailândia",
     icone: "elefante",
-    imagem: "ilustracoes/black-ivory-cultivo.jpg",
+    imagem: "../ilustracoes/black-ivory-cultivo.jpg",
   },
   {
     id: "jacu-bird",
@@ -178,7 +178,7 @@ window.CAFES = [
     nome: "Jacu Bird",
     lugar: "Espírito Santo, Brasil",
     icone: "jacu",
-    imagem: "ilustracoes/jacu-bird-cultivo.jpg",
+    imagem: "../ilustracoes/jacu-bird-cultivo.jpg",
   },
   {
     id: "geisha",
@@ -238,7 +238,7 @@ window.CAFES = [
     nome: "Geisha",
     lugar: "Boquete, Panamá",
     icone: "vulcao",
-    imagem: "ilustracoes/geisha-cultivo.jpg",
+    imagem: "../ilustracoes/geisha-cultivo.jpg",
   },
   {
     id: "santa-helena",
@@ -298,7 +298,7 @@ window.CAFES = [
     nome: "Santa Helena",
     lugar: "Ilha de Santa Helena",
     icone: "ilha",
-    imagem: "ilustracoes/santa-helena-cultivo.jpg",
+    imagem: "../ilustracoes/santa-helena-cultivo.jpg",
   },
   {
     id: "blue-mountain",
@@ -358,6 +358,6 @@ window.CAFES = [
     nome: "Blue Mountain",
     lugar: "Montanhas Azuis, Jamaica",
     icone: "montanha",
-    imagem: "ilustracoes/blue-mountain-cultivo.jpg",
+    imagem: "../ilustracoes/blue-mountain-cultivo.jpg",
   },
 ];
