@@ -291,7 +291,7 @@
         botao("Montar outro café", () => { reiniciar(); ir("cafe"); }, true),
         botao("Mudar os complementos", () => ir("extras"), true),
         botao("Vitrine", () => ir("vitrine"), true),
-        Dom.criar("a", { classe: "px-botao claro", href: "../bases/loja.html?c=" + cafe.id, texto: "Ver o preço desse café" })));
+        Dom.criar("a", { classe: "px-botao claro", href: "../comunidade_enquete_loja/loja.html?c=" + cafe.id, texto: "Ver o preço desse café" })));
   };
 
   // ---------- vitrine (dados vindos do PHP/SQL por AJAX) ----------

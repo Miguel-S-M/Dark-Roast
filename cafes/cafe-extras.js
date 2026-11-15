@@ -131,7 +131,7 @@
   function linkDaLoja() {
     return secao("Levar para casa",
       "Quanto custaria ter o " + cafe.nome + " na sua xícara? A loja do Dark Roast faz a conta por quilo e guarda o carrinho na sua conta.",
-      Dom.criar("a", { classe: "extra-botao", href: "../bases/loja.html?c=" + cafe.id, texto: "Calcular o preço do " + cafe.nome }));
+      Dom.criar("a", { classe: "extra-botao", href: "../comunidade_enquete_loja/loja.html?c=" + cafe.id, texto: "Calcular o preço do " + cafe.nome }));
   }
 
   const caixa = Dom.criar("div", { classe: "extras" });
