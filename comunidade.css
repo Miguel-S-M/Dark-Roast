@@ -244,3 +244,14 @@
   outline: 2px solid var(--destaque);
   outline-offset: 2px;
 }
+
+.comunidade .chip {
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.comunidade .chip:active {
+  transform: scale(0.96);
+}
