@@ -8,6 +8,15 @@ const listaPublicacoes = document.getElementById("lista-publicacoes");
 const areaCategorias = document.getElementById("categorias");
 const resumo = document.getElementById("resumo");
 const mensagemErro = document.getElementById("erro-publicacao");
+const contadorCaracteres = document.getElementById("contador-caracteres");
+
+function atualizarContador() {
+  contadorCaracteres.textContent =
+    `${campoTexto.value.length}/1000 caracteres`;
+}
+
+campoTexto.addEventListener("input", atualizarContador);
+atualizarContador();
 
 const categorias = [
   "Todas",
