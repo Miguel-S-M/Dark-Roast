@@ -255,3 +255,16 @@
 .comunidade .chip:active {
   transform: scale(0.96);
 }
+
+@media (max-width: 600px) {
+  .comunidade .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .comunidade .chip {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
