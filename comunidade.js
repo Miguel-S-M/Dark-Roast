@@ -118,6 +118,10 @@ async function carregarPublicacoes() {
 }
 
 function normalizarPublicacao(post) {
+  if (!post || typeof post !== "object" || Array.isArray(post)) {
+    post = {};
+  }
+
   return {
     id: post.id || Dados.criarId(),
     titulo: post.titulo || "Sem título",
