@@ -211,10 +211,13 @@ function alternarCurtida(id) {
     post.curtidas.push(usuario.chave);
   }
 
-  if (salvarPublicacoes()) {
-    renderizar();
-  }
+  if (!salvarPublicacoes()) {
+  post.comentarios.pop();
+  return;
 }
+
+campo.value = "";
+renderizar();
 
 function excluirPublicacao(id) {
   const usuario = exigirUsuario();
