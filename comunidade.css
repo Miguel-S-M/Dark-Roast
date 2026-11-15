@@ -222,11 +222,6 @@
   }
 }
 
-.comunidade .botao:hover{
-  transform: translateY(-2px);
-  filter: brightness(0.92);
-  }
-
 .comunidade #contador-caracteres {
   color: var(--suave);
   font-size: 0.8rem;
