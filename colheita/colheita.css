@@ -148,6 +148,8 @@
 .col-letreiro .kanji { display: block; font-family: "Shippori Mincho", serif; font-size: 2.2rem; line-height: 1; color: var(--shu); }
 .col-titulo { margin: 4px 0 6px; font-family: "Shippori Mincho", serif; font-weight: 400; font-size: 1.3rem; letter-spacing: 0.1em; }
 .col-dica { margin: 0; font-size: 0.85rem; color: #6f665b; max-width: 30ch; }
+.col-comunidade { display: inline-block; margin-top: 8px; font-size: 0.8rem; line-height: 1.4; color: #2a2622; text-decoration: none; border-bottom: 1px solid var(--shu); }
+.col-comunidade:hover, .col-comunidade:focus-visible { color: var(--shu); }
 
 /* Prateleira com as sacas */
 .pilha {
