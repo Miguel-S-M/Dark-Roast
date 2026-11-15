@@ -238,7 +238,6 @@ function alternarCurtida(id) {
   renderizar();
 }
 
-campo.value = "";
 renderizar();
 
 function excluirPublicacao(id) {
@@ -302,10 +301,13 @@ function adicionarComentario(id, campo) {
     criadaEm: Date.now()
   });
 
-  if (salvarPublicacoes()) {
-    renderizar();
-  }
+ if (!salvarPublicacoes()) {
+  post.comentarios.pop();
+  return;
 }
+
+campo.value = "";
+renderizar();
 
 function criarPublicacao(post) {
   const usuario = usuarioAtual();
