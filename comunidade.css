@@ -268,3 +268,18 @@
     text-align: center;
   }
 }
+@keyframes aparecerPublicacao {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comunidade .publicacao {
+  animation: aparecerPublicacao 0.35s ease both;
+}
