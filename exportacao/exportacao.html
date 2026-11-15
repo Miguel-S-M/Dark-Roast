@@ -26,7 +26,7 @@
   <main class="porto">
     <div class="porto-ceu" aria-hidden="true"></div>
     <div class="porto-lua" aria-hidden="true"></div>
-    <img class="porto-aviao" src="../ilustracoes/png/aviao.png" alt="" aria-hidden="true">
+    <img class="porto-aviao" id="porto-aviao" src="../ilustracoes/png/aviao.png" alt="Avião passando pelo céu" role="button" tabindex="0" aria-label="Abrir código secreto do avião" title="Psst... clique no avião">
     <div class="porto-mar" aria-hidden="true"></div>
     <img class="porto-navio" src="../ilustracoes/png/navio.png" alt="" aria-hidden="true">
 
@@ -53,6 +53,94 @@
         <span>Calcule o preço e monte o seu carrinho.</span>
       </a>
     </nav>
+
+    <section class="aviao-editor" id="aviao-editor" role="dialog" aria-modal="true" aria-labelledby="aviao-editor-titulo" hidden>
+      <div class="aviao-editor-cartao">
+        <button class="aviao-fechar" id="aviao-fechar" type="button" aria-label="Fechar">×</button>
+        <p class="aviao-editor-etiqueta">✦ EASTER EGG DESCOBERTO ✦</p>
+        <h2 id="aviao-editor-titulo">Tem algo errado com esse voo...</h2>
+        <p>O sistema de navegação apresenta inconsistências. Restaure a lógica do voo.</p>
+        <label for="codigo-aviao">sistema_navegacao.js</label>
+        <textarea id="codigo-aviao" spellcheck="false" autocapitalize="off" autocomplete="off">const rota = ["oeste", "leste"];
+const vetor = -1;
+
+const origemValida = rota[0] === "leste";
+const destinoValido = rota[1] === "oeste";
+const sentidoValido = vetor === 1;
+
+if (origemValida && destinoValido && sentidoValido) {
+  aviao.classList.add("corrigido");
+}</textarea>
+        <div class="aviao-editor-rodape">
+          <span id="aviao-status" role="status">● Código com erro</span>
+          <button class="aviao-executar" id="aviao-executar" type="button">▶ Validar sistema</button>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script>
+    (() => {
+      const aviao = document.getElementById("porto-aviao");
+      const editor = document.getElementById("aviao-editor");
+      const codigo = document.getElementById("codigo-aviao");
+      const status = document.getElementById("aviao-status");
+      const executar = document.getElementById("aviao-executar");
+      const fechar = document.getElementById("aviao-fechar");
+
+      function abrirEditor() {
+        editor.hidden = false;
+        codigo.focus();
+      }
+      function fecharEditor() {
+        editor.hidden = true;
+        aviao.focus();
+      }
+
+      aviao.addEventListener("click", abrirEditor);
+      aviao.addEventListener("keydown", (evento) => {
+        if (evento.key === "Enter" || evento.key === " ") {
+          evento.preventDefault();
+          abrirEditor();
+        }
+      });
+      fechar.addEventListener("click", fecharEditor);
+      editor.addEventListener("click", (evento) => {
+        if (evento.target === editor) fecharEditor();
+      });
+      document.addEventListener("keydown", (evento) => {
+        if (evento.key === "Escape" && !editor.hidden) fecharEditor();
+      });
+
+      executar.addEventListener("click", () => {
+        // Validação estática: o texto editado nunca é executado como JavaScript.
+        const fonte = codigo.value.replace(/\s+/g, "");
+
+        // Compara as instruções esperadas após remover espaços e quebras de linha.
+        // Assim, indentação e linhas em branco não interferem na validação.
+        const instrucoesObrigatorias = [
+          'constrota=["leste","oeste"];',
+          'constvetor=1;',
+          'constorigemValida=rota[0]==="leste";',
+          'constdestinoValido=rota[1]==="oeste";',
+          'constsentidoValido=vetor===1;',
+          'if(origemValida&&destinoValido&&sentidoValido){aviao.classList.add("corrigido");}'
+        ];
+        const codigoValido = instrucoesObrigatorias.every((trecho) => fonte.includes(trecho));
+        if (codigoValido) {
+          aviao.classList.add("corrigido");
+          status.textContent = "✓ Sistema restaurado. Voo autorizado.";
+          status.classList.add("sucesso");
+          executar.textContent = "✓ Sistema restaurado";
+          executar.disabled = true;
+        } else {
+          aviao.classList.remove("corrigido");
+          status.textContent = "● Falha na validação do sistema.";
+          status.classList.remove("sucesso");
+          executar.textContent = "▶ Validar sistema";
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
