@@ -80,10 +80,10 @@ async function carregarPublicacoes() {
   const salvas = Dados.ler(CHAVE_PUBLICACOES, null);
 
   if (Array.isArray(salvas)) {
-    publicacoes = salvas;
-    renderizar();
-    return;
-  }
+  publicacoes = salvas.map(normalizarPublicacao);
+  renderizar();
+  return;
+}
 
   try {
     const resposta = await fetch("publicacoes.json");
