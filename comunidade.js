@@ -285,6 +285,12 @@ function adicionarComentario(id, campo) {
   const texto = campo.value.trim();
 
   if (!texto) return;
+  if (texto.length > 300) {
+  window.DarkRoast.aviso(
+    "O comentário deve ter no máximo 300 caracteres."
+  );
+  return;
+}
 
   const post = publicacoes.find(item => item.id === id);
 
