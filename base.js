@@ -109,8 +109,8 @@
     const noCarrinho = typeof Carrinho === "undefined" ? 0 : Carrinho.quantidade();
     document.querySelectorAll("[data-conta]").forEach((caixa) => {
       const itens = [
-        Dom.criar("a", { classe: "barra-link", href: "../enquetes.html", "aria-current": location.pathname.endsWith("enquetes.html") ? "page" : null, texto: "Enquetes" }),
-        Dom.criar("a", { classe: "barra-link", href: "../loja.html", "aria-current": location.pathname.endsWith("loja.html") ? "page" : null, texto: noCarrinho ? "Loja (" + noCarrinho + ")" : "Loja" }),
+        Dom.criar("a", { classe: "barra-link", href: "../bases/enquetes.html", "aria-current": location.pathname.endsWith("enquetes.html") ? "page" : null, texto: "Enquetes" }),
+        Dom.criar("a", { classe: "barra-link", href: "../bases/loja.html", "aria-current": location.pathname.endsWith("loja.html") ? "page" : null, texto: noCarrinho ? "Loja (" + noCarrinho + ")" : "Loja" }),
         Dom.criar("button", { type: "button", classe: "barra-botao", texto: "Sobre", onclick: abrirSobre }),
       ];
       if (usuario) {
