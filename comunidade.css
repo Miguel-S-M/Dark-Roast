@@ -283,3 +283,13 @@
 .comunidade .publicacao {
   animation: aparecerPublicacao 0.35s ease both;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .comunidade .publicacao,
+  .comunidade .botao,
+  .comunidade .chip {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
