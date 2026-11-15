@@ -46,7 +46,7 @@
 
   const nota = dados.nota && Dom.criar("aside", { classe: "cafe-nota" },
     Dom.criar("strong", { texto: dados.nota[0] }), Dom.criar("p", { texto: dados.nota[1] }));
-  const enquete = chaveEtapa === "torra" && Dom.criar("a", { classe: "cafe-enquete", href: "../enquetes.html", texto: "Vote na enquete: qual torra você prefere?" });
+  const enquete = chaveEtapa === "torra" && Dom.criar("a", { classe: "cafe-enquete", href: "../bases/enquetes.html", texto: "Vote na enquete: qual torra você prefere?" });
 
   principal.append(
     Dom.criar("section", { classe: "cafe-heroi" },
