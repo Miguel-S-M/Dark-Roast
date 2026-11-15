@@ -290,7 +290,7 @@ function adicionarComentario(id, campo) {
     "O comentário deve ter no máximo 300 caracteres."
   );
   return;
-}
+}}
 
   const post = publicacoes.find(item => item.id === id);
 
