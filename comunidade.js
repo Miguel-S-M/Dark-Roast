@@ -373,7 +373,11 @@ function criarPublicacao(post) {
 
   areaComentarios.append(tituloComentarios);
 
-  comentarios.forEach(comentario => {
+ comentarios
+  .filter(comentario =>
+    comentario && typeof comentario === "object"
+  )
+  .forEach(comentario => {
     const item = criarElemento("div", {
       classe: "comentario"
     });
