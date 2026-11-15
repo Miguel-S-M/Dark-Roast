@@ -196,8 +196,9 @@ formulario.addEventListener("submit", evento => {
     return;
   }
 
-  formulario.reset();
-  categoriaAtual = "Todas";
+ formulario.reset();
+atualizarContador();
+categoriaAtual = "Todas";
 
   renderizar();
 
@@ -238,7 +239,6 @@ function alternarCurtida(id) {
   renderizar();
 }
 
-campo.value = "";
 renderizar();
 
 function excluirPublicacao(id) {
@@ -285,6 +285,12 @@ function adicionarComentario(id, campo) {
   const texto = campo.value.trim();
 
   if (!texto) return;
+  if (texto.length > 300) {
+  window.DarkRoast.aviso(
+    "O comentário deve ter no máximo 300 caracteres."
+  );
+  return;
+}
 
   const post = publicacoes.find(item => item.id === id);
 
@@ -302,10 +308,13 @@ function adicionarComentario(id, campo) {
     criadaEm: Date.now()
   });
 
-  if (salvarPublicacoes()) {
-    renderizar();
-  }
+ if (!salvarPublicacoes()) {
+  post.comentarios.pop();
+  return;
 }
+
+campo.value = "";
+renderizar();
 
 function criarPublicacao(post) {
   const usuario = usuarioAtual();
@@ -374,9 +383,11 @@ function criarPublicacao(post) {
   areaComentarios.append(tituloComentarios);
 
  comentarios
-  .filter(comentario =>
-    comentario && typeof comentario === "object"
-  )
+ .filter(comentario =>
+  comentario &&
+  typeof comentario === "object" &&
+  !Array.isArray(comentario)
+)
   .forEach(comentario => {
     const item = criarElemento("div", {
       classe: "comentario"

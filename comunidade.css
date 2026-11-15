@@ -96,7 +96,7 @@
   color: white;
   font: inherit;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .botao:hover {
@@ -222,10 +222,6 @@
   }
 }
 
-.comunidade .botao{
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
 .comunidade .botao:hover{
   transform: translateY(-2px);
   filter: brightness(0.92);
@@ -331,4 +327,46 @@
 
 .comunidade .publicacao-acoes button:active {
   transform: scale(0.97);
+}
+
+.comunidade .form-comentario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.comunidade .form-comentario input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  background: #fffdf9;
+  color: var(--tinta);
+  font: inherit;
+}
+
+.comunidade .form-comentario input:focus {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+.comunidade .form-comentario button {
+  padding: 10px 16px;
+  border: 1px solid var(--destaque);
+  border-radius: 4px;
+  background: var(--destaque);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.comunidade .form-comentario button:hover {
+  background: #85251f;
+}
+
+.comunidade .form-comentario button:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 3px;
 }
