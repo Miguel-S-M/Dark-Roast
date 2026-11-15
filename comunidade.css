@@ -237,3 +237,10 @@
   text-align: right;
   margin-top: 6px;
 }
+
+.comunidade .campo input:focus,
+.comunidade .campo textarea:focus,
+.comunidade .campo select:focus {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
