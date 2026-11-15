@@ -212,8 +212,16 @@ function alternarCurtida(id) {
   }
 
   if (!salvarPublicacoes()) {
-  post.comentarios.pop();
-  return;
+    if (indice >= 0) {
+      post.curtidas.push(usuario.chave);
+    } else {
+      post.curtidas.pop();
+    }
+
+    return;
+  }
+
+  renderizar();
 }
 
 campo.value = "";
