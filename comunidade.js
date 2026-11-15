@@ -48,15 +48,25 @@ function exigirUsuario() {
 }
 
 function salvarPublicacoes() {
-  const salvou = Dados.gravar(CHAVE_PUBLICACOES, publicacoes);
+  try {
+    const salvou = Dados.gravar(CHAVE_PUBLICACOES, publicacoes);
 
-  if (!salvou) {
+    if (!salvou) {
+      window.DarkRoast.aviso(
+        "Não foi possível salvar as alterações."
+      );
+    }
+
+    return salvou;
+  } catch (erro) {
+    console.error("Erro ao salvar publicações:", erro);
+
     window.DarkRoast.aviso(
-      "Não foi possível salvar as alterações."
+      "Ocorreu um erro ao salvar as publicações."
     );
-  }
 
-  return salvou;
+    return false;
+  }
 }
 
 function formatarData(data) {
@@ -80,10 +90,10 @@ async function carregarPublicacoes() {
   const salvas = Dados.ler(CHAVE_PUBLICACOES, null);
 
   if (Array.isArray(salvas)) {
-    publicacoes = salvas;
-    renderizar();
-    return;
-  }
+  publicacoes = salvas.map(normalizarPublicacao);
+  renderizar();
+  return;
+}
 
   try {
     const resposta = await fetch("publicacoes.json");
@@ -108,6 +118,10 @@ async function carregarPublicacoes() {
 }
 
 function normalizarPublicacao(post) {
+  if (!post || typeof post !== "object" || Array.isArray(post)) {
+    post = {};
+  }
+
   return {
     id: post.id || Dados.criarId(),
     titulo: post.titulo || "Sem título",
@@ -211,10 +225,21 @@ function alternarCurtida(id) {
     post.curtidas.push(usuario.chave);
   }
 
-  if (salvarPublicacoes()) {
-    renderizar();
+  if (!salvarPublicacoes()) {
+    if (indice >= 0) {
+      post.curtidas.push(usuario.chave);
+    } else {
+      post.curtidas.pop();
+    }
+
+    return;
   }
+
+  renderizar();
 }
+
+campo.value = "";
+renderizar();
 
 function excluirPublicacao(id) {
   const usuario = exigirUsuario();
@@ -348,7 +373,11 @@ function criarPublicacao(post) {
 
   areaComentarios.append(tituloComentarios);
 
-  comentarios.forEach(comentario => {
+ comentarios
+  .filter(comentario =>
+    comentario && typeof comentario === "object"
+  )
+  .forEach(comentario => {
     const item = criarElemento("div", {
       classe: "comentario"
     });
