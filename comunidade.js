@@ -48,15 +48,25 @@ function exigirUsuario() {
 }
 
 function salvarPublicacoes() {
-  const salvou = Dados.gravar(CHAVE_PUBLICACOES, publicacoes);
+  try {
+    const salvou = Dados.gravar(CHAVE_PUBLICACOES, publicacoes);
 
-  if (!salvou) {
+    if (!salvou) {
+      window.DarkRoast.aviso(
+        "Não foi possível salvar as alterações."
+      );
+    }
+
+    return salvou;
+  } catch (erro) {
+    console.error("Erro ao salvar publicações:", erro);
+
     window.DarkRoast.aviso(
-      "Não foi possível salvar as alterações."
+      "Ocorreu um erro ao salvar as publicações."
     );
-  }
 
-  return salvou;
+    return false;
+  }
 }
 
 function formatarData(data) {
