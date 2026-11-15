@@ -323,3 +323,12 @@
   border-radius: 12px;
   background: rgba(205, 191, 168, 0.12);
 }
+
+.comunidade .publicacao-acoes button:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 3px;
+}
+
+.comunidade .publicacao-acoes button:active {
+  transform: scale(0.97);
+}
