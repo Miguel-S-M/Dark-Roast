@@ -278,6 +278,14 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .comunidade .publicacao-acoes button,
+  .comunidade .form-comentario button {
+    transition: none;
+    transform: none;
+  }
+}
+
 .comunidade .botao:focus-visible,
 .comunidade .chip:focus-visible {
   outline: 3px solid var(--destaque);
