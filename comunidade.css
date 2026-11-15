@@ -293,3 +293,9 @@
     transform: none;
   }
 }
+
+.comunidade .botao:focus-visible,
+.comunidade .chip:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 3px;
+}
