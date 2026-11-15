@@ -307,3 +307,10 @@
 .comunidade .publicacao:hover {
   box-shadow: 0 4px 14px rgba(42, 38, 34, 0.08);
 }
+
+.comunidade .comentario {
+  padding: 10px 12px;
+  border-left: 3px solid var(--linha);
+  border-radius: 4px;
+  background: rgba(205, 191, 168, 0.15);
+}
