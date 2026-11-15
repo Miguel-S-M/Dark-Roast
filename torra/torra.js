@@ -21,7 +21,7 @@
   for (let i = 0; i < 26; i++) {
     const g = document.createElement("img");
     g.className = "grao-extra";
-    g.src = `ilustracoes/png/${TAMANHOS[i % 3]}.png`;
+    g.src = `../ilustracoes/png/${TAMANHOS[i % 3]}.png`;
     g.alt = "";
     g.setAttribute("aria-hidden", "true");
     g.draggable = false;
