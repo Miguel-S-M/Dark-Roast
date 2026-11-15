@@ -314,3 +314,12 @@
   border-radius: 4px;
   background: rgba(205, 191, 168, 0.15);
 }
+
+.comunidade .vazio {
+  padding: 28px 18px;
+  text-align: center;
+  color: var(--suave);
+  border: 1px dashed var(--linha);
+  border-radius: 12px;
+  background: rgba(205, 191, 168, 0.12);
+}
