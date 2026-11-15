@@ -196,8 +196,9 @@ formulario.addEventListener("submit", evento => {
     return;
   }
 
-  formulario.reset();
-  categoriaAtual = "Todas";
+ formulario.reset();
+atualizarContador();
+categoriaAtual = "Todas";
 
   renderizar();
 
