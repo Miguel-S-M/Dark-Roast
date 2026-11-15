@@ -110,6 +110,7 @@
     document.querySelectorAll("[data-conta]").forEach((caixa) => {
       const itens = [
         Dom.criar("a", { classe: "barra-link", href: "../comunidade_enquete_loja/enquetes.html", "aria-current": location.pathname.endsWith("enquetes.html") ? "page" : null, texto: "Enquetes" }),
+        Dom.criar("a", { classe: "barra-link", href: "../comunidade_enquete_loja/comunidade.html", "aria-current": location.pathname.endsWith("comunidade.html") ? "page" : null, texto: "comunidade" }),
         Dom.criar("a", { classe: "barra-link", href: "../comunidade_enquete_loja/loja.html", "aria-current": location.pathname.endsWith("loja.html") ? "page" : null, texto: noCarrinho ? "Loja (" + noCarrinho + ")" : "Loja" }),
         Dom.criar("button", { type: "button", classe: "barra-botao", texto: "Sobre", onclick: abrirSobre }),
       ];
