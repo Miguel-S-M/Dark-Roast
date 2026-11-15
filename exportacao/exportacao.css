@@ -15,8 +15,27 @@
 @keyframes ondas { to { transform: translateX(50px); } }
 .porto-navio { position: absolute; z-index: 1; left: 50%; bottom: 31%; width: clamp(240px, 38vw, 480px); height: auto; transform: translateX(-50%); animation: balanca 6s ease-in-out infinite alternate; filter: drop-shadow(0 12px 10px rgba(0, 0, 0, 0.5)); }
 @keyframes balanca { from { transform: translateX(-50%) translateY(0) rotate(-1deg); } to { transform: translateX(-50%) translateY(6px) rotate(1deg); } }
-.porto-aviao { position: absolute; z-index: -1; top: 16%; left: 0; width: clamp(70px, 9vw, 120px); height: auto; opacity: 0.9; animation: voa 26s linear infinite; }
+.porto-aviao { position: absolute; z-index: 1; top: 16%; left: 0; width: clamp(70px, 9vw, 120px); height: auto; opacity: 0.9; animation: voa 26s linear infinite; cursor: pointer; pointer-events: auto; }
+.porto-aviao:focus-visible { outline: 2px dashed #efe3cc; outline-offset: 5px; border-radius: 8px; }
 @keyframes voa { from { transform: translateX(-160px); } to { transform: translateX(calc(100vw + 160px)); } }
+.porto-aviao.corrigido { animation-name: voa-corrigido; }
+@keyframes voa-corrigido { from { transform: translateX(-160px) scaleX(-1); } to { transform: translateX(calc(100vw + 160px)) scaleX(-1); } }
+
+.aviao-editor[hidden] { display: none; }
+.aviao-editor { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(3, 10, 19, 0.78); backdrop-filter: blur(5px); }
+.aviao-editor-cartao { position: relative; width: min(560px, 100%); padding: 28px; color: #e9e2d5; background: #101d2b; border: 1px solid #61748a; box-shadow: 0 20px 70px rgba(0,0,0,.55); }
+.aviao-fechar { position: absolute; top: 10px; right: 14px; border: 0; background: transparent; color: #e9e2d5; font-size: 1.8rem; cursor: pointer; }
+.aviao-editor-etiqueta { margin: 0 0 8px; color: #d7ad70; font-size: .72rem; letter-spacing: .16em; }
+.aviao-editor-cartao h2 { margin: 0 30px 10px 0; font-family: "Shippori Mincho", serif; font-weight: 500; font-size: 1.55rem; }
+.aviao-editor-cartao > p:not(.aviao-editor-etiqueta):not(.aviao-dica) { line-height: 1.6; color: #c2cbd4; }
+.aviao-editor-cartao label { display: block; margin: 18px 0 7px; color: #d7ad70; font-family: monospace; }
+#codigo-aviao { display: block; width: 100%; min-height: 220px; resize: vertical; padding: 14px; color: #d9e7d4; background: #08111b; border: 1px solid #344b60; border-radius: 4px; font: .9rem/1.65 monospace; tab-size: 2; }
+#codigo-aviao:focus { outline: 2px solid #d7ad70; outline-offset: 2px; }
+.aviao-editor-rodape { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; }
+#aviao-status { color: #e2a08b; font-size: .85rem; }
+#aviao-status.sucesso { color: #a8d5a0; }
+.aviao-executar { padding: 10px 15px; color: #17202a; background: #d7ad70; border: 0; font: inherit; font-weight: 600; cursor: pointer; }
+.aviao-executar:hover { background: #e8c58e; }
 
 .porto-letreiro { margin: 28px auto 0; width: fit-content; max-width: calc(100% - 32px); padding: 12px 34px 14px; text-align: center; color: #2a2622; background: #efe3cc; border: 1px solid #b9ad9a; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5); }
 .porto-letreiro .kanji { display: block; font-family: "Shippori Mincho", serif; font-size: 2.1rem; line-height: 1; color: #b2312a; }
