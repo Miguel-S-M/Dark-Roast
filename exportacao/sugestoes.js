@@ -69,7 +69,7 @@
   function linksCafes(ids) {
     const nomes = window.CAFES.filter((c) => ids.includes(c.id));
     return Dom.criar("p", { classe: "sug-combina" }, "Combina com: ",
-      nomes.map((c, i) => [i ? ", " : "", Dom.criar("a", { href: "cafe.html?c=" + c.id + "&e=cultivo", texto: c.nome })]));
+      nomes.map((c, i) => [i ? ", " : "", Dom.criar("a", { href: "../cafes/cafe.html?c=" + c.id + "&e=cultivo", texto: c.nome })]));
   }
 
   function cartaoPronto(item) {
