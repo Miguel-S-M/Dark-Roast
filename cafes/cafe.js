@@ -3,9 +3,9 @@
 (function () {
   "use strict";
   const ETAPAS = {
-    cultivo: { kanji: "栽培", nome: "Cultivo", voltar: "/cultivos/cultivo.html", voltarTexto: "Voltar ao mapa", passos: "Como é feito", redor: "Ao redor" },
-    colheita: { kanji: "収穫", nome: "Colheita", voltar: "/colheita/colheita.html", voltarTexto: "Voltar ao armazém", passos: "Como é colhido", redor: "Ao redor" },
-    torra: { kanji: "焙煎", nome: "Torra", voltar: "/torra/torra.html", voltarTexto: "Voltar à fornalha", passos: "Como é torrado", redor: "No torrador" },
+    cultivo: { kanji: "栽培", nome: "Cultivo", voltar: "../cultivos/cultivo.html", voltarTexto: "Voltar ao mapa", passos: "Como é feito", redor: "Ao redor" },
+    colheita: { kanji: "収穫", nome: "Colheita", voltar: "../colheita/colheita.html", voltarTexto: "Voltar ao armazém", passos: "Como é colhido", redor: "Ao redor" },
+    torra: { kanji: "焙煎", nome: "Torra", voltar: "../torra/torra.html", voltarTexto: "Voltar à fornalha", passos: "Como é torrado", redor: "No torrador" },
   };
 
   const parametros = new URLSearchParams(location.search);
