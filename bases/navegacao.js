@@ -91,17 +91,17 @@
 
         const destino = obterPaginaAnterior();
 
-        if (destino) {
+        if (destino.includes("index.html#origem")) {
+            linkRetorno.hidden = true;
+            return;
+        } else if (destino) {
             linkRetorno.href = destino;
             linkRetorno.textContent = "Voltar à página anterior";
-            linkRetorno.hidden = false;
-            console.log(document.querySelector("a#voltar-variavel"));
-            
+            linkRetorno.hidden = false;   
         } else {
-            linkRetorno.hidden = true;
-            console.log(document.querySelector("a#voltar-variavel"));
+            linkRetorno.hidden = true; 
         }
-        console.log(document.querySelector("a#voltar-variavel"));
+        
     }
 
     if (document.readyState === "loading") {
