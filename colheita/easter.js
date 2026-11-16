@@ -1,5 +1,3 @@
-// Easter egg da colheita: digite "teia" (cheet.js) e o armazém se enche de teias de aranha.
-// Arraste o espanador (ou use as setas, com o espanador focado) por cima das teias para limpar.
 (function () {
   "use strict";
   const armazem = document.querySelector(".armazem");
@@ -8,8 +6,6 @@
   const reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const rnd = (a, b) => a + Math.random() * (b - a);
   const NS = "http://www.w3.org/2000/svg";
-
-  // [x%, y%, canto, tamanho, aranha]  (x e y em % do armazém; canto = de onde a teia sai)
   const LUGARES = [
     [0, 0, "tl", 1.3, false], [100, 0, "tr", 1.35, true],
     [37.5, 3, "tr", 0.8, false], [62.5, 3, "tl", 0.85, true],
@@ -21,7 +17,6 @@
 
   let camada = null, teias = [], espanador = null, contador = null, ativo = false, tAviso;
 
-  // ---------- aviso e contador ----------
   const aviso = document.createElement("p");
   aviso.className = "ee-aviso";
   aviso.setAttribute("role", "status");
@@ -38,7 +33,6 @@
     contador.textContent = n + (n === 1 ? " teia restante" : " teias restantes");
   }
 
-  // ---------- desenho da teia ----------
   function desenharTeia() {
     const svg = document.createElementNS(NS, "svg");
     svg.setAttribute("class", "fios");
@@ -60,7 +54,6 @@
         dAneis += `M${x1.toFixed(1)} ${y1.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)} `;
       }
     }
-    // fios soltos pendurados
     let dSolto = "";
     for (let i = 0; i < 3; i++) { const [x, y] = ponto(rnd(10, 80), rnd(60, 100)); dSolto += `M${x.toFixed(1)} ${y.toFixed(1)} q${rnd(-6, 6).toFixed(1)} ${rnd(8, 16).toFixed(1)} ${rnd(-4, 4).toFixed(1)} ${rnd(16, 26).toFixed(1)} `; }
     [[d], [dAneis], [dSolto, "solto"]].forEach(([dd, cls]) => {
@@ -106,7 +99,6 @@
     atualizarContador();
   }
 
-  // ---------- poeira ----------
   function poeira(x, y, qtd) {
     if (reduz) return;
     for (let i = 0; i < qtd; i++) {
@@ -120,7 +112,6 @@
     }
   }
 
-  // ---------- limpar ----------
   function limparTeia(t) {
     t.limpa = true;
     const r = t.el.getBoundingClientRect();
@@ -168,8 +159,6 @@
       contador = espanador = camada = null; teias = []; ativo = false;
     }, 3200);
   }
-
-  // ---------- espanador ----------
   const ESPANADOR = '<svg viewBox="0 0 80 210" aria-hidden="true"><defs><linearGradient id="ee-mad" x1="0" x2="1"><stop offset="0" stop-color="#8a6a3c"/><stop offset="1" stop-color="#4a361d"/></linearGradient></defs>' +
     '<rect x="35" y="92" width="10" height="112" rx="5" fill="url(#ee-mad)"/><rect x="34" y="150" width="12" height="26" rx="2" fill="#b2312a"/>' +
     '<g transform="translate(40 88)">' +
@@ -241,10 +230,8 @@
     dizer("Quanto tempo esse armazém ficou fechado… Pegue o espanador e limpe as teias.", 4800);
   }
 
-  // ---------- gatilho de teclado (cheet.js) ----------
   function sequencia(teclas, acao) {
     if (typeof window.cheet === "function") { window.cheet(teclas, acao); return; }
-    // plano B, caso a biblioteca não carregue (sem internet, por exemplo)
     const alvo = teclas.split(" "); let i = 0;
     document.addEventListener("keydown", (e) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
