@@ -1,0 +1,45 @@
+/* Easter egg da colheita: teias de aranha e o espanador */
+
+.ee-teias { --ee-t: clamp(104px, 17vw, 240px); position: absolute; inset: 0; z-index: 6; pointer-events: none; overflow: hidden; }
+.ee-teia {
+  position: absolute; width: calc(var(--ee-t) * var(--f, 1)); height: calc(var(--ee-t) * var(--f, 1));
+  transform-origin: var(--ox, 0) 0; pointer-events: none;
+}
+.ee-teia svg.fios { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.75)); }
+.ee-teia[data-canto="tr"] svg.fios { transform: scaleX(-1); }
+.ee-teia path { fill: none; stroke: rgba(240, 238, 228, 0.78); stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.ee-teia path.solto { stroke-opacity: 0.5; }
+.ee-teia.crescendo { animation: ee-cresce 0.9s cubic-bezier(.2, .8, .3, 1) both; animation-delay: var(--atraso, 0s); }
+@keyframes ee-cresce { from { transform: scale(0.05); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.ee-aranha { position: absolute; left: var(--ax, 50%); top: 0; width: 22px; transform: translateX(-50%); pointer-events: none; animation: ee-desce 1.6s ease-out both; animation-delay: var(--atraso, 0s); }
+.ee-aranha .fio { position: absolute; left: 50%; bottom: 100%; width: 1px; height: 400px; background: rgba(240, 238, 228, 0.7); }
+.ee-aranha svg { display: block; width: 100%; height: auto; animation: ee-bob 2.4s ease-in-out infinite alternate; transform-origin: 50% 0; }
+@keyframes ee-desce { from { top: -10%; } to { top: var(--ay, 34%); } }
+@keyframes ee-bob { from { transform: translateY(0) rotate(-4deg); } to { transform: translateY(9px) rotate(4deg); } }
+
+.ee-po { position: fixed; z-index: 45; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(225, 215, 195, 0.85), rgba(225, 215, 195, 0)); }
+
+/* espanador */
+.ee-espanador {
+  position: fixed; z-index: 44; left: 0; top: 0; width: 62px; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+  transform-origin: 50% 88%; will-change: transform; filter: drop-shadow(0 6px 5px rgba(0, 0, 0, 0.6));
+}
+.ee-espanador svg { display: block; width: 100%; height: auto; pointer-events: none; }
+.ee-espanador:hover, .ee-espanador:focus-visible { filter: drop-shadow(0 0 10px rgba(255, 220, 150, 0.7)) drop-shadow(0 6px 5px rgba(0, 0, 0, 0.6)); }
+.ee-espanador:focus-visible { outline: 2px solid var(--shu); outline-offset: 6px; }
+.ee-espanador.arrastando { cursor: grabbing; }
+
+.ee-aviso { position: fixed; z-index: 46; left: 50%; top: 76px; transform: translate(-50%, -12px); max-width: min(88vw, 420px); padding: 8px 16px; text-align: center; font-size: 0.85rem; line-height: 1.4; color: #efe3cc; background: rgba(15, 11, 9, 0.9); border: 1px solid #b2312a; border-radius: 3px; opacity: 0; pointer-events: none; transition: opacity 0.35s ease, transform 0.35s ease; }
+.ee-aviso.visivel { opacity: 1; transform: translate(-50%, 0); }
+.ee-contador { position: fixed; z-index: 46; left: 14px; bottom: 14px; padding: 6px 12px; font-size: 0.8rem; color: #efe3cc; background: rgba(15, 11, 9, 0.88); border: 1px solid #6a5a4e; border-radius: 3px; pointer-events: none; }
+
+/* a janela brilha mais quando tudo está limpo */
+.janela.ee-limpa { animation: ee-brilha 2.4s ease-out both; }
+@keyframes ee-brilha { 0% { filter: brightness(1); } 35% { filter: brightness(1.7) drop-shadow(0 0 24px rgba(255, 230, 160, 0.9)); } 100% { filter: brightness(1.15); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ee-teia.crescendo, .ee-aranha, .ee-aranha svg, .janela.ee-limpa { animation: none; }
+  .ee-aranha { top: var(--ay, 34%); }
+  .ee-aviso { transition: none; }
+}
