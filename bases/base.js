@@ -2,7 +2,7 @@
 (function () {
   "use strict";
   // Troque pelos nomes do grupo
-  const AUTORES = ["Nome do integrante 1", "Nome do integrante 2"];
+  const AUTORES = ["Miguel Silva Moreira", "Pedro Negro Pace Lage", "Sophia Emanuele de Jesus Braz", "Thauan Vitor Rezende"];
 
   let dialogoLogin = null;
   let dialogoSobre = null;
