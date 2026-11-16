@@ -26,8 +26,17 @@
 
   form.addEventListener("submit", (evento) => {
     evento.preventDefault();
-    comentarios.unshift({ nome: form.nome.value.trim(), texto: form.texto.value.trim() });
+
+    const nome = form.nome.value.trim();
+    const texto = form.texto.value.trim();
+
+    if (!nome || !texto) {
+      return;
+    }
+
+    comentarios.unshift({ nome, texto });
     Dados.gravar(chave, comentarios);
+
     form.texto.value = "";
     mostrar();
   });
