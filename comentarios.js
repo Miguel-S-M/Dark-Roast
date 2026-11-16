@@ -19,26 +19,48 @@
   }
 
   // se a pessoa estiver logada, o nome já vem preenchido
-  function preencherNome() {
-    const atual = Contas.usuarioAtual();
-    if (atual) form.nome.value = atual.nome;
-  }
-
   form.addEventListener("submit", (evento) => {
-    evento.preventDefault();
+      evento.preventDefault();
 
-    const nome = form.nome.value.trim();
-    const texto = form.texto.value.trim();
+      const nome = form.nome.value.trim();
+      const texto = form.texto.value.trim();
 
-    if (!nome || !texto) {
-      return;
-    }
+      if (!nome || !texto) {
+        form.nome.classList.toggle("campo-invalido", !nome);
+        form.texto.classList.toggle("campo-invalido", !texto);
 
-    comentarios.unshift({ nome, texto });
-    Dados.gravar(chave, comentarios);
+        form.nome.setAttribute("aria-invalid", String(!nome));
+        form.texto.setAttribute("aria-invalid", String(!texto));
 
-    form.texto.value = "";
-    mostrar();
+        if (!nome) form.nome.focus();
+        else form.texto.focus();
+
+        return;
+      }
+
+      form.nome.classList.remove("campo-invalido");
+      form.texto.classList.remove("campo-invalido");
+
+      form.nome.setAttribute("aria-invalid", "false");
+      form.texto.setAttribute("aria-invalid", "false");
+
+      form.nome.value = nome;
+      form.texto.value = texto;
+
+      comentarios.unshift({ nome, texto });
+      Dados.gravar(chave, comentarios);
+
+      form.texto.value = "";
+      mostrar();
+  });
+
+  [form.nome, form.texto].forEach((campo) => {
+      campo.addEventListener("input", () => {
+        if (campo.value.trim()) {
+          campo.classList.remove("campo-invalido");
+          campo.setAttribute("aria-invalid", "false");
+        }
+      });
   });
 
   document.addEventListener("conta:mudou", preencherNome);
