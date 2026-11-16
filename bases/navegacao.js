@@ -80,6 +80,63 @@
         return;
     }
 
+    function identificarTexto(link) {
+        const pagina = link.split("/").pop().split("?")[0].toLowerCase();
+        const parametros = link.includes("?") ? link.split("?")[1] : "";
+
+        // Páginas simples
+        if (!parametros) {
+            const nomesPaginas = {
+                "cultivo.html": "Volte ao mapa",
+                "colheita.html": "Volte ao armazém",
+                "torra.html": "Volte à fornalha",
+                "exportacao.html": "Volte ao porto",
+                "monte.html": "Volte a preparar seu próprio café"
+            };
+
+            if (nomesPaginas[pagina]) {
+                return nomesPaginas[pagina];
+            }
+        }
+
+        // Página de café
+        if (pagina === "cafe.html") {
+            const etapa = parametros.split("&").find(p => p.startsWith("e="))?.split("=")[1];
+            const cafe = parametros.split("&").find(p => p.startsWith("c="))?.split("=")[1];
+
+            const nomesCafes = {
+                "black-ivory": "Black Ivory",
+                "blue-mountain": "Blue Mountain",
+                "jacu-bird": "Jacu Bird"
+            };
+
+            const nomesEtapas = {
+                "cultivo": "cultivo",
+                "colheita": "colheita",
+                "torra": "torra"
+            };
+
+            if (nomesCafes[cafe] && nomesEtapas[etapa]) {
+                return `Voltar ao ${nomesEtapas[etapa]} de ${nomesCafes[cafe]}`;
+            }
+        }
+
+        // Página de sugestões
+        if (pagina === "sugestoes.html") {
+            const tipo = parametros.split("&").find(p => p.startsWith("t="))?.split("=")[1];
+
+            if (tipo === "caf%C3%A9s" || tipo === "cafés") {
+                return "Voltar às sugestões de cafés";
+            }
+
+            if (tipo === "pa%C3%ADses" || tipo === "países") {
+                return "Voltar às sugestões de países para exportar";
+            }
+        }
+
+        return "Voltar à página anterior";
+    }
+
     // Páginas especiais: configura o retorno.
     function configurarRetorno() {
         const linkRetorno = document.querySelector("a#voltar-variavel");
@@ -96,7 +153,7 @@
             return;
         } else if (destino) {
             linkRetorno.href = destino;
-            linkRetorno.textContent = "Voltar à página anterior";
+            linkRetorno.textContent = identificarTexto(linkRetorno.href);
             linkRetorno.hidden = false;   
         } else {
             linkRetorno.hidden = true; 
