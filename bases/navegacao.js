@@ -148,7 +148,7 @@
 
         const destino = obterPaginaAnterior();
 
-        if (destino.includes("index.html#origem")) {
+        if (destino && destino.includes("index.html#origem")) {
             linkRetorno.hidden = true;
             return;
         } else if (destino) {
