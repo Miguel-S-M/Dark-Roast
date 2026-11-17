@@ -153,46 +153,40 @@
     }
 }
 
+
 #comentarios #form-comentario {
     display: block !important;
     width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 
-#comentarios #form-comentario > input,
-#comentarios #form-comentario > textarea {
+#comentarios #form-comentario .campo-comentario {
     display: block !important;
-    float: none !important;
-    position: static !important;
     width: 100% !important;
+    margin-bottom: 16px !important;
+}
+
+#comentarios #form-comentario .campo-comentario input,
+#comentarios #form-comentario .campo-comentario textarea {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
     max-width: 100% !important;
-    min-width: 100% !important;
-    clear: both !important;
-    margin: 0 0 8px !important;
+    margin: 0 0 5px !important;
     box-sizing: border-box !important;
+    float: none !important;
 }
 
-#comentarios #form-comentario > small {
+#comentarios #form-comentario .contador-caracteres {
     display: block !important;
-    float: none !important;
-    clear: both !important;
     width: 100% !important;
-    margin: 0 0 15px !important;
     text-align: right !important;
 }
 
-#comentarios #form-comentario > button {
+#comentarios #form-comentario button {
     display: block !important;
-    float: none !important;
-    clear: both !important;
-    width: fit-content !important;
+    width: auto !important;
     margin: 15px auto 0 !important;
+    float: none !important;
 }
 
-#comentarios #form-comentario {
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    grid-template-columns: 1fr !important;
-}
 
