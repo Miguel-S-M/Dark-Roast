@@ -1,7 +1,8 @@
 // Parte comum a todas as páginas: barra da conta, janela "Sobre" e avisos
 (function () {
   "use strict";
-  // Troque pelos nomes do grupo
+  const FONTE = document.currentScript || document.querySelector('script[src$="bases/base.js"]');
+  const RAIZ = new URL("../", FONTE.src).href;
   const AUTORES = ["Miguel Silva Moreira", "Pedro Negro Pace Lage", "Sophia Emanuele de Jesus Braz", "Thauan Vitor Rezende"];
 
   let dialogoLogin = null;
@@ -109,9 +110,9 @@
     const noCarrinho = typeof Carrinho === "undefined" ? 0 : Carrinho.quantidade();
     document.querySelectorAll("[data-conta]").forEach((caixa) => {
       const itens = [
-        Dom.criar("a", { classe: "barra-link", href: "../comunidade_enquete_loja/enquetes.html", "aria-current": location.pathname.endsWith("enquetes.html") ? "page" : null, texto: "Enquetes" }),
-        Dom.criar("a", { classe: "barra-link", href: "../comunidade_enquete_loja/comunidade.html", "aria-current": location.pathname.endsWith("comunidade.html") ? "page" : null, texto: "comunidade" }),
-        Dom.criar("a", { classe: "barra-link", href: "../comunidade_enquete_loja/loja.html", "aria-current": location.pathname.endsWith("loja.html") ? "page" : null, texto: noCarrinho ? "Loja (" + noCarrinho + ")" : "Loja" }),
+        Dom.criar("a", { classe: "barra-link", href: RAIZ + "comunidade_enquete_loja/enquetes.html", "aria-current": location.pathname.endsWith("enquetes.html") ? "page" : null, texto: "Enquetes" }),
+        Dom.criar("a", { classe: "barra-link", href: RAIZ + "comunidade_enquete_loja/comunidade.html", "aria-current": location.pathname.endsWith("comunidade.html") ? "page" : null, texto: "comunidade" }),
+        Dom.criar("a", { classe: "barra-link", href: RAIZ + "comunidade_enquete_loja/loja.html", "aria-current": location.pathname.endsWith("loja.html") ? "page" : null, texto: noCarrinho ? "Loja (" + noCarrinho + ")" : "Loja" }),
         Dom.criar("button", { type: "button", classe: "barra-botao", texto: "Sobre", onclick: abrirSobre }),
       ];
       if (usuario) {
