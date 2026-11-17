@@ -1,18 +1,17 @@
 
 #comentarios {
     position: relative;
-    width: calc(100% - 40px) !important;
-    max-width: 600px !important;
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    margin: 50px auto;
+    padding: 35px 28px;
     box-sizing: border-box;
-    margin: 50px auto !important;
-    padding: 35px 30px !important;
     background: #f5f0e6;
     color: #2a2622;
     border: 1px solid #cdbfa8;
-    border-radius: 2px;
-    box-shadow:
-        inset 0 0 0 5px #f5f0e6,
-        inset 0 0 0 6px #e3d9c7;
+    box-shadow: inset 0 0 0 5px #f5f0e6,
+                inset 0 0 0 6px #e3d9c7;
 }
 
 #comentarios::after {
@@ -31,11 +30,13 @@
 }
 
 #comentarios h2 {
-    margin: 0 0 25px !important;
-    padding: 0 !important;
+    display: block;
+    width: 100%;
+    margin: 0 0 25px;
+    padding: 0;
     text-align: center;
-    font-family: 'Shippori Mincho', serif;
-    font-size: 1.25rem;
+    font-family: "Shippori Mincho", serif;
+    font-size: 1.2rem;
     font-weight: 500;
     letter-spacing: 0.08em;
 }
@@ -49,85 +50,95 @@
     background: #b2312a;
 }
 
-#form-comentario {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 8px !important;
-    width: 100% !important;
-    margin: 0 !important;
+#comentarios #form-comentario {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+    margin: 0;
+    padding: 0;
 }
 
-#form-comentario input,
-#form-comentario textarea {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
+#comentarios #form-comentario input,
+#comentarios #form-comentario textarea {
+    display: block;
+    position: static;
+    float: none;
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
-    box-sizing: border-box !important;
-    margin: 0 !important;
-    padding: 11px 13px !important;
-    border: 1px solid #cdbfa8 !important;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0 0 5px;
+    padding: 11px 12px;
+    border: 1px solid #cdbfa8;
     border-radius: 0;
-    background: #fbf8f1 !important;
-    color: #2a2622 !important;
-    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background: #fbf8f1;
+    color: #2a2622;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: 14px;
+    line-height: 1.5;
 }
 
-#form-comentario textarea {
+#comentarios #form-comentario textarea {
     min-height: 110px;
     resize: vertical;
 }
 
-#form-comentario input:focus,
-#form-comentario textarea:focus {
+#comentarios #form-comentario input:focus,
+#comentarios #form-comentario textarea:focus {
     outline: none;
-    border-color: #b2312a !important;
-    box-shadow: 0 0 0 2px rgba(178, 49, 42, 0.08);
+    border-color: #b2312a;
+    box-shadow: none;
 }
 
-#form-comentario .contador-caracteres {
-    display: block !important;
+#comentarios .contador-caracteres {
+    display: block;
+    position: static;
+    float: none;
     width: 100%;
-    margin: 0 0 5px !important;
+    margin: 0 0 14px;
     text-align: right;
     color: #6f665b;
     font-size: 11px;
 }
 
-#form-comentario button {
+#comentarios #form-comentario button {
     display: block;
+    position: static;
+    float: none;
     align-self: center;
     width: auto;
-    margin: 12px auto 0 !important;
-    padding: 10px 30px !important;
-    border: none !important;
+    margin: 8px auto 0;
+    padding: 10px 30px;
+    border: none;
     border-radius: 0;
-    background: #b2312a !important;
-    color: #f5f0e6 !important;
-    font-family: 'Zen Kaku Gothic New', sans-serif;
-    font-size: 14px;
+    background: #b2312a;
+    color: #f5f0e6;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     cursor: pointer;
 }
 
-#form-comentario button:hover {
-    background: #8f251f !important;
+#comentarios #form-comentario button:hover {
+    background: #8f251f;
 }
 
-#lista-comentarios {
+#comentarios #lista-comentarios {
+    display: block;
     width: 100%;
-    padding: 0;
     margin: 25px 0 0;
+    padding: 0;
     list-style: none;
 }
 
-#lista-comentarios li {
+#comentarios #lista-comentarios li {
+    display: block;
     padding: 12px 0;
     border-top: 1px solid #e3d9c7;
 }
 
-#lista-comentarios li p {
+#comentarios #lista-comentarios li p {
     margin: 4px 0 8px;
     color: #6f665b;
     white-space: pre-wrap;
@@ -136,8 +147,8 @@
 
 @media (max-width: 480px) {
     #comentarios {
-        width: calc(100% - 24px) !important;
-        margin: 35px auto !important;
-        padding: 30px 18px !important;
+        width: 100%;
+        padding: 30px 18px;
+        margin: 35px auto;
     }
 }
