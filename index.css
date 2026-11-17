@@ -204,5 +204,16 @@ h2{
 .torii-fio, .torii-chao { fill: none; stroke: var(--fio); stroke-width: 1.4px; vector-effect: non-scaling-stroke; }
 .torii-chao { stroke-width: 1px; }
 
-
-
+/* Barra da conta na página inicial: em telas pequenas fica no topo, no fluxo da página,
+   em vez de flutuar por cima dos portões */
+@media (max-width: 900px) {
+  body.inicio { padding-top: 16px; }
+  body.inicio > .conta-fixa {
+    position: static;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    justify-content: center;
+    border-radius: 22px;
+  }
+}
