@@ -68,3 +68,8 @@
         padding: 16px 0;
     }
 }
+#comentarios input.campo-invalido,
+#comentarios textarea.campo-invalido {
+    border: 1px solid #b33a32;
+    outline: 2px solid rgba(179, 58, 50, .18);
+}
