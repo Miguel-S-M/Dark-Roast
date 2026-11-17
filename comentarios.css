@@ -73,3 +73,11 @@
     border: 1px solid #b33a32;
     outline: 2px solid rgba(179, 58, 50, .18);
 }
+#comentarios .contador-caracteres {
+    display: block;
+    text-align: right;
+    font-size: .8rem;
+    color: #777;
+    margin-top: -.3rem;
+    margin-bottom: .7rem;
+}
