@@ -1,11 +1,11 @@
 
 #comentarios {
     position: relative;
-    width: calc(100% - 32px);
-    max-width: 650px;
+    width: calc(100% - 40px) !important;
+    max-width: 600px !important;
     box-sizing: border-box;
-    margin: 40px auto;
-    padding: 35px 30px;
+    margin: 50px auto !important;
+    padding: 35px 30px !important;
     background: #f5f0e6;
     color: #2a2622;
     border: 1px solid #cdbfa8;
@@ -31,12 +31,13 @@
 }
 
 #comentarios h2 {
-    margin: 0 0 25px;
-    padding: 0;
+    margin: 0 0 25px !important;
+    padding: 0 !important;
     text-align: center;
-    font-size: 1.15rem;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.25rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
 }
 
 #comentarios h2::after {
@@ -48,64 +49,85 @@
     background: #b2312a;
 }
 
-#comentarios form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    width: 100%;
+#form-comentario {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin: 0 !important;
 }
 
-#comentarios input,
-#comentarios textarea {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 10px 12px;
-    border: 1px solid #cdbfa8;
-    background: #fbf8f1;
-    color: #2a2622;
-    font: inherit;
+#form-comentario input,
+#form-comentario textarea {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 11px 13px !important;
+    border: 1px solid #cdbfa8 !important;
+    border-radius: 0;
+    background: #fbf8f1 !important;
+    color: #2a2622 !important;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 14px;
 }
 
-#comentarios textarea {
-    min-height: 100px;
+#form-comentario textarea {
+    min-height: 110px;
     resize: vertical;
 }
 
-#comentarios input:focus,
-#comentarios textarea:focus {
+#form-comentario input:focus,
+#form-comentario textarea:focus {
     outline: none;
-    border-color: #b2312a;
+    border-color: #b2312a !important;
+    box-shadow: 0 0 0 2px rgba(178, 49, 42, 0.08);
 }
 
-#comentarios form button {
+#form-comentario .contador-caracteres {
+    display: block !important;
+    width: 100%;
+    margin: 0 0 5px !important;
+    text-align: right;
+    color: #6f665b;
+    font-size: 11px;
+}
+
+#form-comentario button {
+    display: block;
     align-self: center;
-    padding: 9px 28px;
-    font: inherit;
+    width: auto;
+    margin: 12px auto 0 !important;
+    padding: 10px 30px !important;
+    border: none !important;
+    border-radius: 0;
+    background: #b2312a !important;
+    color: #f5f0e6 !important;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 14px;
     cursor: pointer;
-    color: #f5f0e6;
-    background: #b2312a;
-    border: none;
 }
 
-#comentarios form button:hover {
-    background: #8f251f;
+#form-comentario button:hover {
+    background: #8f251f !important;
 }
 
-#comentarios ul {
+#lista-comentarios {
+    width: 100%;
     padding: 0;
-    margin: 20px 0 0;
+    margin: 25px 0 0;
     list-style: none;
 }
 
-#comentarios li {
+#lista-comentarios li {
     padding: 12px 0;
     border-top: 1px solid #e3d9c7;
 }
 
-#comentarios li p {
+#lista-comentarios li p {
     margin: 4px 0 8px;
     color: #6f665b;
     white-space: pre-wrap;
@@ -114,8 +136,8 @@
 
 @media (max-width: 480px) {
     #comentarios {
-        width: calc(100% - 24px);
-        margin: 30px auto;
-        padding: 30px 18px;
+        width: calc(100% - 24px) !important;
+        margin: 35px auto !important;
+        padding: 30px 18px !important;
     }
 }
