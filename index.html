@@ -106,14 +106,18 @@
   <div id="comentarios">
   <h2>Quer deixar um comentário?</h2>
   <form id="form-comentario">
-    <input name="nome" placeholder="Seu nome" maxlength="60" required>
-    <small id="contador-nome" class="contador-caracteres">0 / 60 caracteres</small>
+    <div class="campo-comentario">
+        <input name="nome" placeholder="Seu nome" maxlength="60" required>
+        <small id="contador-nome" class="contador-caracteres">0 / 60 caracteres</small>
+    </div>
 
-    <textarea name="texto" placeholder="Escreva um comentário" maxlength="600" required></textarea>
-    <small id="contador-texto" class="contador-caracteres">0 / 600 caracteres</small>
+    <div class="campo-comentario">
+        <textarea name="texto" placeholder="Escreva um comentário" maxlength="600" required></textarea>
+        <small id="contador-texto" class="contador-caracteres">0 / 600 caracteres</small>
+    </div>
 
-    <button>Comentar</button>
-  </form>
+    <button type="submit">Comentar</button>
+</form>
   <ul id="lista-comentarios"></ul>
 </div>
 <script src="comentarios.js" defer></script>
