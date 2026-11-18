@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f3e9dc">
-<title>Dark Roast | Parcerias</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="parceria.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3e9dc">
+  <title>Dark Roast | Parcerias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="parceria.css">
 </head>
 <body>
   <main class="pagina-parcerias">
     <a class="voltar" href="index.html" aria-label="Voltar para a página inicial">← Voltar</a>
-
+    
     <header class="cabecalho">
       <span class="sobretitulo">DARK ROAST · CONEXÕES</span>
       <h1>Parcerias</h1>
@@ -24,79 +24,88 @@
     <section aria-labelledby="titulo-marcas">
       <h2 id="titulo-marcas">Nossas marcas parceiras</h2>
       <p class="introducao">Uma seleção de marcas para descobrir diferentes sabores, origens e experiências.</p>
-
+      
       <div id="status" class="status" role="status" aria-live="polite">
         <span class="indicador"></span> Buscando marcas...
       </div>
+      
       <div id="lista-parceiros" class="grade-parceiros"></div>
     </section>
 
     <footer>Dark Roast · Cafés exóticos de todo o mundo</footer>
   </main>
 
-<script>
-  const statusParcerias = document.getElementById("status");
-  const listaParceiros = document.getElementById("lista-parceiros");
+  <script>
+    const statusParcerias = document.getElementById("status");
+    const listaParceiros = document.getElementById("lista-parceiros");
 
-  // AJAX: busca o arquivo JSON sem recarregar esta página.
-  function buscarParcerias() {
-    statusParcerias.innerHTML = '<span class="indicador"></span> Carregando marcas...';
-    listaParceiros.innerHTML = "";
+    // AJAX: busca o arquivo JSON sem recarregar esta página.
+    function buscarParcerias() {
+      statusParcerias.innerHTML = '<span class="indicador"></span> Carregando marcas...';
+      listaParceiros.innerHTML = "";
 
-    const requisicao = new XMLHttpRequest();
-    requisicao.open("GET", "parcerias.json", true);
+      const requisicao = new XMLHttpRequest();
+      requisicao.open("GET", "parcerias.json", true);
 
-    requisicao.onload = function () {
-      if (requisicao.status >= 200 && requisicao.status < 300) {
-        try {
-          const marcas = JSON.parse(requisicao.responseText);
-          mostrarParcerias(marcas);
-          statusParcerias.textContent = marcas.length + " marcas carregadas.";
-        } catch (erro) {
-          statusParcerias.textContent = "Não foi possível interpretar os dados das parcerias.";
+      requisicao.onload = function () {
+        if (requisicao.status >= 200 && requisicao.status < 300) {
+          try {
+            const marcas = JSON.parse(requisicao.responseText);
+            mostrarParcerias(marcas);
+            statusParcerias.textContent = marcas.length + " marcas carregadas.";
+            
+            // Alerta de sucesso
+            window.alert(marcas.length + " marcas parceiras foram carregadas com sucesso!");
+          } catch (erro) {
+            statusParcerias.textContent = "Não foi possível interpretar os dados das parcerias.";
+            window.alert("Erro ao ler os dados das parcerias.");
+          }
+        } else {
+          mostrarErro();
         }
-      } else {
-        mostrarErro();
-      }
-    };
+      };
 
-    requisicao.onerror = mostrarErro;
-    requisicao.send();
-  }
-
-  function mostrarParcerias(marcas) {
-    listaParceiros.innerHTML = "";
-
-    if (!Array.isArray(marcas) || marcas.length === 0) {
-      listaParceiros.innerHTML = '<p class="mensagem-vazia">Nenhuma parceria encontrada.</p>';
-      return;
+      requisicao.onerror = mostrarErro;
+      requisicao.send();
     }
 
-    marcas.forEach(function (marca) {
-      const cartao = document.createElement("article");
-      cartao.className = "cartao-parceiro";
+    function mostrarParcerias(marcas) {
+      listaParceiros.innerHTML = "";
 
-      const selo = document.createElement("div");
-      selo.className = "selo-marca";
-      selo.textContent = marca.sigla;
+      if (!Array.isArray(marcas) || marcas.length === 0) {
+        listaParceiros.innerHTML = '<p class="mensagem-vazia">Nenhuma parceria encontrada.</p>';
+        return;
+      }
 
-      const nome = document.createElement("h3");
-      nome.textContent = marca.nome;
+      marcas.forEach(function (marca) {
+        const cartao = document.createElement("article");
+        cartao.className = "cartao-parceiro";
 
-      const descricao = document.createElement("p");
-      descricao.textContent = marca.descricao;
+        const selo = document.createElement("div");
+        selo.className = "selo-marca";
+        selo.textContent = marca.sigla;
 
-      cartao.append(selo, nome, descricao);
-      listaParceiros.appendChild(cartao);
-    });
-  }
+        const nome = document.createElement("h3");
+        nome.textContent = marca.nome;
 
-  function mostrarErro() {
-    statusParcerias.textContent = "Não foi possível carregar as marcas. Confira se o Live Server está ativo e tente novamente.";
-    listaParceiros.innerHTML = "";
-  }
+        const descricao = document.createElement("p");
+        descricao.textContent = marca.descricao;
 
-  buscarParcerias();
-</script>
+        cartao.append(selo, nome, descricao);
+        listaParceiros.appendChild(cartao);
+      });
+    }
+
+    function mostrarErro() {
+      const mensagemErro = "Não foi possível carregar as marcas. Confira se o Live Server está ativo e tente novamente.";
+      statusParcerias.textContent = mensagemErro;
+      listaParceiros.innerHTML = "";
+      
+      // Alerta de erro
+      window.alert(mensagemErro);
+    }
+
+    buscarParcerias();
+  </script>
 </body>
 </html>
