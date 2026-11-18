@@ -239,6 +239,7 @@
     document.body.appendChild(contador);
     atualizarContador();
     dizer("Quanto tempo esse armazém ficou fechado… Pegue o espanador e limpe as teias.", 4800);
+    window.alert("tempo passa")
   }
 
   // ---------- gatilho de teclado (cheet.js) ----------
