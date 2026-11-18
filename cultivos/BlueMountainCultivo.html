@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blue Mountain · Cultivo · Dark Roast</title>
 <script>
-  // Se veio do mapa, mostra a imagem de entrada (a transição do mapa guarda a hora do clique)
   try {
     var t = +sessionStorage.getItem("transicao");
     if (t && Date.now() - t < 6000) document.documentElement.classList.add("vindo-do-mapa");
