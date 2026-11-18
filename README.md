@@ -34,3 +34,4 @@ O `js` que chama a API está em `preparos.js` (usa `fetch`, ou seja, AJAX).
 
 - As contas (login e senha) continuam guardadas no navegador, não no servidor. A API confia no nome de usuário que o site envia, então a vitrine **não é protegida contra quem forjar requisições**. Para algo além de um trabalho de faculdade, o login precisa ir para o servidor (sessão em PHP).
 - O carrinho da loja continua no `localStorage`.
+...
