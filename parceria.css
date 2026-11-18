@@ -1,0 +1,176 @@
+* { box-sizing: border-box; }
+
+:root {
+  --papel: #f3e9dc;
+  --tinta: #2a2622;
+  --suave: #6f665b;
+  --linha: #cdbfa8;
+  --shu: #b2312a;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 30px 20px 24px;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: "Zen Kaku Gothic New", "Inter", sans-serif;
+  font-weight: 300;
+}
+
+.pagina-parcerias {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+}
+
+.voltar {
+  display: inline-block;
+  color: var(--suave);
+  text-decoration: none;
+  font: 400 .9rem "Inter", sans-serif;
+  border-bottom: 1px solid transparent;
+}
+.voltar:hover { color: var(--shu); border-color: var(--shu); }
+
+.cabecalho {
+  text-align: center;
+  padding: clamp(42px, 8vw, 76px) 10px 42px;
+}
+.sobretitulo {
+  color: var(--shu);
+  font: 600 .72rem "Inter", sans-serif;
+  letter-spacing: .22em;
+}
+h1, h2, h3 {
+  font-family: "Shippori Mincho", Georgia, serif;
+  font-weight: 400;
+}
+h1 {
+  margin: 12px 0 8px;
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
+  letter-spacing: .06em;
+}
+.cabecalho p {
+  margin: 0;
+  color: var(--suave);
+  font-size: 1rem;
+}
+.traco {
+  display: block;
+  width: 42px;
+  height: 2px;
+  margin: 25px auto 0;
+  background: var(--shu);
+}
+
+section { padding: 18px 0 30px; }
+section h2 {
+  text-align: center;
+  margin: 0 0 8px;
+  font-size: clamp(1.55rem, 4vw, 2rem);
+  letter-spacing: .06em;
+}
+.introducao {
+  text-align: center;
+  color: var(--suave);
+  margin: 0 auto;
+  line-height: 1.8;
+}
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  margin: 16px 0 20px;
+  color: var(--suave);
+  font-size: .85rem;
+}
+.indicador {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--shu);
+}
+.grade-parceiros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+.cartao-parceiro {
+  position: relative;
+  min-height: 220px;
+  padding: 28px 22px 24px;
+  background: #f5f0e6;
+  border: 1px solid var(--linha);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 7px #f5f0e6, inset 0 0 0 8px #e3d9c7;
+  text-align: center;
+  transition: transform .25s, border-color .25s;
+}
+.cartao-parceiro::before {
+  content: "珈";
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin: -43px auto 17px;
+  background: var(--shu);
+  color: #f5f0e6;
+  font: 1rem "Shippori Mincho", serif;
+}
+.cartao-parceiro:hover {
+  transform: translateY(-4px);
+  border-color: var(--shu);
+}
+.selo-marca {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 13px;
+  border: 1px solid #cdbfa8;
+  border-radius: 50%;
+  color: var(--shu);
+  font: 500 1.25rem "Shippori Mincho", serif;
+}
+.cartao-parceiro h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  letter-spacing: .06em;
+}
+.cartao-parceiro h3::after {
+  content: "";
+  display: block;
+  width: 23px;
+  height: 1px;
+  margin: 10px auto 0;
+  background: var(--shu);
+}
+.cartao-parceiro p {
+  margin: 0;
+  color: var(--suave);
+  font-size: .9rem;
+  line-height: 1.75;
+}
+.mensagem-vazia {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--suave);
+}
+footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--linha);
+  color: var(--suave);
+  text-align: center;
+  font-size: .78rem;
+  letter-spacing: .06em;
+}
+
+@media (max-width: 520px) {
+  body { padding: 20px 16px; }
+  .grade-parceiros { grid-template-columns: 1fr; gap: 18px; }
+  .cartao-parceiro { min-height: 195px; }
+}

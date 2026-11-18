@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "3 Corações",
+    "sigla": "3C",
+    "descricao": "Uma marca brasileira conhecida por diferentes opções de café para o dia a dia."
+  },
+  {
+    "nome": "Melitta",
+    "sigla": "M",
+    "descricao": "Tradição no preparo do café e em produtos para extração."
+  },
+  {
+    "nome": "Pilão",
+    "sigla": "P",
+    "descricao": "Café de perfil marcante, presente em muitas casas brasileiras."
+  },
+  {
+    "nome": "Orfeu",
+    "sigla": "O",
+    "descricao": "Cafés especiais que valorizam origem, cultivo e qualidade."
+  },
+  {
+    "nome": "Baggio",
+    "sigla": "B",
+    "descricao": "Cafés especiais e opções aromatizadas para diferentes paladares."
+  },
+  {
+    "nome": "Café Santa Monica",
+    "sigla": "SM",
+    "descricao": "Marca brasileira dedicada à produção de cafés especiais."
+  }
+]
